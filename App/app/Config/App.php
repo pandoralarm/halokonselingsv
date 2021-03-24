@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -21,7 +23,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://192.168.1.10/github/localrepo/';
+	public $baseURL = 'http://localhost/github/HaloKonselingSV_02-localhost/';
 	/*
 	|--------------------------------------------------------------------------
 	| Index File

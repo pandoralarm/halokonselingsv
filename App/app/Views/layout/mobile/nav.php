@@ -46,7 +46,7 @@
               <div><small><?= $prodi ?></small></div>
               <div class="role"><small><?= $role ?></small></div>
               <br />
-              <a class="btn-hksv w-100">Profil</a>
+              <a class="btn-hksv w-100" href="<?= base_url('account/signin') ?>">Profil</a>
             </div>
           <?php } else { ?>
             <a href="<?= base_url('account/signin') ?>" class="btn-signin d-block text-white">

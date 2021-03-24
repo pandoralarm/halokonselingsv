@@ -4,6 +4,7 @@
       <template>
 
       <?php if ($logged) {
+              $profiltarget = "";
               if ($role == "ADMIN") {
                 $KonselingTarget = "changeSubmenu('menuKonselor')";
               } elseif ($role == 'MAHASISWA' || 'KONSELOR' || 'SEKPRODI') {
@@ -13,8 +14,30 @@
               }
             } else {
               $KonselingTarget = ("goTo('account/signin')");
+              $profiltarget = "goTo('account/signin')";
             }
       ?>
+
+        <div v-on:click="<?= $profiltarget ?>"  class="konseling-menu events shadow text-center">
+            <?php if (!$logged) { ?>
+
+              <div class="text w-100">
+                <span class="title">Halo, Anonymous!</span>
+                <p class="subtitle">Tap disini untuk masuk.</p>
+                
+              </div>
+
+            <?php } else { ?>
+            
+              <div class="text w-100">
+                <span class="title">Halo, <?= $name ?></span>
+                <p class="subtitle"> <u> Buka profil </u> </p>
+                
+              </div>
+
+            <?php } ?>
+
+        </div>
 
         <div v-on:click="<?= $KonselingTarget ?>" class="konseling-menu ruang-konseling shadow">
           <div class="text">
@@ -24,37 +47,24 @@
               yang kamu hadapi, rahasiamu dijamin terjaga.</p>
           </div>
           <div class="banner"></div>
-          <div class="btn-hksv mt-4">
-            Cerita Disini
+          <div class="">
+            <u>  <small> Klik Disini! </small>  </u>
           </div>
         </div>
+
         <div v-on:click="changeSubmenu('blogs')" class="konseling-menu blogs shadow">
           <div class="text">
-            <span class="title">Konseling Blogs</span>
-            <p class="subtitle">Kamu bisa baca dan bagikan 
-            informasi bermanfaat yang telah disusun oleh para 
-            konselor ahli.</p>
+            <span class="title">Permohonan Beasiswa</span>
+            <p class="subtitle">Kamu bisa mencari informasi beasiswa
+            terkini dan ajukan surat rekomendasi beasiswa!</p>
           </div>
           <div class="banner"></div>
-          <div class="btn-hksv">
-            Baca Disini
+          <div class="">
+            <u>  <small> Klik Disini! </small>  </u>
           </div>
         </div>
-        <div v-on:click="changeSubmenu('events')"  class="konseling-menu events shadow">
-          <div class="text">
-            <span class="title">Konseling Events</span>
-            <p class="subtitle">  </p>
-            
-            <div class="events-today">
-              <span class="description">Events hari ini : </span>
-              <span class="number">0</span>
-            </div>
-          </div>
-          <div class="banner"></div>
-          <div class="btn-hksv">
-            Lihat Semua
-          </div>
-        </div>
+
+
       </template>
     </div>
   </transition>

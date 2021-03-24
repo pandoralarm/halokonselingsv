@@ -54,6 +54,10 @@ html {
   box-shadow: 0px 0px 26px -8px rgba(0,0,0,0.75);
 }
 
+.border-hksv {
+  border: solid 1px var(--mainaccent);
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
@@ -117,14 +121,16 @@ ul {
   margin: 5% auto;
   height: 33%;
   width: 90%;
-}
-
-
-.konseling-menu .text {
   font-size: 80%;
   font-weight: normal;
   color: var(--secondaccent);
   word-wrap: break-word;
+  transition: all .2s ease;
+}
+
+
+.konseling-menu:active {
+  color: white;
 }
 
 .konseling-menu .subtitle {
@@ -739,13 +745,13 @@ input[type="text"].searchbar:focus{
   top: 10%;
   border-radius: 9px;
   padding: 1% 10%;
-
+  border: solid 1px var(--mainaccent);
   text-align: center;
-  transition: all .3s ease;
+  transition: all .2s ease;
 
 }
 
-.btn-hksv:hover{
+.btn-hksv:focus{
 
   background-color: var(--mainaccent);
   color: white;
@@ -985,6 +991,8 @@ select.form-control:focus {
     margin-top: 5%;
   }
   
+
+
   .konseling-menu .banner {
     width: 40%;
     height: 100%;
@@ -1027,21 +1035,21 @@ select.form-control:focus {
 
   .events {
     height: 15%;
+    border: solid 1px var(--mainaccent);
+    transition: all .2s ease;
+  }
+
+  .konseling-menu:active {
+    background-color: var(--mainaccent);
+    color: white;
   }
   
-  .events-today {
-    position: absolute;
-    top: 15%;
-    right: 5%;
-  }
 
   .events .text {
     height: 50%;
   }
 
-  .events .btn-hksv{
-    margin-top: 0;
-  }
+
   
   .events-today .description{
     font-size: 100%;

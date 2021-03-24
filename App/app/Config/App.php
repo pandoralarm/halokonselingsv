@@ -23,7 +23,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost/github/HaloKonselingSV_02-localhost/';
+	public $baseURL = 'http://192.168.1.10/github/HKSVNEW/';
 	/*
 	|--------------------------------------------------------------------------
 	| Index File

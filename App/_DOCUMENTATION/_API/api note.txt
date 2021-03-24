@@ -1,0 +1,14 @@
+Dari DSITD, terlampir disampaikan dokumentasi API dalam format Swagger (JSON).
+
+Token API yang digunakan adalah: ab452fc6-4874-367e-8680-c2d2461939c4
+
+Token ini disertakan dalam setiap header request:
+
+X-IPBAPI-TOKEN: Bearer ab452fc6-4874-367e-8680-c2d2461939c4
+
+Demikian.
+
+--
+Asep Mulyana
+Sekolah Vokasi IPB
++62 0812-8588-6073, (251)8376845

@@ -1,0 +1,60 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Orang API"
+    },
+    "paths": {
+        "/Identifier/MahasiswaIdByNim": {
+            "get": {
+                "tags": [
+                    "Identifier"
+                ],
+                "operationId": "GetMahasiswaIdByNim",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "nim",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/MahasiswaIdResult"
+                        }
+                    }
+                },
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        }
+    },
+    "definitions": {
+        "MahasiswaIdResult": {
+            "type": "object",
+            "properties": {
+                "MahasiswaId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "host": "api.ipb.ac.id",
+    "basePath": "/v1/Orang",
+    "schemes": [
+        "https",
+        "http"
+    ]
+}

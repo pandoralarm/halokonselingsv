@@ -1,0 +1,41 @@
+var nav = new Vue({
+  el: '#nav',
+  data: {
+  },
+  computed: {
+    username: function () {
+      return store.getters.getUser;
+    },
+    errcode: function () {
+      return store.getters.getErrcode;
+    },
+    errmsg: function () {
+      return store.getters.getErrmsg;
+    },
+    basepath: function () {
+      return store.getters.getBasepath;
+    },
+    logged: function () {
+      return store.getters.getLogged;
+    },
+  },
+  methods: {
+    login () {
+      var credential = {
+        user : $('#username').val(),
+        pass : $('#password').val(),
+      };
+
+      // POST request using axios with set headers
+      axios.post(this.basepath+"/account/signin/desktopAuth", credential)
+        .then(response => {
+          store.commit('setUsername', response.data.username);
+          store.commit('setErrcode', response.data.errcode);
+          store.commit('setErrmsg', response.data.errmsg)
+          store.commit('setLogged', response.data.logged)
+        })
+        .catch()
+        .finally();
+    },
+  },
+});

@@ -1,0 +1,61 @@
+
+    <nav id="nav">
+        <div class="container container-nav">
+            <div class="logo">
+                <img src="<?php echo base_url('assets/img/Components/Home/Desktop/logo_konseling.png'); ?>" alt="">
+            </div>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">RUANG KONSELING</a></li>
+                <li><a href="#">BEASISWA</a></li>
+                <li><a href="#">BLOGS</a></li>
+                <li><a href="#">EVENTS</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container side-menu">
+            <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_back.png'); ?>" class="icon button-back" alt="">
+            <h1>Hallo!, {{ username }}</h1>
+            <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_avatar.png'); ?>" alt="">
+            <?= $logged ? "<p>$name <br> $prodi</p>" : "<p>Silahkan masuk <br> untuk menikmati lebih banyak fitur</p>" ?>
+            <div v-if="!logged">
+                <template v-if="errcode == 401"> 
+                    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        <strong><small> {{ errmsg }} </small></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </template>
+
+                <template>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="remember" name="remember" id="remember">
+                        <div class="cekbok">
+                            <input type="checkbox" id="rememberme">
+                            <label for="rememberme">Ingat Saya</label>
+                        </div>
+                        <button v-on:click="login">Sign In</button>
+                    </div>
+                </template>
+            </div>
+
+            <div v-else>    
+                <button onclick="location.href='<?= base_url('account/signin/signout') ?>';">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <script src="<?= base_url('assets/js/desktop/nav.js') ?>" ></script>
+  
+

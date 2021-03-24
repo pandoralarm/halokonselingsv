@@ -1,0 +1,183 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Authentication API"
+    },
+    "paths": {
+        "/LoginMahasiswa": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "operationId": "Mahasiswa",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "credential",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Credential"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/MahasiswaResult"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/LoginDosen": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "operationId": "Dosen",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "credential",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Credential"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/DosenResult"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Credential": {
+            "type": "object",
+            "properties": {
+                "Username": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                }
+            }
+        },
+        "MahasiswaResult": {
+            "type": "object",
+            "properties": {
+                "MahasiswaId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "Nama": {
+                    "type": "string"
+                },
+                "NIM": {
+                    "type": "string"
+                },
+                "KodeMayor": {
+                    "type": "string"
+                },
+                "Mayor": {
+                    "type": "string"
+                },
+                "KodeStrata": {
+                    "type": "string"
+                },
+                "Token": {
+                    "type": "string"
+                },
+                "Username": {
+                    "type": "string"
+                }
+            }
+        },
+        "DosenResult": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "Nama": {
+                    "type": "string"
+                },
+                "NamaGelar": {
+                    "type": "string"
+                },
+                "NIP": {
+                    "type": "string"
+                },
+                "IsPNS": {
+                    "type": "boolean"
+                },
+                "Token": {
+                    "type": "string"
+                },
+                "Username": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "host": "api.ipb.ac.id",
+    "basePath": "/v1/Authentication",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "securityDefinitions": {
+        "default": {
+            "type": "oauth2",
+            "authorizationUrl": "https://api.ipb.ac.id/authorize",
+            "flow": "implicit",
+            "scopes": {}
+        }
+    }
+}

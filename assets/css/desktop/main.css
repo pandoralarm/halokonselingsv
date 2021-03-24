@@ -1,0 +1,773 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Oswald&family=Roboto:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* VUE TRANSITIONS */
+.slideup-enter-active,
+.slideup-leave-active {
+  transition: all 0.8s ease;
+}
+.slideup-enter,
+.slideup-leave-to {
+  transform: translateX(-100%);
+}
+
+button {
+  color: white;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 60, 146, 0.68) 0%,
+    rgba(255, 17, 123, 0.68) 100%,
+    rgba(255, 17, 123, 0.68) 100%
+  );
+  border-radius: 9px;
+  padding: 3px 30px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0);
+  font-family: "Open Sans", sans-serif;
+}
+
+button:hover {
+  border: 1px solid #ff63a8;
+}
+
+button:active {
+  border: 1px solid #ff63a8;
+}
+
+nav {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container-nav {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.container-nav ul {
+  padding: 0;
+  margin-left: auto;
+  margin-bottom: 0;
+  display: flex;
+  list-style: none;
+}
+.container-nav li {
+  padding: 0 20px;
+  text-decoration: none;
+  color: #7f7f7f;
+  cursor: pointer;
+}
+
+nav li:hover {
+  color: #ff63a8;
+}
+
+.hamburger {
+  display: flex;
+  margin-left: 30px;
+}
+
+.menu-toggle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: black;
+  border-radius: 3px;
+  transition: all 0.5s ease;
+}
+
+.menu-toggle span:nth-child(1) {
+  transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(3) {
+  transform-origin: 0 100%;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.side-menu {
+  position: fixed;
+  right: -450px;
+  top: 0;
+  height: 100vh;
+  width: 450px;
+  background-color: #ec008c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  transition: right 1s ease;
+}
+
+.side-menu.active {
+  right: 0;
+}
+
+.side-menu .icon {
+  width: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 25px;
+}
+
+.side-menu h1 {
+  text-align: center;
+}
+
+.side-menu img {
+  margin: 20px 0;
+}
+
+.side-menu p {
+  text-align: center;
+  font-size: 18px;
+}
+
+.side-menu form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+
+.side-menu form input {
+  color: #ec008c;
+  outline: 0 !important;
+  border: 0;
+  padding: 0.25em;
+}
+
+.remember {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.remember label {
+  font-size: 15px;
+}
+
+.remember input {
+  cursor: pointer;
+}
+
+.content {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content img {
+  max-width: 700px;
+}
+
+.content h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 3.5em;
+  margin: 0;
+}
+
+.content h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5em;
+  margin: 0;
+  color: #ec008c;
+}
+
+.content button {
+  margin-top: 1em;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+}
+
+footer p {
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 0;
+}
+
+footer p span {
+  font-weight: bold;
+}
+
+.title {
+  font-family: "Oswald", sans-serif;
+  font-size: 2.8em;
+  margin: 0;
+}
+
+.sub-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5em;
+  margin: 0;
+  color: #ec008c;
+}
+
+.kartu {
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  width: 90%;
+  padding: 1em;
+}
+
+.kartu.pengumuman {
+  background-color: #f9fafc;
+  font-weight: 300;
+}
+
+.pengumuman-title {
+  font-size: 18px;
+}
+
+.pengumuman-content {
+  margin-top: 1em;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.kartu.pengajuan {
+  background-color: #e9f0ff;
+}
+
+.title-pengajuan {
+  font-family: "Oswald", sans-serif;
+  color: #4483ff;
+  font-weight: 200;
+  font-size: 36px;
+}
+
+button.button-pengajuan {
+  margin-top: 0.5em;
+  padding: 1.5px 30px;
+  background: linear-gradient(
+    180deg,
+    rgba(113, 124, 218, 0.68) 0%,
+    rgba(79, 93, 210, 0.68) 100%
+  );
+}
+
+button.button-pengajuan:hover {
+  border: 1px solid #0c0b8b;
+}
+
+button.button-pengajuan:active {
+  border: 1px solid #0c0b8b;
+}
+
+button.button-dibuka {
+  margin-top: 0.5em;
+  padding: 0 20px;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 252, 237, 0) 100%
+    ),
+    #efda84;
+}
+
+button.button-dibuka:hover {
+  border: 1px solid #efda84;
+}
+
+button.button-dibuka:active {
+  border: 1px solid #efda84;
+}
+
+button.button-saya {
+  margin-top: 0.5em;
+  padding: 0 20px;
+  background: linear-gradient(180deg, #71e2e2 0%, rgba(83, 166, 204, 0) 100%),
+    #63d6d6;
+}
+
+button.button-saya:hover {
+  border: 1px solid #55e2e2;
+}
+
+button.button-saya:active {
+  border: 1px solid #55e2e2;
+}
+
+.kartu.dibuka,
+.kartu.saya {
+  min-height: 125px;
+  width: 100%;
+}
+
+.title-small {
+  font-family: "Oswald", sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+}
+
+.gold {
+  color: #eaa97d;
+}
+
+.blue {
+  color: #4483ff;
+}
+
+.kartu.dibuka {
+  background-color: #fffdf6;
+  height: fit-content;
+}
+
+.kartu.saya {
+  background-color: #f2ffff;
+}
+
+form.pengajuan label {
+  font-weight: 600;
+  margin-top: 1em;
+  color: #4483ff;
+  font-family: "Roboto", sans-serif;
+}
+
+form.pengajuan input {
+  border-color: #4483ff;
+  padding: 0 0.5em;
+  color: #4483ff;
+  font-family: "Roboto", sans-serif;
+}
+
+form.pengajuan input::-webkit-file-upload-button {
+  cursor: pointer;
+  color: #4483ff;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#4483ff;
+}
+
+form.pengajuan input::-webkit-file-upload-button:hover {
+  background: #4483ff;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+form.pengajuan input:focus {
+  outline: 1px solid #4483ff;
+  padding: 0 0.5em;
+  color: #4483ff;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Change the white to any color */
+form.pengajuan input:-webkit-autofill,
+form.pengajuan input:-webkit-autofill:hover,
+form.pengajuan input:-webkit-autofill:focus,
+form.pengajuan input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.pernyataan {
+  max-width: 90%;
+  margin-left: 1em;
+  font-size: 11px;
+  color: #4483ff;
+  text-align: justify;
+}
+
+button.pengajuan-submit {
+  color: #4483ff;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#4483ff;
+}
+
+button.pengajuan-submit:hover {
+  background: #4483ff;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+button.back {
+  margin-top: 1em;
+  padding: 0px 15px;
+  color: #f44336;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#F44336;
+}
+
+button.back:hover {
+  background: #f44336;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+.kartu.beasiswa {
+  box-shadow: 0px -5px 0px #eaa97d;
+  border-radius: 5px;
+  margin: 2em 0;
+  background: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+.kartu.beasiswa .title {
+  font-family: "Open Sans", sans-serif;
+  color: #eaa97d;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.garis.beasiswa {
+  margin: 0 0 1em 0;
+  width: 90%;
+  background-color: #eaa97d;
+  border: 1px solid #eaa97d;
+}
+
+.text-beasiswa {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.text-dibuka {
+  margin: 0;
+  background: #ffa000;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 150px;
+  color: white;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.text-ditutup {
+  margin: 0;
+  background: #f44336;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 150px;
+  color: white;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.round-dibuka {
+  background: #ffa000;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+
+.straight {
+  position: relative;
+  z-index: 0;
+  margin: 14px 0;
+  width: 24px;
+  height: 0px;
+  border: 3px solid #07a7ff;
+  background: #07a7ff;
+  transform: rotate(90deg);
+}
+
+.round-ditutup {
+  background: #f44336;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+
+button.ajukan {
+  align-self: end;
+  color: #ffa000;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#ffa000;
+  margin-right: 3em;
+}
+
+button.ajukan:hover {
+  background: #ffa000;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+.diproses {
+  background: #ffffff;
+  box-shadow: 0px -5px 0px #00cccc;
+}
+
+.jumlah-diproses {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 64px;
+  color: #3ca7a7;
+}
+
+.text-diproses {
+  font-weight: 300;
+  font-size: 14px;
+  color: #3ca7a7;
+  text-align: center;
+  margin: 0;
+}
+
+.diterima {
+  background: #ffffff;
+  box-shadow: 0px -5px 0px #55b667;
+}
+
+.jumlah-diterima {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 64px;
+  color: #55b667;
+}
+
+.text-diterima {
+  font-weight: 300;
+  font-size: 14px;
+  color: #55b667;
+  text-align: center;
+  margin: 0;
+}
+
+.ditolak {
+  background: #ffffff;
+  box-shadow: 0px -5px 0px #f44336;
+}
+
+.jumlah-ditolak {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 64px;
+  color: #f44336;
+}
+
+.text-ditolak {
+  font-weight: 300;
+  font-size: 14px;
+  color: #f44336;
+  text-align: center;
+  margin: 0;
+}
+
+button.tampilkan-diproses {
+  margin-top: 0.5em;
+  font-size: 10px;
+  padding: 0 15px;
+  color: #00cbcb;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #00cbcb;
+}
+
+button.tampilkan-diproses:hover {
+  background: #00cbcb;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+button.tampilkan-diterima {
+  margin-top: 0.5em;
+  font-size: 10px;
+  padding: 0 15px;
+  color: #55b667;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #55b667;
+}
+
+button.tampilkan-diterima:hover {
+  background: #55b667;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+button.tampilkan-ditolak {
+  margin-top: 0.5em;
+  font-size: 10px;
+  padding: 0 15px;
+  color: #e18a81;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #e18a81;
+}
+
+button.tampilkan-ditolak:hover {
+  background: #e18a81;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+.kartu.diproses {
+  background: #ffffff;
+  box-shadow: 0px -5px 0px #00cccc;
+  border-radius: 5px;
+  margin-top: 3em;
+  width: 90%;
+}
+
+.kartu.diproses .title {
+  font-family: "Open Sans", sans-serif;
+  color: #3ca7a7;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+}
+
+.kartu.diproses .garis {
+  margin: 0.5em 0 0 0;
+  background-color: #00cccc;
+  width: 90%;
+  border: 1px solid #00cccc;
+}
+
+.label-proses {
+  font-size: 12px;
+  display: flex;
+  color: #3ca7a7;
+  margin: 0;
+}
+
+.value-proses {
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  color: #3ca7a7;
+  margin: 0;
+}
+
+.kartu.diterima {
+  background: #ffffff;
+  box-shadow: 0px -5px 0px #55b667;
+  border-radius: 5px;
+  margin-top: 3em;
+  width: 90%;
+}
+
+.kartu.diterima .title {
+  font-family: "Open Sans", sans-serif;
+  color: #55b667;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+}
+
+.kartu.diterima .garis {
+  margin: 0.5em 0 0 0;
+  width: 90%;
+  background-color: #55b667;
+  border: 1px solid #55b667;
+}
+
+.label-terima {
+  font-size: 12px;
+  display: flex;
+  color: #55b667;
+  margin: 0;
+}
+
+.value-terima {
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  color: #55b667;
+  margin: 0;
+}
+
+.kartu.ditolak {
+  background: #ffffff;
+  box-shadow: 0px -5px 0px #f44336;
+  border-radius: 5px;
+  margin-top: 3em;
+  width: 90%;
+}
+
+.kartu.ditolak .title {
+  font-family: "Open Sans", sans-serif;
+  color: #f44336;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+}
+
+.kartu.ditolak .garis {
+  margin: 0.5em 0 0 0;
+  width: 90%;
+  background-color: #f44336;
+  border: 1px solid #f44336;
+}
+
+.label-tolak {
+  font-size: 12px;
+  display: flex;
+  color: #f44336;
+  margin: 0;
+}
+
+.value-tolak {
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  color: #f44336;
+  margin: 0;
+}
+
+button.button-diterima {
+  margin-top: 1em;
+  padding: 0px 15px;
+  color: #55b667;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#55b667;
+}
+
+button.button-diterima:hover {
+  background: #55b667;
+  color: white;
+  transition: all 0.3 ease;
+}

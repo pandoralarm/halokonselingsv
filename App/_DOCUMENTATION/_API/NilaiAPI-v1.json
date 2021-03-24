@@ -1,0 +1,81 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Nilai API"
+    },
+    "paths": {
+        "/Akademik/IndeksPrestasiMahasiswa": {
+            "get": {
+                "tags": [
+                    "Akademik"
+                ],
+                "operationId": "AkademikIndeksPrestasiMahasiswaGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "mahasiswaId",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/IndeksPrestasiItem"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "IndeksPrestasiItem": {
+            "type": "object",
+            "properties": {
+                "SemesterMahasiswa": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "SksSemester": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "SksKumulatif": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "IP": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "IPK": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "KelanjutanStudi": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "host": "api.ipb.ac.id",
+    "basePath": "/v1/nilai",
+    "schemes": [
+        "https",
+        "http"
+    ]
+}

@@ -1,4 +1,4 @@
-var dibuka = new Vue({
+var nav = new Vue({
   el: '#nav',
   data: {
   },

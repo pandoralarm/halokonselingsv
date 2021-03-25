@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-7 d-flex flex-column justify-content-center align-items-center">
               <h1 class="title-pengajuan">Pengajuan Rekomendasi</h1>
-              <button class="button-pengajuan" v-on:click="buatPengajuan(<?= $logged; ?>)">Lihat</button>
+              <button class="button-pengajuan" v-on:click="bukaPengajuan(<?= $logged; ?>)">Lihat</button>
             </div>
             <div class="col-5 d-flex justify-content-end">
               <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_menu_pengajuan.svg'); ?>" alt="">
@@ -44,7 +44,7 @@
               <div class="row d-flex align-items-center justify-content-center">
                 <div class="col-8 d-flex flex-column justify-content-center align-items-center">
                   <h1 class="title-small blue">Pengajuan Saya</h1>
-                  <button class="button-saya" v-on:click="changeSubmenu('saya')">Lihat</button>
+                  <button class="button-saya" v-on:click="bukaSaya(<?= $logged; ?>,'<?= $nim; ?>');">Lihat</button>
                 </div>
                 <div class="col-4 d-flex align-items-center justify-content-end">
                   <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_saya.svg'); ?>" alt="">

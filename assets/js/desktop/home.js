@@ -16,7 +16,6 @@ var home = new Vue({
     },
     changeSubmenu (target) {
       store.commit('changeSubmenu', target)
-      console.log(target)
     },
   },
 });

@@ -49,20 +49,17 @@ class Pengajuan extends Controller
     public function showDiproses($nim)
     {
         $result = $this->pengajuan->where("nim = '" . $nim . "' AND status = 'Diproses'")->findAll();
-        // $result = $this->pengajuan->where('nim', $nim)->where('status', "Diproses")->findAll();
-        return $result;
+        return json_encode($result);
     }
-    public function showDiterima($nim)
+    public function showDisetujui($nim)
     {
         $result = $this->pengajuan->where("nim = '" . $nim . "' AND status = 'Disetujui'")->findAll();
-        // $result = $this->pengajuan->where('nim', $nim)->where('status', "Diproses")->findAll();
-        return $result;
+        return json_encode($result);
     }
     public function showDitolak($nim)
     {
         $result = $this->pengajuan->where("nim = '" . $nim . "' AND status = 'Ditolak'")->findAll();
-        // $result = $this->pengajuan->where('nim', $nim)->where('status', "Diproses")->findAll();
-        return $result;
+        return json_encode($result);
     }
 
     public function deletePengajuan($idPengajuan)
@@ -70,13 +67,4 @@ class Pengajuan extends Controller
         $this->pengajuan->where('idPengajuan', $idPengajuan)->delete();
         return redirect()->to('/');
     }
-
-    public function getResponse()
-    {
-
-        $response = $this->dosen->findAll();
-        return json_encode($response);
-
-    }
-    
 }

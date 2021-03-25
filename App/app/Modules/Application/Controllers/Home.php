@@ -30,17 +30,12 @@ class Home extends Controller
       'url'         => base_url(),
       'site'        => 'HaloKonselingSV',
       'name'        => $this->session->get('nama'),
+      'nim'        => $this->session->get('nim'),
       'prodi'       => $this->session->get('prodi'),
       'role'        => $this->session->get('role'),
       'logged'      => $this->session->get('logged'),
       'errmsg' => $this->session->getFlashdata('errorSignin'),
       'logged' => $this->session->get('logged'),
-    ];
-
-    $pengajuan = [
-      'pengajuanDiproses' => $this->pengajuan->showDiproses($this->session->get('nim')),
-      'pengajuanDiterima' => $this->pengajuan->showDiterima($this->session->get('nim')),
-      'pengajuanDitolak' => $this->pengajuan->showDitolak($this->session->get('nim')),
     ];
 
     //SEPARATE VIEW GROUPS AS MOBILE AND DESKTOP APPLICATION
@@ -64,7 +59,7 @@ class Home extends Controller
       echo view('perwa/desktop/menu');
       echo view('perwa/desktop/pengajuan');
       echo view('perwa/desktop/dibuka');
-      echo view('perwa/desktop/saya', $pengajuan);
+      echo view('perwa/desktop/saya');
       echo view('layout/desktop/footer');
     }
   }

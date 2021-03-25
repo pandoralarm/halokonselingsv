@@ -16,9 +16,8 @@ $routes->group('perwa', ['namespace' => 'App\Modules\Perwa\Controllers'], functi
 	$subroutes->add('pengajuan/index', 'Pengajuan::index');
 	$subroutes->add('pengajuan/commit', 'Pengajuan::commit');
 	$subroutes->add('pengajuan/showDiproses/(:alphanum)', 'Pengajuan::showDiproses/$1');
-	$subroutes->add('pengajuan/showDiterima/(:alphanum)', 'Pengajuan::showDiterima/$1');
+	$subroutes->add('pengajuan/showDisetujui/(:alphanum)', 'Pengajuan::showDisetujui/$1');
 	$subroutes->add('pengajuan/showDitolak/(:alphanum)', 'Pengajuan::showDitolak/$1');
 	$subroutes->add('pengajuan/deletePengajuan/(:alphanum)', 'Pengajuan::deletePengajuan/$1');
-	$subroutes->add('pengajuan/getResponse', 'Pengajuan::getResponse');
 
 });

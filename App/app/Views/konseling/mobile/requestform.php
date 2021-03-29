@@ -12,7 +12,7 @@
             </div>
           </div>
 
-          <div class="content">
+          <div class="content" style="overflow-y: hidden;">
 
             <div class="requestform">
               <div class="title">
@@ -25,7 +25,7 @@
                 </div><small class="help"><small> Privasi ceritamu dijamin aman, <a href="#">selengkapnya disini.</a> </small></small>
               </div>
               
-              <div v-on:click="makeRequest" class="requestform btn-hksv" style="line-height: 1.5;">KIRIM</div>
+              <div v-on:click="makeRequest();" class="requestform btn-hksv" style="line-height: 1.5; top: -12%;">KIRIM</div>
             </div>
 
           </div>

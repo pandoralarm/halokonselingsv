@@ -7,6 +7,7 @@ const store = new Vuex.Store({
     subtitle : 'Kamu Tidak Sendiri Disini 🤗',
     topright: 'default',
     threadKey: 'default',
+    loading: false,
   },
   getters: {
     getMenu: state => {
@@ -30,11 +31,11 @@ const store = new Vuex.Store({
     getThreadKey: state => {
       return state.threadKey;
     },
+    isLoading: state => {
+      return state.loading;
+    },
   },
   mutations: {
-    changeMenu (state, newMenu) {
-      state.menu = newMenu;
-    },
     changeSubmenu (state, newSubmenu) {
       searchEnabled = ['blogs', 'events', 'kelolaBlogs', 'kelolaEvents'];
       optionsEnabled = ['blogDetail'];
@@ -70,6 +71,9 @@ const store = new Vuex.Store({
         return state.topright = 'default';
       }
     },
+    changeMenu (state, newMenu) {
+      state.menu = newMenu;
+    },
     changeWindow (state, newWindow) {
       state.window = newWindow;
     },
@@ -81,6 +85,9 @@ const store = new Vuex.Store({
     },
     swapKey (state, newKey) {
       state.threadKey = newKey;
+    },
+    setLoading (state, loadstate) {
+      state.loading = loadstate;
     },
   },
   actions: {}

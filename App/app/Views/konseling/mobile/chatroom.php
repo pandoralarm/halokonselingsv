@@ -1,4 +1,6 @@
 <section id="chatroom">
+
+  <!-- MAIN CHATROOM WINDOW -->
   <transition name="state">
     <template>
       <div v-if="current_window == 'chatroom'" class="window">
@@ -8,22 +10,31 @@
             <div v-on:click="openOptions" class="topicon-right"><i class="fa fa-ellipsis-v fa-lg"></i></div>
           <?php } ?>
           
-          <div class="text">
+          <div v-on:click="openDetail();" class="text">
             <div class="title">Ruang Konseling</div>
             <div class="subtitle w-100"><small>Detail Sesi</small>  </div>
           </div>
         </div>
 
+        <!-- OPTIONS BAR -->
         <transition name="slideup">
           <div v-if="options" class="options">
-            <div v-on:click="changeWindow('laporan')" class="end-session">Akhiri Sesi</div>
+            <div v-on:click="confirmDialog(true)" class="end-session">Akhiri Sesi</div>
             <div v-on:click="changeWindow('tambahkonselor')" class="add-konselor">Tambahkan Konselor Kedalam Sesi</div>
           </div>
         </transition>
         
-
+        <!-- MESSAGES BODY -->
         <div id="messagebody" v-on:scroll="closeOptions" class="messages">
-
+          
+          <div class="mt-4"></div>
+          <div class="text-center text-white my-2"><small><small>--- Lihat detail sesi konseling pada opsi diatas ---</small></small></div>
+          <template>
+            <div class="recipient">
+              <p class="message"><img class="image" src="https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg" alt=""></p>
+              <div class="timestamp">12.26</div>
+            </div>
+          </template>
           <template v-for="(message, index) in messages" :key="message.index">
             <div :id="'msg'+message.id" :class="{'sender' : (message.sender == userid), 'recipient' : (message.sender != userid)}">
               <div class="name border-bottom pb-0"><small>{{ message.name }} : </small></div>
@@ -34,17 +45,32 @@
 
         </div>
 
+        <!-- INPUT BAR -->
         <div class="input">
           <textarea id="sendmessage" class="chat-text"></textarea>
-          <div class="btn-attach"><i class="fa fa-paperclip fa-lg"></i></div>
+          <label for=imageAttachment>
+            <div class="btn-attach"><i class="fa fa-paperclip fa-lg"></i></div>
+          </label>
+          <input onchange="chatroom.imagePreview(this)" id="imageAttachment" type="file" accept="image/*;capture=camera" />
           <div v-on:click="sendMessage('NewMessage');" class="btn-send"><i class="fa fa-paper-plane fa-lg"></i></div>
         </div>
+
+        <transition name="slidedown">
+          <template>
+            <div v-if="fileModel != null" class="input imagePreview">
+              <img id="previewTarget" src="#" alt="Image Upload Preview">
+              <div v-on:click="sendMessage('NewMessage');" class="btn-send"><i class="fa fa-paper-plane fa-lg"></i></div>
+              <div v-on:click="fileModel = null" class="btn-dismiss"><i class="fa fa-times fa-lg"></i></div>
+            </div>
+          </template>
+        </transition>
 
 
       </div>
     </template>
   </transition>
 
+  <!-- ADD KONSELOR WINDOW -->
   <transition name="state">
     <div v-if="current_window == 'tambahkonselor'" class="window position-fixed">
       <div class="bg-full">
@@ -81,12 +107,13 @@
     </div>
   </transition>
 
+  <!-- LAPORAN WINDOW -->
   <transition name="state">
     <div v-if="current_window == 'laporan'" class="window position-fixed">
       <div class="bg-full">
         <div class="topnav forms">
           <div v-on:click="changeWindow('chatroom')" class="topicon-right"><i class="fa fa-times fa-lg"></i></div>
-          <div class="text">
+          <div class="text w-100" style="left: -5%;">
             <div class="title " style="width: 110%; ">KARTU HASIL KONSELING</div>
             <div class="subtitle mt-1" style="width: 110%; ">Pilih satu/lebih kategori masalah</div>
           </div>
@@ -142,7 +169,7 @@
            
             </template>
 
-            <div id="closebtn"  v-on:click="closeSession" class="requestform btn-hksv mt-5 w-75" :class="buttonCheck" style="line-height: 2;">
+            <div id="closebtn"  v-on:click="closeSession()" class="requestform btn-hksv mt-5 w-75" :class="buttonCheck" style="line-height: 2;">
               Selesai
             </div>
           </div>
@@ -152,6 +179,56 @@
       </div>
     </div>
   </transition>
+
+  <!-- DARK OVERLAY || FOR USAGE JUST ADD NEEDED STATE ON IF -->
+  <transtition name="fade">
+    <div  v-if="confirm || details">
+      <div v-on:click="closeDialog();" class="overlay-dark"></div>
+    </div>
+  </transtition>
+
+  <!-- CONFIRMATION DIALOG -->
+  <transition name="fade">
+    <div  v-if="confirm" class="dialog">
+      <div class="confirm">
+        <div class="text-dialog">
+          Mengakhiri sesi akan menutup sesi untuk semua konselor dan konseli, 
+          yakin akhiri sesi?
+        </div>
+        <div class="prompt">
+          <div v-on:click="changeWindow('laporan'); confirmDialog(false)" class="btn-hksv btn-confirm">Ya</div>
+          <div v-on:click="confirmDialog(false)" class="btn-hksv btn-dismiss">Batal</div>
+        </div>
+      </div>
+    </div>
+  </transition>
+    
+  <!-- SESSION DETAILS -->
+  
+  <transition name="fade">
+    <div  v-if="details" class="dialog">
+      <div class="sessiondetail">
+        <div class="text-dialog">
+          <div class="text-center"><b>Detail Sesi</b></div>
+          <div class="text-left">
+            Konseli : <br />
+            {{ sessiondetail.mhsnim }} - {{ sessiondetail.mhsnama }} <br /><br />
+            Cerita Konseli : <br />
+            {{ sessiondetail.mhsreq }}<br /><br />
+            Daftar Konselor : <br />
+          </div>
+
+          <div class="text-left" v-for="(konselor, index) in sessiondetail.daftarkonselor">
+            {{index+1}}. {{konselor}} 
+          </div>
+        </div>
+        <div class="prompt mt-3">
+          <div v-on:click="closeDialog();" class="text-center"><u>Tutup</u></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+
 
 </section>
 

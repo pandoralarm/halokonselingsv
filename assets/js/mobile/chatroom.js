@@ -5,12 +5,16 @@ var chatroom = new Vue({
     sidenav: false,
     chatroom: false,
     options: false,
+    details: false,
     info: '',
+    confirm: false,
     username: this.$cookies.get('username'),
     basepath: this.$cookies.get('basepath'),
     hostname: this.$cookies.get('hostname'),
     userid: this.$cookies.get('id'),
     messages: [],
+    fileModel: null,
+    sessiondetail: [],
     dosensearch: {},
     dosenquery: '',
     konselorchecked: [],
@@ -24,6 +28,9 @@ var chatroom = new Vue({
     }
   },
   created() {
+
+  },  
+  mounted() {
     /* SCOPE CONTROLS */
     let self=this;
 
@@ -33,16 +40,16 @@ var chatroom = new Vue({
 
     /* WEBSOCKET STATES */
     this.conn.onopen = function(event) {
-      console.log(event)
+      console.log(event);
+      self.loading(false);
       console.log("Successfully connected to the hksv websocket server!")
     };
     this.conn.onmessage = function(event) {
-      self.checkMessages();
+      setTimeout(() => {
+        self.checkMessages();
+      }, 1000);
       console.log(event);
     };
-
-  },  
-  mounted() {
 
   },
   computed: {
@@ -174,6 +181,7 @@ var chatroom = new Vue({
 
     /* CLOSE KONSELING SESSION RELATED METHOD */
     closeSession(){
+      this.loading(true);
       var arrayMasalah = [];
       var i;
       for (i = 0; i < this.masalahchecked.length; i++) {
@@ -184,28 +192,26 @@ var chatroom = new Vue({
 
       $('#sendmessage').val('=== SESI DITUTUP ===');
       this.send();
+      var data = {
+        datakey : this.ThreadKey,
+        datamasalah : {arrayMasalah},
+      };
 
-      setTimeout(() => {
-        var data = {
-          datakey : this.ThreadKey,
-          datamasalah : {arrayMasalah},
-        };
-  
-        console.log(data);
-        // POST request using axios with set headers
-        axios.post(this.basepath+"/konseling/chatroom/closeSession", data)
-        .then((response) => {
-          console.log(response.data);
-          this.alertNow(response.data.status, response.data.message);
-          dosensearch = {};
-          dosenquery = '';
-  
-        })
-        .finally(() => {
-          this.changeWindow('');
-          store.commit('swapKey', 'default');
-        });
-      }, 1000);
+      console.log(data);
+      // POST request using axios with set headers
+      axios.post(this.basepath+"/konseling/chatroom/closeSession", data)
+      .then((response) => {
+        console.log(response.data);
+        this.alertNow(response.data.status, response.data.message);
+        dosensearch = {};
+        dosenquery = '';
+
+      })
+      .finally(() => {
+        this.loading(false)
+        this.changeWindow('');
+        store.commit('swapKey', 'default');
+      });
      
     },
     selectedMasalah(masalah){
@@ -236,20 +242,23 @@ var chatroom = new Vue({
             this.messages = response.data;
 
             setTimeout(() => {
-              var container = this.$el.querySelector("#messagebody");
-              container.scrollTop = container.scrollHeight;
-              var audio = new Audio('./../assets/audio/newtext.mp3');
+              var audio = new Audio('./assets/audio/newtext.mp3');
               audio.play();
             }, 250);
 
           }
+          
+          setTimeout(() => {
+            var container = this.$el.querySelector("#messagebody");
+            container.scrollTop = container.scrollHeight;
+          }, 500);
         });
 
       console.log('Checking messages...');
     },
     send() {
       var request = {
-        key: store.getters.getThreadKey,
+        key: this.ThreadKey,
         message: $('#sendmessage').val(),
       };
 
@@ -260,17 +269,66 @@ var chatroom = new Vue({
           console.log(response.data);
           
         })
-        .finally(() => ($('#sendmessage').val('')));
+        .finally(() => {
+          $('#sendmessage').val('');
+          setTimeout(() => {
+            this.checkMessages();
+          }, 500);
+        });
+    },
+    loading(state) {
+      console.log(state)
+      store.commit('setLoading', state);
     },
     subscribe(channel) {
       this.conn.send(JSON.stringify({command: "subscribe", channel: channel}));
     },
     sendMessage(msg) {
-      key = this.ThreadKey;
-      this.subscribe(key);
-      this.send();
-      this.conn.send(JSON.stringify({command: "message", message: msg}));
-      this.checkMessages();
+      if (!$.trim($("#sendmessage").val())== ""){
+        key = this.ThreadKey;
+        this.subscribe(key);
+        this.send();
+        this.conn.send(JSON.stringify({command: "message", message: msg}));
+      }
+    },
+
+    /* CONFIRMATION DIALOG */
+    closeDialog() {
+      this.confirm = false;
+      this.details = false;
+    },
+    confirmDialog(state) {
+      this.confirm = state;
+    },
+    openDetail() {
+      axios.get(this.basepath+"/konseling/chatroom/sessionInfo/"+this.ThreadKey)
+      .then(response => {
+        console.log(response.data);
+        this.sessiondetail = response.data;
+      })
+      .finally(()=> {
+        this.details = true;
+      });
+    },
+    imagePreview(input){
+      var fileName = $('#imageAttachment').val();
+      var idxDot = fileName.lastIndexOf(".") + 1;
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+        //TO DO
+        if (input.files && input.files[0]) {
+            this.fileModel = 'Enabled';
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#previewTarget').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        };
+      }else{
+        home.alertNow('Halo!', 'Pastikan kamu hanya mengupload file gambar ya!');
+      };
     },
   }
 })

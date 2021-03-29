@@ -18,6 +18,9 @@
 	<meta property="og:site_name" content="<?= $title ?>" />
   <meta name="mobile-web-app-capable" content="yes">
 
+  <!-- Chrome, Firefox, & Opera color theme -->
+  <meta name="theme-color" content="#9D6EC1">
+
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet">
@@ -44,7 +47,6 @@
 
 </head>
   <body>
-    <portrait>
   <script src="<?= base_url('assets/js/mobile/globals.js') ?>" ></script>
   
 

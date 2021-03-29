@@ -33,5 +33,9 @@ var menu = new Vue({
         $('.menu-toggle').click(); 
       }
     },
+    bukaBeasiswa (){
+      this.changeSubmenu('dibuka');
+      dibuka.getBeasiswaAll();
+    },
   },
 });

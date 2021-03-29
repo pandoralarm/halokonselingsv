@@ -56,10 +56,15 @@ class Home extends Controller
       echo view('layout/desktop/header', $appData);
       echo view('layout/desktop/nav', $appData);
       echo view('application/desktop/home', $appData);
-      echo view('perwa/desktop/menu');
-      echo view('perwa/desktop/pengajuan');
-      echo view('perwa/desktop/dibuka');
-      echo view('perwa/desktop/saya');
+      if ($this->session->get('role') == 'MAHASISWA') {
+        echo view('perwa/desktop/menu');
+        echo view('perwa/desktop/pengajuan');
+        echo view('perwa/desktop/dibuka');
+        echo view('perwa/desktop/saya');
+      } elseif ($this->session->get('role') == 'KONSELOR') {
+        echo view('perwa/desktop/menusekprodi');
+        echo view('perwa/desktop/pengajuansekprodi');
+      }
       echo view('layout/desktop/footer');
     }
   }

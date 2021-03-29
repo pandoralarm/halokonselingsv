@@ -38,7 +38,7 @@
             </div>
             <div class="col-4 d-flex flex-column align-items-center justify-content-center ditolak">
               <div class="d-flex align-items-center justify-content-around">
-                <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDitolak.svg'); ?>" style="max-height: 70px;" alt="">
+                <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDitolak.svg'); ?>" style="max-height: 40px;" alt="">
                 <div class="jumlah-ditolak">{{ pengajuanDitolak.length }}</div>
               </div>
               <p class="text-ditolak">Rekomendasi ditolak</p>

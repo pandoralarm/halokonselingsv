@@ -3,7 +3,6 @@
 namespace App\Modules\Perwa\Controllers;
 
 use App\Modules\Perwa\Models\PengajuanModel;
-use App\Modules\Konseling\Models\DosenModel;
 use CodeIgniter\Controller;
 
 class Pengajuan extends Controller
@@ -17,7 +16,6 @@ class Pengajuan extends Controller
         $this->request = \Config\Services::request();
         $this->session = \Config\Services::session();
         $this->pengajuan = new PengajuanModel();
-        $this->dosen = new DosenModel();
     }
 
     public function index()
@@ -65,6 +63,17 @@ class Pengajuan extends Controller
     public function deletePengajuan($idPengajuan)
     {
         $this->pengajuan->where('idPengajuan', $idPengajuan)->delete();
-        return redirect()->to('/');
+    }
+
+
+    public function showDiprosesSekrpodi()
+    {
+        $result = $this->pengajuan->where("status = 'Diproses'")->findAll();
+        return json_encode($result);
+    }
+    public function showDiselesaikanSekrpodi()
+    {
+        $result = $this->pengajuan->where("status != 'Diproses'")->findAll();
+        return json_encode($result);
     }
 }

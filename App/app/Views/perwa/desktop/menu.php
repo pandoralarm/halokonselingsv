@@ -31,7 +31,7 @@
               <div class="row d-flex align-items-center justify-content-center">
                 <div class="col-8 d-flex flex-column justify-content-center align-items-center">
                   <h1 class="title-small gold">Beasiswa Dibuka</h1>
-                  <button class="button-dibuka" v-on:click="changeSubmenu('dibuka')">Lihat</button>
+                  <button class="button-dibuka" v-on:click="bukaBeasiswa()">Lihat</button>
                 </div>
                 <div class="col-4 d-flex align-items-center justify-content-end">
                   <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_dibuka.svg'); ?>" alt="">

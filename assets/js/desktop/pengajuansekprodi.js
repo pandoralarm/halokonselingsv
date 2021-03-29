@@ -1,11 +1,10 @@
-var saya = new Vue({
-    el: '#saya',
+var pengajuansekprodi = new Vue({
+    el: '#pengajuansekprodi',
     data: {
       basepath: this.$cookies.get('basepath'),
-      dosensearch : [],
       pengajuanDiproses : [],
-      pengajuanDisetujui : [],
-      pengajuanDitolak : [],
+      pengajuanDiselesaikan : [],
+      pengajuanMhs : [],
     },
     computed: {    
       current_menu: function () {
@@ -28,37 +27,21 @@ var saya = new Vue({
       changeWindow (target) {
         store.commit('changeWindow', target)
       },
-      getPengajuanAll(nim){
-        axios.post(this.basepath+"/perwa/pengajuan/showDiproses/"+nim)
+      getPengajuanAll(){
+        axios.post(this.basepath+"/perwa/pengajuan/showDiprosesSekrpodi")
         .then(response => 
           {
             this.pengajuanDiproses = response.data;
           })
         .finally(() => {
         });
-        axios.post(this.basepath+"/perwa/pengajuan/showDisetujui/"+nim)
+        axios.post(this.basepath+"/perwa/pengajuan/showDiselesaikanSekrpodi")
         .then(response => 
           {
-            this.pengajuanDisetujui = response.data;
-          })
-        .finally(() => {
-        });
-        axios.post(this.basepath+"/perwa/pengajuan/showDitolak/"+nim)
-        .then(response => 
-          {
-            this.pengajuanDitolak = response.data;
+            this.pengajuanDiselesaikan = response.data;
           })
         .finally(() => {
         });
       },
-      deletePengajuan(idPengajuan,nim){
-        axios.post(this.basepath+"/perwa/pengajuan/deletePengajuan/"+idPengajuan)
-        .then(response => 
-          {
-            this.getPengajuanAll(nim)
-          })
-        .finally(() => {
-        })
-      }
     },
-  });
+});

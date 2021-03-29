@@ -1,6 +1,7 @@
-var home = new Vue({
-  el: '#home',
+var menusekprodi = new Vue({
+  el: '#menusekprodi',
   data: {
+    basepath: this.$cookies.get('basepath'),
   },
   computed: {    
     current_menu: function () {
@@ -17,12 +18,10 @@ var home = new Vue({
     changeSubmenu (target) {
       store.commit('changeSubmenu', target)
     },
-    mulai(logged){
-      if(logged){
-        this.changeSubmenu('menu');
-      }else{
-        $('.menu-toggle').click(); 
-      }
+    bukaPengajuan(){
+      this.changeSubmenu('pengajuansekprodi');
+      pengajuansekprodi.changeWindow('prosesSekprod');
+      pengajuansekprodi.getPengajuanAll();
     }
   },
 });

@@ -54,7 +54,7 @@
                   <td>{{ row.deadline }}</td>
                   <td>{{ row.nama }}</td>
                   <td>{{ row.nim }}</td>
-                  <td v-on:click="detailPengajuanDiproses(row.idPengajuan)" class="d-flex align-items-center justify-content-center"><button class="button-diprosessekprod">Detail</button></td>
+                  <td><button v-on:click="detailPengajuanDiproses(row.idPengajuan)" class="button-diprosessekprod">Detail</button></td>
                 </tr>
               </table>
             </div>
@@ -79,7 +79,7 @@
                   <td>{{ row.deadline }}</td>
                   <td>{{ row.nama }}</td>
                   <td>{{ row.nim }}</td>
-                  <td><button class="button-diselesaikansekprod">Detail</button></td>
+                  <td><button v-on:click="detailPengajuanDiproses(row.idPengajuan)" class="button-diselesaikansekprod">Detail</button></td>
                 </tr>
               </table>
             </div>
@@ -103,7 +103,7 @@
                 </tr>
                 <tr>
                   <td>Program Studi</td>
-                  <td>{{row.jurusan}}</td>
+                  <td>{{row.prodi}}</td>
                 </tr>
                 <tr>
                   <td>Nama Beasiswa</td>
@@ -111,19 +111,19 @@
                 </tr>
                 <tr>
                   <td>Tanggal Pengajuan</td>
-                  <td>sdsd</td>
+                  <td>{{row.tanggalPengajuan}}</td>
                 </tr>
                 <tr>
                   <td>Deadline</td>
-                  <td>sdsd</td>
-                </tr>
-                <tr>
-                  <td>IPK</td>
-                  <td>sdsd</td>
+                  <td>{{row.deadline}}</td>
                 </tr>
                 <tr>
                   <td>CV</td>
-                  <td>sdsd</td>
+                  <td>{{row.cv}}d</td>
+                </tr>
+                <tr>
+                  <td><button class="back">Tolak Permohonan</button></td>
+                  <td><button class="button-diselesaikansekprod">Setujui Permohonan</button></td>
                 </tr>
               </table>
             </div>

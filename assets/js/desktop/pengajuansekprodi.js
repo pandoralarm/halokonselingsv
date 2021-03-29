@@ -29,7 +29,7 @@ var pengajuansekprodi = new Vue({
       },
       detailPengajuanDiproses(idpengajuan){
         this.changeWindow('detailPengajuanDiproses');
-        this.getPengajuanAll(idpengajuan);
+        this.getPengajuanMhs(idpengajuan);
       },
       getPengajuanAll(){
         axios.post(this.basepath+"/perwa/pengajuan/showDiprosesSekprodi")

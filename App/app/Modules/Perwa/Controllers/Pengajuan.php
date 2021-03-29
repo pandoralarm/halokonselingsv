@@ -78,7 +78,7 @@ class Pengajuan extends Controller
     }
     public function showPengajuanMhs($idpengajuan)
     {
-        $result = $this->pengajuan->where("idpengajuan == $idpengajuan")->findAll();
+        $result = $this->pengajuan->where("idpengajuan = $idpengajuan")->findAll();
         return json_encode($result);
     }
 }

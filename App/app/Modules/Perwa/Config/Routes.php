@@ -27,4 +27,5 @@ $routes->group('perwa', ['namespace' => 'App\Modules\Perwa\Controllers'], functi
 	$subroutes->add('pengajuan/deletePengajuan/(:alphanum)', 'Pengajuan::deletePengajuan/$1');
 	$subroutes->add('pengajuan/showDiprosesSekprodi', 'Pengajuan::showDiprosesSekprodi');
 	$subroutes->add('pengajuan/showDiselesaikanSekprodi', 'Pengajuan::showDiselesaikanSekprodi');
+	$subroutes->add('pengajuan/showPengajuanMhs/(:alphanum)', 'Pengajuan::showPengajuanMhs/$1');
 });

@@ -51,7 +51,12 @@ var requestform = new Vue({
       store.commit('changeSubtitle', newSubtitle);
       return 0;
     },
+    loading(state) {
+      console.log(state)
+      store.commit('setLoading', state);
+    },
     makeRequest() {
+      this.loading(true);
       var request = {
         message: $('#requestmessage').val(),
       };
@@ -61,15 +66,15 @@ var requestform = new Vue({
           this.info = response.data;
           console.log(response.data);
         })
-        .finally(() => (this.changeWindow('reqeustform')));
+        .finally(() => {
+          this.loading(false);
+          this.changeWindow('reqeustform');
+        });
     },
     alertNow(strongMessage, smallMessage) {
       this.error.alert = true;
       this.error.strong = strongMessage;
       this.error.message = smallMessage;
-      setTimeout(() => {
-        this.error.alert = false;
-      }, 5000);
     },
   },
 })

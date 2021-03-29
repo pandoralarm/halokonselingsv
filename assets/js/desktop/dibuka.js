@@ -1,6 +1,8 @@
 var dibuka = new Vue({
     el: '#dibuka',
     data: {
+      basepath: this.$cookies.get('basepath'),
+      beasiswa : [],
     },
     computed: {    
       current_menu: function () {
@@ -17,5 +19,14 @@ var dibuka = new Vue({
       changeSubmenu (target) {
         store.commit('changeSubmenu', target)
       },
+      getBeasiswaAll(){
+        axios.post(this.basepath+"/perwa/beasiswa/showBeasiswa")
+        .then(response => 
+          {
+            this.beasiswa = response.data;
+          })
+        .finally(() => {
+        });
+      }
     },
 });

@@ -2,29 +2,29 @@ Login kurang intuitif pada dasbor
 
 Typo dibanti
 
-Home ada langsung menu beasiswa
+DONE Home ada langsung menu beasiswa
 //
-Ruang konseling navbar diam
+DONE Ruang konseling navbar diam
 //
-Confirmation Akhiri konseling
+DONE Confirmation Akhiri konseling
 //
-Cerita konseli harus dikirim ke ruang konseling
+DONE Cerita konseli harus dikirim ke ruang konseling
 //
-chat lama bisa dibuka kembali sebagai arsip
+ONGOING chat lama bisa dibuka kembali sebagai arsip
 //
-Tambahkan konselor menjadi permintaan tambah konselor
+ONGOING Tambahkan konselor menjadi permintaan tambah konselor
 //
-Pilih konselor menggunakan algoritma
+ONGOING//IDK Pilih konselor menggunakan algoritma
 //
-Email notification
+ONGOING Email notification
 //
-Tutup dan buka kembali sesi konseling lama
+ONGOIN Tutup dan buka kembali sesi konseling lama
 //
-Tambahkan untuk melihat konselor menghandle beberapa sesi
+ONGOING Tambahkan untuk melihat konselor menghandle beberapa sesi
 //
-Survey kepuasan email
+ONGOING Survey kepuasan email
 //
-Grafik laporan
+ONGOING Grafik laporan
 
 
 Tampilan bertumpuk di (transparan tanpa blur)

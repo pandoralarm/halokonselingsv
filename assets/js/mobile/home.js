@@ -11,8 +11,12 @@ var home = new Vue({
       alert: false,
       strong: '',
       message: '',
-    }
+    },
+    hasRequest : '',
     
+  },
+  mounted() {
+    this.loading(true);
   },
   computed: {
     current_menu: function () {
@@ -58,24 +62,35 @@ var home = new Vue({
     goTo(url) {
       window.location.href = url;
     },
+    loading(state) {
+      console.log(state)
+      store.commit('setLoading', state);
+    },
     checkThread() {
-      var hasRequest = '';
+      this.loading(true);
+      console.log(this.hasRequest);
       axios.get(this.basepath+"/konseling/chatroom/isRequest")
-        .then(response => (hasRequest = response.data)).finally(() => (console.log(hasRequest)));
+        .then(response => (this.hasRequest = response.data));
       // POST request using axios with set headers
       axios.get(this.basepath+"/konseling/chatroom/getThreadKey")
         .then(response => (store.commit('swapKey', response.data.ThreadKey)))
+        .catch(() => (this.alertNow('Halo!', 'Koneksi kamu sedang bermasalah, coba lagi ya!')))
         .finally(() => {
           if (this.ThreadKey != 'default') {
+            this.loading(false);
+            store.commit('swapKey', this.ThreadKey);
             chatroom.checkMessages();
             this.changeWindow('chatroom');
           } else {
-            if (hasRequest){
+            if (this.hasRequest){
+              this.loading(false);
               this.alertNow('Halo!', 'Permintaan kamu sebelumnya masih dalam proses ya!');
             } else {
               if (this.userrole == 'MAHASISWA') {
+                this.loading(false);
                 this.changeWindow('requestform')
               } else {
+                this.loading(false);
                 this.alertNow('Wah!', 'Kamu tidak memiliki sesi konseling yang sedang aktif!');
               }
             }
@@ -88,7 +103,7 @@ var home = new Vue({
       this.error.message = smallMessage;
       setTimeout(() => {
         this.error.alert = false;
-      }, 5000);
+      }, 2500);
     },
     openChatroom(nim){
       var data = {mhsnim: nim}

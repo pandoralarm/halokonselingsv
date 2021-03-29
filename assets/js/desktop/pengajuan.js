@@ -17,5 +17,8 @@ var pengajuan = new Vue({
       changeSubmenu (target) {
         store.commit('changeSubmenu', target)
       },
+      addpengajuan(){
+        console.log($('form').serializeArray());
+      }
     },
 });

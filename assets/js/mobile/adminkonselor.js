@@ -81,9 +81,11 @@ var adminkonselor = new Vue({
       this.error.message = smallMessage;
       setTimeout(() => {
         this.error.alert = false;
-      }, 5000);
+      }, 1500);
     },
     getOpenRequest(){
+      nav.loading(true);
+
       axios.get(this.basepath+"/konseling/chatroom/getOpenRequest")
       
         .then(response => (this.requests = response.data))
@@ -101,7 +103,10 @@ var adminkonselor = new Vue({
             console.log('Error', error.message);
           }
         })
-        .finally(response => (this.changeSubmenu('requestKonseling')));
+        .finally(response => {
+          this.changeSubmenu('requestKonseling');
+          nav.loading(false);
+        });
     },
     openDetail(nama, nim, message, reqid){
       this.requestdetail = {
@@ -113,9 +118,14 @@ var adminkonselor = new Vue({
       this.changeWindow('requestdetail');
     },
     getOpenThread(){
+      
+      nav.loading(true);
       axios.get(this.basepath+"/konseling/chatroom/getOpenThread")
         .then(response => (this.threads = response.data))
-        .finally(response => (this.changeSubmenu('pantauKonseling')));
+        .finally(response => {
+          nav.loading(false);
+          this.changeSubmenu('pantauKonseling');
+        });
     },
     findKonselor(){
       var request = this.dosenquery;
@@ -211,7 +221,8 @@ var adminkonselor = new Vue({
     },
     openSpecificThread(key){
       store.commit('swapKey', key);
-      this.changeWindow('pantauchat');
+      chatroom.checkMessages();
+      this.changeWindow('chatroom');
     }
 
   }

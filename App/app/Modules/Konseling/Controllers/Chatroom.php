@@ -8,6 +8,7 @@ use App\Modules\Konseling\Models\RequestModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\Message;
 use JsonException;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class Chatroom extends Controller
 {
@@ -97,6 +98,10 @@ class Chatroom extends Controller
           $chat = $this->chats->where('ThreadKey', $key)->where('KonselorNIP', $message->SenderID)->findAll();
           $dos = $this->dosen->where('NIP', $chat[0]->KonselorNIP)->findAll();
           $nama = $dos[0]->Nama;
+
+          if (count($chat) == 0){
+            $nama = 'ADMIN';
+          }
         }
         $Time = date("H:i", strtotime( $message->Timestamp)); 
 
@@ -219,7 +224,6 @@ class Chatroom extends Controller
 
       return $this->closeRequest($requestid, $sessionUniqueKey);
     }
-
     
     public function addToSession()
     {
@@ -280,8 +284,25 @@ class Chatroom extends Controller
       
       $request = $this->requests->where('ThreadKey', $key)->first();
       $mhsnim = $request->MahasiswaNIM;
+      $mhsnama = $request->MahasiswaNama;
+      $mhsreq = $request->RequestDetail;
 
+      $chats = $this->chats->where('ThreadKey', $key)->findAll();
+      $i = 0;
+      foreach ($chats as $chat) {
+        $currentkonselor = $this->dosen->where('NIP',$chat->KonselorNIP)->first();
+        $listnama[$i] = $currentkonselor->Nama;
+        $i++;
+      };
 
+      $response = [
+        'mhsnim' => $request->MahasiswaNIM,
+        'mhsnama' => $request->MahasiswaNama,
+        'mhsreq' => $request->RequestDetail,
+        'daftarkonselor' => $listnama,
+      ];
+
+      return json_encode($response);
 
     }
 

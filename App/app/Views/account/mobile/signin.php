@@ -29,6 +29,9 @@
   <!-- HKSV Style -->
   <link rel="stylesheet" href="<?= base_url('assets/css/mobile/style.css') ?>" />
 
+
+  <!-- Chrome, Firefox, & Opera color theme -->
+  <meta name="theme-color" content="#9D6EC1">
 </head>
 <body>
   <section id="signin">

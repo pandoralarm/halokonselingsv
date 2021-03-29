@@ -1,35 +1,29 @@
 <section id="adminkonselor">
 
+  <!-- MAIN ADMIN KONSELOR MENU -->
   <transition name="state">
     <div v-if="current_submenu == 'menuKonselor'" class="content">
       <template>
 
-        <div v-on:click="checkThread()" class="admin-tools-menu kelola-blogs shadow">
+        <div v-on:click="checkThread()" class="admin-tools-menu kelola-blogs shadow-sm border text-ce">
           <div class="text">Chat Konseli</div>
-          <div class="btn-hksv">
-            Buka
-          </div>
         </div>
 
-        <div v-on:click="getOpenThread();" class="admin-tools-menu kelola-events shadow">
+        <div v-on:click="getOpenThread();" class="admin-tools-menu kelola-events shadow-sm border">
           <div class="text">Pantau Sesi Konseling</div>
-          <div  class="btn-hksv">
-            Buka
-          </div>
+
         </div>
 
-        <div v-on:click="getOpenRequest();" class="admin-tools-menu laporan shadow">
+        <div v-on:click="getOpenRequest();" class="admin-tools-menu laporan shadow-sm border">
           <div class="text">Permintaan Konseling</div>
-          <div class="btn-hksv">
-            Buka
-          </div>
+ 
         </div>
        
       </template>
     </div>
   </transition>
 
-
+  <!-- LIST OF ALL ACTIVE COUNSLING SESSIONS -->
   <transition name="state">
     <div v-if="current_submenu == 'pantauKonseling'" class="content">
       <template>
@@ -41,15 +35,14 @@
 
         <div class="admin-tools-menu kelola-blogs shadow">
           <div v-on:click="openSpecificThread(thread.ThreadKey)" class="text"><small>{{ thread.MahasiswaNama }}</small></div>
-          <div class="btn-hksv">
-            Buka
-          </div>
+ 
         </div>
        
       </template>
     </div>
   </transition>
   
+  <!-- LIST OF OPEN COUNSELING REQUESTS -->
   <transition name="state">
     <div v-if="current_submenu == 'requestKonseling'" class="content">
       <template>
@@ -59,8 +52,8 @@
       </template> 
       <template v-for="req in requests" :key="req.RequestID">
 
-        <div v-on:click="openDetail(req.MahasiswaNama, req.MahasiswaNIM, req.RequestDetail, req.RequestID)" class="admin-tools-menu kelola-blogs shadow">
-          <div class="text">{{ req.MahasiswaNama }}</div>
+        <div v-on:click="openDetail(req.MahasiswaNama, req.MahasiswaNIM, req.RequestDetail, req.RequestID)" class="admin-tools-menu kelola-blogs request shadow-sm border">
+          <div class="text text-left" style="line-height: 3;">{{ req.MahasiswaNama }}</div>
           <div class="btn-hksv">
             Buka
           </div>
@@ -86,7 +79,7 @@
                   </div>
 
                   <div id="requestmessage" class="px-4 py-2" style="height: 50vh; overflow-y: scroll; white-space: pre-line;">{{ requestdetail.message }}</div>
-                  <div  v-on:click="changeWindow('pilihkonselor'); store.commit('changeSubtitle', 'Cari dan pilih minimum 1 konselor')" class="requestform btn-hksv mt-5" style="line-height: 2;">NEXT</div>
+                  <div  v-on:click="changeWindow('pilihkonselor'); store.commit('changeSubtitle', 'Cari dan pilih minimum 1 konselor')" class="requestform btn-hksv" style="line-height: 2;">NEXT</div>
                 </div>
 
               </div>
@@ -95,22 +88,21 @@
         </transition>
 
         <transition name="state">
-          <div v-if="current_window == 'pilihkonselor'" class="window position-fixed">
+          <div v-if="current_window == 'pilihkonselor'" class="window">
             <div class="bg-full">
               <div class="topnav forms">
                 <div v-on:click="changeWindow('requestdetail')" class="topicon-right"><i class="fa fa-times fa-lg"></i></div>
                 <div class="text">
                   <input type="text" v-model="dosenquery" v-on:input="findKonselor()" class="searchbar"></input>
-                  <div class="title"></div>
-                  <div class="subtitle mt-1" style="width: 110%; ">{{ current_subtitle }}</div>
+                  <div class="subtitle mt-1" style="width: 110%; position: absolute;">{{ current_subtitle }}</div>
                 </div>
               </div>
 
               <div class="content findkonselor">
               
                 <template v-for="konselor in dosensearch" :key="konselor.NIP">
-                  <div v-on:click="selectKonselor(konselor.NIP, konselor.Nama)" class="admin-tools-menu kelola-blogs shadow">
-                    <div class="text w-75" style="margin: 0;"><small>{{ konselor.Nama }}</small></div>
+                  <div v-on:click="selectKonselor(konselor.NIP, konselor.Nama)" style="min-height: 75px; max-height: 25%;" class="admin-tools-menu kelola-blogs shadow">
+                    <div class="text w-75 text-left" style="margin: 0; line-height: 3; word-wrap: break-word; "><small>{{ konselor.Nama }}</small></div>
                     <input type="checkbox" class="d-none" :id="konselor.NIP" :checked="selectedKonselor(konselor.NIP)" autocomplete="off" />
                     <label v-on:click="selectKonselor(konselor.NIP, konselor.Nama)" :for="konselor.NIP" class="check-hksv"><i class="fa fa-check fa-lg" aria-hidden="true"></i></label>
                   </div>
@@ -140,21 +132,21 @@
                   <div class="subtitle mt-1" style="width: 80vw; margin-left: -25%; ">Harap periksa kembali seluruh informasi.</div>
                 </div>
               </div>
-              <div class="content">
+              <div class="content" style="height: 75%; top: 0;">
 
-                <div class="requestform">
+                <div class="requestform" style="height: 80%;">
                   <div class="title">
                     <span class="font-weight-bold">{{ requestdetail.nama }}</span> <br />
                     <small><small> {{ requestdetail.nim }} </small></small>
                   </div>
 
-                  <div class="px-4 py-2" style="height: 50vh; overflow-y: scroll; white-space: pre-line;">
+                  <div class="px-4 py-2" style="height: 55%; overflow-y: scroll; white-space: pre-line; word-wrap: break-word;">
                     List Konselor :
                     <div v-for="(nama, index) in konselornamechecked">
                     {{ index+1 }}. {{ nama }}
                     </div>
                   </div>
-                  <div  v-on:click="confirmSession(requestdetail.nama, requestdetail.nim, requestdetail.reqid)" class="requestform btn-hksv mt-5" style="line-height: 2;">NEXT</div>
+                  <div  v-on:click="confirmSession(requestdetail.nama, requestdetail.nim, requestdetail.reqid);getOpenRequest();" class="requestform btn-hksv mt-5" style="line-height: 2;">NEXT</div>
                 </div>
 
               </div>
@@ -167,16 +159,15 @@
     </div>
   </transition>
 
+  <!-- INDIVIDUAL ALERT FOR ADMINKONSELOR -->
   <transition name="fade">
     <template v-if="error.alert">
-      <div class="fixed-bottom m-0 alert alert-secondary alert-dismissible fade show" role="alert">
+      <div class="fixed-bottom m-0 alert alert-warning alert-dismissible fade show" role="alert">
         <strong>{{ error.strong }}</strong>&ensp;<small>{{ error.message }}</small>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
     </template>
   </transition>
+
 
   <transition name="state">
     <template>

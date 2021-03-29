@@ -5,27 +5,6 @@ html {
   width: 100%;
 }
 
-/* PREVENT LANDSCAPE DEVICES */
-@media screen and (orientation:portrait) { 
-  portrait {
-    display: block;
-  }
-
-  landscape {
-    display: none;
-  }
-
- }
-@media screen and (orientation:landscape) { 
-  portrait {
-    display: block;
-  }
-
-  landscape {
-    display: block;
-  }
-}
-
 .onLandscape {
   position: relative;
   height: 100vh;
@@ -41,12 +20,25 @@ html {
   --ipbblue: #0C0B8B;
   --vokasimagenta: #EC008C;
   --glass: rgba(255, 255, 255, 0.5);
+  --plastic: rgba(255, 255, 255, 0.05);
 }
 
 .disabledbutton {
   pointer-events: none;
   opacity: 0.4;
 }
+
+.whitespace {
+  position: fixed;
+  top: 0;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: white;
+  z-index: 30000;
+}
+
 
 .shadow{
   -webkit-box-shadow: 0px 0px 26px -8px rgba(0,0,0,0.75);
@@ -87,6 +79,19 @@ ul {
   width: 100%;
   margin-top: 35%;
   height: 84%;
+}
+
+.input>#imageAttachment {
+  display: none;
+}
+
+.content.findkonselor {
+  position: relative;
+  top: 0;
+
+  margin-top: 30%;
+  height: 100%;
+  width: 100%;
 }
 
 .dialog-confirm{
@@ -137,6 +142,45 @@ ul {
   margin-top: 5%;
 }
 
+.window.notifications {
+    
+  background: var(--plastic);
+  backdrop-filter: blur(35px);
+  overflow-y: hidden;
+  position: fixed;
+  border: solid 1px gray;
+  border-radius:  0px 0px 50px 50px;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+}
+
+.notifications .content{
+  position: relative;
+  top: 0;
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  border-radius:  0px 0px 50px 50px;
+}
+
+.notifications .events{
+  margin: 2% auto;
+  height: auto;
+}
+
+.notifications .subtitle {
+  position: relative;
+  top: -20%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.notifications .btn-collapse {
+  position: relative;
+  text-shadow: 2px 2px 6px rgba(0,0,0, 0.75);
+}
 
 .konseling-menu .banner {
   width: 40%;
@@ -397,13 +441,41 @@ ul {
   position: relative;
   border-radius: 19px;
   margin: 5% auto;
-  height: 15%;
+  height: 10%;
   width: 90%;
+  transition: all .2s ease;
 }
 
+.admin-tools-menu.request{
+  display: block;
+  background-color: white;
+  position: relative;
+  border-radius: 19px;
+  margin: 5% auto;
+  height: 15%;
+  width: 90%;
+  transition: all .2s ease;
+}
+
+.admin-tools-menu .text {
+  position: relative;
+  padding: 5%;
+  width: 100%!important;
+  text-align: center;
+}
+
+.admin-tools-menu:active, 
+.admin-tools-menu .text:active{
+  color: white;
+}
+.admin-tools-menu:active {
+  background-color: var(--mainaccent) ;
+}
 .admin-tools-menu .btn-hksv{
   border: solid 1px var(--mainaccent);
+  transition: none;
 }
+
 
 
 .masalah{
@@ -510,6 +582,13 @@ ul {
   border-radius: 20px;
 }
 
+#requestform .content {
+  overflow-y: hidden;
+  position: fixed;
+  top: 0;
+  margin-top: 25%;
+}
+
 .content .requestform {
   position: relative;
   top: 0;
@@ -518,6 +597,15 @@ ul {
   height: 90%;
   margin: 5% auto;
   border-radius: 15px;
+}
+
+
+
+.forms .topicon-right {
+  position: absolute;
+  margin-top: 0;
+  top: 20px;
+  
 }
 
 .requestform .title{
@@ -534,7 +622,7 @@ ul {
 
 .requestform.btn-hksv{
   position: relative;
-  top: -10%; left: 0;
+  top: -35%; left: 0;
   margin: 0 auto;
   height: 5vh;
   width: 85%;
@@ -675,14 +763,26 @@ input[type="text"].searchbar:focus{
   color: white;
   text-align: center;
   position: absolute;
-  right: 6%;
+  right: 4%;
   top: 30%;
+}
+
+.topicon-right.new{
+  right: 4%;
+}
+
+.topicon-right::after{
+  position: relative;
+  content: "     ";
+  left: -30%;
+  white-space: pre;
+  font-size: 50%;
 }
 
 .topicon-right.new::after{
   position: relative;
   content: "    ";
-  left: -25%;
+  left: -20%;
   white-space: pre;
   font-size: 50%;
   background-color: red;
@@ -912,6 +1012,103 @@ ul {
   transform: translateY(+100vh);
 }
 
+.droptop-enter-active, .droptop-leave-active {
+  transition: all .4s ease;
+  transition-delay: .1s;
+}
+.droptop-enter, .droptop-leave-to {
+  transform: translateY(-100vh);
+}
+
+
+/* SPINNER ANIMATIONS */
+
+
+.loading-handler {
+  background-color: var(--glass);
+  backdrop-filter: blur(15px);
+
+  position: fixed;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  z-index: 20000;
+}
+
+.loading-handler-text {
+  position: relative;
+  top: -20px;
+  left: -20px;
+  color: white;
+  z-index: 20000;
+}
+
+.overlay-dark {
+  background-color: rgba(0,0,0, .5);
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 19999;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  height: 100%;
+  margin: auto;
+  z-index: 20000;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: -4px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: -4px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 16px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 32px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(16px, 0);
+  }
+}
 
 
 
@@ -1067,8 +1264,6 @@ select.form-control:focus {
     font-weight: bold;
     position: relative;
     top: 0;
-    padding: 5%;
-    padding-top: 10%;
     width: 60%;
     word-wrap: break-word;
     height: 100%;
@@ -1233,6 +1428,76 @@ select.form-control:focus {
     z-index: 1000;
   }
 
+  .dialog {
+    position: fixed;
+    top: 25%;
+    margin: 0 10%;
+
+    width: 100%;
+
+    z-index: 20000;
+  }
+
+  .confirm{
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+
+    padding: 5%;
+    text-align: center;
+
+    font-size: 90%;
+
+    width: 80%;
+    height: 250px;
+    z-index: 20000;
+
+  }
+
+  .sessiondetail{
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+
+    padding: 5%;
+    text-align: center;
+
+    font-size: 90%;
+
+    width: 80%;
+    height: auto;
+    z-index: 20000;
+
+  }
+
+  .confirm .prompt{
+    position: relative;
+    top: 45%;
+    font-size: 100%;
+
+    text-align: center;
+  }
+
+  .btn-hksv.btn-confirm{
+    height: 35px;
+    color: white;
+    background-color: var(--mainaccent);
+  }
+  .btn-hksv.btn-confirm:active{
+    color: var(--mainaccent);
+    background-color: white;
+  }
+
+  .btn-hksv.btn-dismiss{
+    height: 35px;
+    color: var(--mainaccent);
+    background-color: white;
+  }
+  .btn-hksv.btn-dismiss:active{
+    color: white;
+    background-color: var(--mainaccent);
+  }
+
   .window .topnav.chatroom{
     background-color: var(--secondaccent);
     height: 75px;
@@ -1259,7 +1524,7 @@ select.form-control:focus {
     top: 0;
     left: 0;
     margin: 0 auto;
-    margin-top: 10vh;
+    margin-top: 75px;
     z-index: 500;
 
     text-align: center;
@@ -1328,6 +1593,11 @@ select.form-control:focus {
     background-color: var(--mainaccent);
   }
 
+  .input.imagePreview {
+    height: 250px;
+    
+  }
+
   .window .btn-send{
     background-color: white;
     color: var(--secondaccent);
@@ -1349,8 +1619,38 @@ select.form-control:focus {
     transition: all .2s;
   }
 
-  .btn-send:hover{
+  
+  img#previewTarget{
+    position: relative; 
+    width: 80%; height: 100%; 
+    background-color: white; 
+    padding: 2%; 
+    object-fit: contain;
+  }  
+
+  .btn-send:active, .btn-dismiss:active, .btn-attach:active{
     color: black;
+  }
+
+  .window .btn-dismiss{
+    background-color: white;
+    color: var(--secondaccent);
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0%;
+    left: 85%;
+
+    margin-top: 15%;
+
+    font-size: 100%;
+    text-align: center;
+
+    padding-top: 2%;
+    
+    width: 10vw;
+    height: 10vw;
+    transition: all .2s;
   }
 
   .window .btn-attach{
@@ -1421,7 +1721,7 @@ select.form-control:focus {
     top: 0;
     right: 0;
 
-    display: flexbox;
+    display: table;
     clear: right;
 
     padding: 3%;
@@ -1444,15 +1744,11 @@ select.form-control:focus {
     border-radius: 15px 0 15px 15px;
   }
 
-
-  .btn-attach:hover{
-    color: black;
-  }
-
   .requestform .btn-hksv{
     position: relative;
     top: 0;
     margin: 0 auto;
+    margin-bottom: 10%;
     width: 50vw;
   }
 
@@ -1505,16 +1801,7 @@ select.form-control:focus {
 
 @media (min-width: 640px) {
 
-  .requestform.btn-hksv{
-    position: relative;
-    top: -10%; left: 0;
-    margin: 0 auto;
-    height: 5vh;
-    width: 85%;
-    line-height: 3;
-    font-size: 80%;
 
-  }
 
   
   .admin-tools-menu .text{

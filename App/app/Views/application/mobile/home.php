@@ -18,7 +18,7 @@
             }
       ?>
 
-        <div v-on:click="<?= $profiltarget ?>"  class="konseling-menu events shadow text-center">
+        <div v-on:click="<?= $profiltarget ?>"  class="konseling-menu events shadow-sm text-center">
             <?php if (!$logged) { ?>
 
               <div class="text w-100">
@@ -39,7 +39,7 @@
 
         </div>
 
-        <div v-on:click="<?= $KonselingTarget ?>" class="konseling-menu ruang-konseling shadow">
+        <div v-on:click="<?= $KonselingTarget ?>" class="konseling-menu ruang-konseling shadow-sm border">
           <div class="text">
             <span class="title">Ruang Konseling</span>
             <p class="subtitle">Kamu akan dibantu oleh para 
@@ -52,7 +52,7 @@
           </div>
         </div>
 
-        <div v-on:click="changeSubmenu('blogs')" class="konseling-menu blogs shadow">
+        <div v-on:click="changeSubmenu('blogs')" class="konseling-menu blogs shadow-sm border">
           <div class="text">
             <span class="title">Permohonan Beasiswa</span>
             <p class="subtitle">Kamu bisa mencari informasi beasiswa
@@ -73,7 +73,7 @@
   <transition name="state">
     <div v-if="current_submenu == 'beasiswa'" class="content">
       <template>
-        <div class="konseling-menu beasiswa shadow">
+        <div class="konseling-menu beasiswa shadow-sm">
           <div class="info">Belum Tersedia</div>
         </div>
       </template>
@@ -84,28 +84,28 @@
     <div v-if="current_submenu == 'admin'" class="content">
       <template>
 
-        <div class="admin-tools-menu kelola-blogs shadow">
+        <div class="admin-tools-menu kelola-blogs shadow-sm">
           <div class="text">Kelola Blogs</div>
           <div class="btn-hksv">
             Buka
           </div>
         </div>
 
-        <div class="admin-tools-menu kelola-events shadow">
+        <div class="admin-tools-menu kelola-events shadow-sm">
           <div class="text">Kelola Events</div>
           <div  class="btn-hksv">
             Buka
           </div>
         </div>
 
-        <div class="admin-tools-menu laporan shadow">
+        <div class="admin-tools-menu laporan shadow-sm">
           <div class="text">Laporan</div>
           <div class="btn-hksv">
             Buka
           </div>
         </div>
 
-        <div class="admin-tools-menu data-konselor shadow">
+        <div class="admin-tools-menu data-konselor shadow-sm">
           <div class="text">Data Konselor</div>
           <div class="btn-hksv">
             Buka
@@ -118,11 +118,8 @@
 
   <transition name="fade">
     <template v-if="error.alert">
-      <div class="fixed-bottom m-0 alert alert-secondary alert-dismissible fade show" role="alert">
+      <div class="fixed-bottom m-0 alert alert-warning alert-dismissible fade show" role="alert">
         <strong>{{ error.strong }}</strong>&ensp;<small>{{ error.message }}</small>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
     </template>
   </transition>

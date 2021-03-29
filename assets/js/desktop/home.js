@@ -16,7 +16,13 @@ var home = new Vue({
     },
     changeSubmenu (target) {
       store.commit('changeSubmenu', target)
-      console.log(target)
     },
+    mulai(logged){
+      if(logged){
+        this.changeSubmenu('menu');
+      }else{
+        $('.menu-toggle').click(); 
+      }
+    }
   },
 });

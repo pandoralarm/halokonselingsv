@@ -21,8 +21,8 @@
 
           <div class="row d-flex align-items-center justify-content-center">
 
-            <div class="kartu beasiswa d-flex flex-column align-items-center">
-              <div class="title">YAYASAN GOODWILL INTERNATIONAL</div>
+            <div v-for="row in beasiswa" class="kartu beasiswa d-flex flex-column align-items-center">
+              <div class="title">{{row.namaBeasiswa}}</div>
               <div class="garis beasiswa"></div>
               <div class="row w-100">
                 <div class="col-7">
@@ -32,7 +32,7 @@
                       <p class="text-beasiswa">Donatur</p>
                     </div>
                     <div class="col-7">
-                      <p class="text-beasiswa">: Yayasan Goodwill International</p>
+                      <p class="text-beasiswa">: {{row.donatur}}</p>
                     </div>
                   </div>
                   <div class="row">
@@ -40,15 +40,15 @@
                       <p class="text-beasiswa">Besar Beasiswa</p>
                     </div>
                     <div class="col-7">
-                      <p class="text-beasiswa">: Rp. 3.000.000,00</p>
+                      <p class="text-beasiswa">: {{row.nominal}}</p>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
-                      <p class="text-beasiswa">Syarat Semester : 3</p>
+                      <p class="text-beasiswa">Syarat Semester : {{row.syaratSemester}}</p>
                     </div>
                     <div class="col">
-                      <p class="text-beasiswa">Syarat IPK : -</p>
+                      <p class="text-beasiswa">Syarat IPK : {{row.syaratIPK}}</p>
                     </div>
                   </div>
 
@@ -62,8 +62,8 @@
                       <div class="round-ditutup"></div>
                     </div>
                     <div class="col-9 d-flex flex-column align-items-start justify-content-between">
-                      <p class="text-dibuka">Dibuka 11 Januari 2021</p>
-                      <p class="text-ditutup">Ditutup 9 Februari 2021</p>
+                      <p class="text-dibuka">Dibuka {{row.tglDibuka}}</p>
+                      <p class="text-ditutup">Ditutup {{row.tglDitutup}}</p>
                     </div>
                   </div>
                 </div>

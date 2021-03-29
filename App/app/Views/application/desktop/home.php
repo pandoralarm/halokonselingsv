@@ -3,7 +3,11 @@
     <img src="<?php echo base_url('assets/img/Components/Home/Desktop/banner_beasiswa.svg'); ?>" alt="">
     <h1>REKOMENDASI BEASISWA</h1>
     <h2>SEKOLAH VOKASI</h2>
-    <button v-on:click="changeSubmenu('menu')">Mulai</button>
+    <?php if ($role == 'KONSELOR' || $role == 'SEKPRODI') { ?>
+      <button v-on:click="changeSubmenu('menusekprodi')">Mulai</button>
+    <?php } else { ?>
+      <button v-on:click="mulai(<?= $logged; ?>)">Mulai</button>
+    <?php } ?>
   </div>
 </section>
 

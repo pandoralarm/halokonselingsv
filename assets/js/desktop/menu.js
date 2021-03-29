@@ -1,6 +1,7 @@
 var menu = new Vue({
   el: '#menu',
   data: {
+    basepath: this.$cookies.get('basepath'),
   },
   computed: {    
     current_menu: function () {
@@ -17,12 +18,24 @@ var menu = new Vue({
     changeSubmenu (target) {
       store.commit('changeSubmenu', target)
     },
-    buatPengajuan (logged){
+    bukaPengajuan (logged){
       if(logged){
         this.changeSubmenu('pengajuan');
       }else{
         $('.menu-toggle').click(); 
       }
-    }
+    },
+    bukaSaya (logged, nim){
+      if(logged){
+        this.changeSubmenu('saya');
+        saya.getPengajuanAll(nim);
+      }else{
+        $('.menu-toggle').click(); 
+      }
+    },
+    bukaBeasiswa (){
+      this.changeSubmenu('dibuka');
+      dibuka.getBeasiswaAll();
+    },
   },
 });

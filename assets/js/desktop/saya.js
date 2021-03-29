@@ -1,8 +1,11 @@
-var menu = new Vue({
+var saya = new Vue({
     el: '#saya',
     data: {
-      dosensearch: [],
       basepath: this.$cookies.get('basepath'),
+      dosensearch : [],
+      pengajuanDiproses : [],
+      pengajuanDisetujui : [],
+      pengajuanDitolak : [],
     },
     computed: {    
       current_menu: function () {
@@ -25,16 +28,37 @@ var menu = new Vue({
       changeWindow (target) {
         store.commit('changeWindow', target)
       },
-      getResponse(){
-
-        axios.post(this.basepath+"/perwa/pengajuan/getResponse")
+      getPengajuanAll(nim){
+        axios.post(this.basepath+"/perwa/pengajuan/showDiproses/"+nim)
         .then(response => 
           {
-            this.dosensearch = response.data;
+            this.pengajuanDiproses = response.data;
           })
         .finally(() => {
-          
         });
+        axios.post(this.basepath+"/perwa/pengajuan/showDisetujui/"+nim)
+        .then(response => 
+          {
+            this.pengajuanDisetujui = response.data;
+          })
+        .finally(() => {
+        });
+        axios.post(this.basepath+"/perwa/pengajuan/showDitolak/"+nim)
+        .then(response => 
+          {
+            this.pengajuanDitolak = response.data;
+          })
+        .finally(() => {
+        });
+      },
+      deletePengajuan(idPengajuan,nim){
+        axios.post(this.basepath+"/perwa/pengajuan/deletePengajuan/"+idPengajuan)
+        .then(response => 
+          {
+            this.getPengajuanAll(nim)
+          })
+        .finally(() => {
+        })
       }
     },
   });

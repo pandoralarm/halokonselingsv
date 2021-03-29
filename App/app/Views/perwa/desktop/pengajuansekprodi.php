@@ -41,20 +41,20 @@
             <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title">REKOMENDASI DIPROSES</div>
               <div class="garis"></div>
-              <table style="width:100%">
+              <table style="width:100%" class="diprosessekprod">
                 <tr>
                   <th>Tanggal Pengajuan</th>
                   <th>Deadline Beasiswa</th>
                   <th>Nama Mahasiswa</th>
                   <th>NIM</th>
-                  <th>Tombol</th>
+                  <th></th>
                 </tr>
                 <tr v-for="row in pengajuanDiproses">
                   <td>{{ row.tanggalPengajuan }}</td>
                   <td>{{ row.deadline }}</td>
-                  <td>{{ row.namaBeasiswa }}</td>
+                  <td>{{ row.nama }}</td>
                   <td>{{ row.nim }}</td>
-                  <td><button>Hayo</button></td>
+                  <td v-on:click="detailPengajuanDiproses(row.idPengajuan)" class="d-flex align-items-center justify-content-center"><button class="button-diprosessekprod">Detail</button></td>
                 </tr>
               </table>
             </div>
@@ -66,20 +66,64 @@
             <div class="kartu diterima d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title">REKOMENDASI DISELESAIKAN</div>
               <div class="garis"></div>
-              <table style="width:100%">
+              <table style="width:100%" class="diselesaikansekprod">
                 <tr>
                   <th>Tanggal Pengajuan</th>
                   <th>Deadline Beasiswa</th>
                   <th>Nama Mahasiswa</th>
                   <th>NIM</th>
-                  <th>Tombol</th>
+                  <th></th>
                 </tr>
                 <tr v-for="row in pengajuanDiselesaikan">
                   <td>{{ row.tanggalPengajuan }}</td>
                   <td>{{ row.deadline }}</td>
-                  <td>{{ row.namaBeasiswa }}</td>
+                  <td>{{ row.nama }}</td>
                   <td>{{ row.nim }}</td>
-                  <td><button>Hayo</button></td>
+                  <td><button class="button-diselesaikansekprod">Detail</button></td>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+
+
+          <div v-if="current_window == 'detailPengajuanDiproses'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+
+            <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title">DetailPengajuan</div>
+              <div class="garis"></div>
+              <table v-for="row in pengajuanMhs" style="text-align: start; width:100%;">
+                <tr>
+                  <td>Nama</td>
+                  <td>{{row.nama}}</td>
+                </tr>
+                <tr>
+                  <td>NIM</td>
+                  <td>{{row.nim}}</td>
+                </tr>
+                <tr>
+                  <td>Program Studi</td>
+                  <td>{{row.jurusan}}</td>
+                </tr>
+                <tr>
+                  <td>Nama Beasiswa</td>
+                  <td>{{row.namaBeasiswa}}</td>
+                </tr>
+                <tr>
+                  <td>Tanggal Pengajuan</td>
+                  <td>sdsd</td>
+                </tr>
+                <tr>
+                  <td>Deadline</td>
+                  <td>sdsd</td>
+                </tr>
+                <tr>
+                  <td>IPK</td>
+                  <td>sdsd</td>
+                </tr>
+                <tr>
+                  <td>CV</td>
+                  <td>sdsd</td>
                 </tr>
               </table>
             </div>

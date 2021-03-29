@@ -66,14 +66,19 @@ class Pengajuan extends Controller
     }
 
 
-    public function showDiprosesSekrpodi()
+    public function showDiprosesSekprodi()
     {
         $result = $this->pengajuan->where("status = 'Diproses'")->findAll();
         return json_encode($result);
     }
-    public function showDiselesaikanSekrpodi()
+    public function showDiselesaikanSekprodi()
     {
         $result = $this->pengajuan->where("status != 'Diproses'")->findAll();
+        return json_encode($result);
+    }
+    public function showPengajuanMhs($idpengajuan)
+    {
+        $result = $this->pengajuan->where("idpengajuan == $idpengajuan")->findAll();
         return json_encode($result);
     }
 }

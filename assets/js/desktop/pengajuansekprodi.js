@@ -27,18 +27,31 @@ var pengajuansekprodi = new Vue({
       changeWindow (target) {
         store.commit('changeWindow', target)
       },
+      detailPengajuanDiproses(idpengajuan){
+        this.changeWindow('detailPengajuanDiproses');
+        this.getPengajuanAll(idpengajuan);
+      },
       getPengajuanAll(){
-        axios.post(this.basepath+"/perwa/pengajuan/showDiprosesSekrpodi")
+        axios.post(this.basepath+"/perwa/pengajuan/showDiprosesSekprodi")
         .then(response => 
           {
             this.pengajuanDiproses = response.data;
           })
         .finally(() => {
         });
-        axios.post(this.basepath+"/perwa/pengajuan/showDiselesaikanSekrpodi")
+        axios.post(this.basepath+"/perwa/pengajuan/showDiselesaikanSekprodi")
         .then(response => 
           {
             this.pengajuanDiselesaikan = response.data;
+          })
+        .finally(() => {
+        });
+      },
+      getPengajuanMhs(idpengajuan){
+        axios.post(this.basepath+"/perwa/pengajuan/showPengajuanMhs/"+idpengajuan)
+        .then(response => 
+          {
+            this.pengajuanMhs = response.data;
           })
         .finally(() => {
         });

@@ -771,3 +771,47 @@ button.button-diterima:hover {
   color: white;
   transition: all 0.3 ease;
 }
+
+table {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2em;
+}
+
+.diprosessekprod tr {
+  border-bottom: 1px solid #00cccc;
+}
+
+.diselesaikansekprod tr {
+  border-bottom: 1px solid #55b667;
+}
+
+button.button-diprosessekprod {
+  margin: 0.25em 0;
+  padding: 0px 15px;
+  color: #00cccc;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#00cccc;
+}
+
+button.button-diprosessekprod:hover {
+  background: #00cccc;
+  color: white;
+  transition: all 0.3 ease;
+}
+
+button.button-diselesaikansekprod {
+  margin: 0.25em 0;
+  padding: 0px 15px;
+  color: #55b667;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid#55b667;
+}
+
+button.button-diselesaikansekprod:hover {
+  background: #55b667;
+  color: white;
+  transition: all 0.3 ease;
+}

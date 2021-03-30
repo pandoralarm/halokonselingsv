@@ -36,13 +36,13 @@ class Events extends Migration
 		$this->forge->addForeignKey('KonselorNIP','Dosen','NIP','CASCADE','CASCADE');
 
 		// Membuat tabel role
-		$this->forge->createTable('Events', TRUE);
+		$this->forge->createTable('events', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Events');
+		
 	}
 }

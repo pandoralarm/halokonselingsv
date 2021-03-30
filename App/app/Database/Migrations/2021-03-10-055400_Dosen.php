@@ -33,13 +33,12 @@ class Dosen extends Migration
 
 		
 		// Membuat tabel dosen
-		$this->forge->createTable('Dosen', TRUE);
+		$this->forge->createTable('dosen', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Dosen');
 	}
 }

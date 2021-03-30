@@ -34,13 +34,13 @@ class Messages extends Migration
 		$this->forge->addKey('MessageID', TRUE);
 
 		// Membuat tabel role
-		$this->forge->createTable('Messages', TRUE);
+		$this->forge->createTable('messages', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Messages');
+		
 	}
 }

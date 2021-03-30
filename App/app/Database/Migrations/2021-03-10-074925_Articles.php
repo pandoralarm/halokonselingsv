@@ -36,16 +36,16 @@ class Articles extends Migration
 		$this->forge->addKey('ArticleID', TRUE);
 
 		// gives CONSTRAINT
-		$this->forge->addForeignKey('KonselorNIP','Dosen','NIP','CASCADE','CASCADE');
+		$this->forge->addForeignKey('KonselorNIP','dosen','NIP','CASCADE','CASCADE');
 
 		// Membuat tabel role
-		$this->forge->createTable('Articles', TRUE);
+		$this->forge->createTable('articles', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Articles');
+		
 	}
 }

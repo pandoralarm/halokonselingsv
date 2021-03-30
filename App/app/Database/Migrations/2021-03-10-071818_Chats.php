@@ -45,10 +45,10 @@ class Chats extends Migration
 		$this->forge->addKey('ThreadID', TRUE);
 
 		// gives CONSTRAINT
-		$this->forge->addForeignKey('KonselorNIP','Dosen','NIP','CASCADE','CASCADE');
+		$this->forge->addForeignKey('KonselorNIP','dosen','NIP','CASCADE','CASCADE');
 
 		// Membuat tabel role
-		$this->forge->createTable('Chats', TRUE);
+		$this->forge->createTable('chats', TRUE);
 
 	}
 

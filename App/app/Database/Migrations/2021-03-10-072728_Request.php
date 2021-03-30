@@ -38,13 +38,13 @@ class Request extends Migration
 		$this->forge->addKey('RequestID', TRUE);
 		
 		// Membuat tabel role
-		$this->forge->createTable('Request', TRUE);
+		$this->forge->createTable('request', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Request');
+		
 	}
 }

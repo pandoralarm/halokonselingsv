@@ -28,7 +28,7 @@ class Laporan extends Migration
 		$this->forge->addKey('LaporanID', TRUE);
 
 		// Membuat tabel role
-		$this->forge->createTable('Laporan', TRUE);
+		$this->forge->createTable('laporan', TRUE);
 
 	}
 

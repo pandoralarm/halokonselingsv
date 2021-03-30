@@ -29,16 +29,15 @@ class Role extends Migration
 		$this->forge->addKey('Id', TRUE);
 
 		// gives CONSTRAINT
-		$this->forge->addForeignKey('NIP','Dosen','NIP','CASCADE','CASCADE');
+		$this->forge->addForeignKey('NIP','dosen','NIP','CASCADE','CASCADE');
 
 		// Membuat tabel role
-		$this->forge->createTable('Role', TRUE);
+		$this->forge->createTable('role', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Role');
 	}
 }

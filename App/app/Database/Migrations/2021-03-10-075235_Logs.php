@@ -29,13 +29,13 @@ class Logs extends Migration
 		$this->forge->addKey('LogID', TRUE);
 
 		// Membuat tabel role
-		$this->forge->createTable('Logs', TRUE);
+		$this->forge->createTable('logs', TRUE);
 
 	}
 
 	public function down()
 	{
 		// DROP if exists
-		$this->forge->dropTable('Logs');
+		
 	}
 }

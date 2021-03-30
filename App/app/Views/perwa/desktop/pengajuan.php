@@ -28,7 +28,7 @@
                             <label for="cv">CV</label>
                             <input type="file" id="cv" name="cv" required>
                             <div class="mt-4 d-flex align-items-center">
-                                <input type="checkbox" name="pernyataan" id="pernyataan" required>
+                                <input type="checkbox" name="pernyataan" id="pernyataan" required> 
                                 <small class="pernyataan">Dengan ini saya menyatakan bahwa data tersebut adalah benar, apabila kemudian ditemukan kecurangan maka pihak kampus berhak membatalkan beasiswa saya </small>
                             </div>
                             <div>

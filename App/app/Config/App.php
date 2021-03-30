@@ -23,7 +23,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost/github/HaloKonselingSV_02-localhost/';
+	public $baseURL = 'http://alansbox.online/';
 	/*
 	|--------------------------------------------------------------------------
 	| Index File

@@ -29,10 +29,10 @@
                             <input type="file" id="cv" name="cv" required>
                             <div class="mt-4 d-flex align-items-center">
                                 <input type="checkbox" name="pernyataan" id="pernyataan" required> 
-                                <small class="pernyataan">Dengan ini saya menyatakan bahwa data tersebut adalah benar, apabila kemudian ditemukan kecurangan maka pihak kampus berhak membatalkan beasiswa saya </small>
+                                <small class="pernyataan">Dengan ini saya menyatakan bahwa data tersebut adalah benar, apabila kemudian ditemukan kecurangan maka pihak kampus berhak membatalkan beasiswa saya</small>
                             </div>
                             <div>
-                                <button class="pengajuan-submit" style="float:right;">Submit</button>
+                                <button class="pengajuan-submit" style="float:right;">Submit</button> 
                             </div>
                         </form>
                     </div>

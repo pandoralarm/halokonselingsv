@@ -20,6 +20,7 @@ Filevalidation = () => {
 var pengajuan = new Vue({
   el: '#pengajuan',
   data: {
+    basepath: this.$cookies.get('basepath'),
   },
   computed: {
     current_menu: function () {
@@ -36,5 +37,27 @@ var pengajuan = new Vue({
     changeSubmenu(target) {
       store.commit('changeSubmenu', target)
     },
+    addPengajuan() {
+      var bodyFormData = new FormData();
+      bodyFormData.append('namaBeasiswa', $('#beasiswa').val());
+      bodyFormData.append('deadline', $('#deadline').val());
+      bodyFormData.append('cv', $('#cv').prop('files')[0]);
+      // console.log($('#beasiswa').val());
+      // console.log($('#deadline').val());
+      console.log($('#cv').prop('files')[0]);
+      console.log(bodyFormData);
+      axios.post(this.basepath + "/perwa/pengajuan/commit",
+        bodyFormData,
+        { headers: { 'content-type': 'multipart/form-data' } })
+        .catch(error => {
+          console.log(error);
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .finally(() => {
+          this.changeSubmenu('menu');
+        });
+    }
   },
 });

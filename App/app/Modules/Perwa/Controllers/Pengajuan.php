@@ -61,15 +61,25 @@ class Pengajuan extends Controller
             'ip5' => $ip_array[4],
             'ip6' => $ip_array[5],
             'ipk' => $ipk,
-            'namaBeasiswa' => $this->request->getPost('beasiswa'),
+            'namaBeasiswa' => $this->request->getPost('namaBeasiswa'),
             'deadline' => $this->request->getPost('deadline'),
             'cv' => $newName,
-            'tanggalPengajuan' => date('Y-m-d H:i:s'),
+            'tanggalPengajuan' => date('Y-m-d'),
             'status' => "Diproses",
             'dosenPJ' => "Belum Ada",
         ];
+
         $this->pengajuan->insert($data);
-        return redirect()->to('/');
+
+        
+        $response = [
+            'cvpath' => $data['cv'],
+            'deadline' => $data['deadline'],
+            'namaBeasiswa' => $data['namaBeasiswa'],
+        ];
+
+
+        return json_encode($response);
     }
 
     public function showDiproses($nim)

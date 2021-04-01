@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <form method="POST" class="pengajuan d-flex flex-column" action="<?= base_url('perwa/pengajuan/commit') ?>" enctype="multipart/form-data">
+                        <form method="POST" class="pengajuan d-flex flex-column" action="#" enctype="multipart/form-data">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" id="nama" name="nama" value="<?= $name ?>" required disabled>
                             <label for="beasiswa">Nama Beasiswa</label>
@@ -33,9 +33,10 @@
                                 <small class="pernyataan">Dengan ini saya menyatakan bahwa data tersebut adalah benar, apabila kemudian ditemukan kecurangan maka pihak kampus berhak membatalkan beasiswa saya</small>
                             </div>
                             <div>
-                                <button class="pengajuan-submit" style="float:right;">Submit</button> 
+                                 
                             </div>
                         </form>
+                        <button class="pengajuan-submit" style="float:right;"  v-on:click="addPengajuan()">Submit</button>
                     </div>
                 </div>
 

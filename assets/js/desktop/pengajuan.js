@@ -42,10 +42,6 @@ var pengajuan = new Vue({
       bodyFormData.append('namaBeasiswa', $('#beasiswa').val());
       bodyFormData.append('deadline', $('#deadline').val());
       bodyFormData.append('cv', $('#cv').prop('files')[0]);
-      // console.log($('#beasiswa').val());
-      // console.log($('#deadline').val());
-      console.log($('#cv').prop('files')[0]);
-      console.log(bodyFormData);
       axios.post(this.basepath + "/perwa/pengajuan/commit",
         bodyFormData,
         { headers: { 'content-type': 'multipart/form-data' } })

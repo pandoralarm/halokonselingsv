@@ -7,9 +7,9 @@
         <h2 class="sub-title">SEKOLAH VOKASI</h2>
         <button v-on:click="changeSubmenu('menu')" class="back">Kembali</button>
       </div>
-      <div class="col-7 d-flex flex-column align-items-center justify-content-center" style="max-height: 80vh; overflow-y: auto;">
+      <div class="col-7 d-flex flex-column align-items-center justify-content-center">
 
-        <div class="kartu saya d-flex flex-column align-items-center" style="background: none !important;">
+        <div class="kartu saya d-flex flex-column align-items-center"  style="max-height: 80vh; overflow-y: auto; background: none !important; padding:3em 0;">
           <div class="row d-flex align-items-center justify-content-center">
             <div class="col-8 d-flex flex-column justify-content-center align-items-center">
               <h1 class="title-small blue" style="font-size: 36px;">Pengajuan Saya</h1>
@@ -48,7 +48,7 @@
 
           <div class="w-100" v-if="current_window == 'proses'">
 
-            <div v-for="row in pengajuanDiproses" class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
+            <div v-for="row in pengajuanDiproses" class="w-100 kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title">{{ row.namaBeasiswa }}</div>
               <div class="garis"></div>
               <div class="row w-100">
@@ -73,11 +73,11 @@
                 </div>
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
                   <p class="label-proses">Dosen Penganggung Jawab</p>
-                  <p class="value-proses">Rosyda Dianah SKM., MKM.</p>
+                  <p class="value-proses">{{ row.dosenPJ}}</p>
                 </div>
               </div>
               <div class="w-100 d-flex justify-content-end">
-                <button class="back" v-on:click="deletePengajuan(row.idPengajuan,'<?= $nim; ?>')">Batalkan Pengajuan</button>
+                <button class="back" v-on:click="deletePengajuan(row.idPengajuan)">Batalkan Pengajuan</button>
               </div>
             </div>
 
@@ -85,7 +85,7 @@
 
           <div class="w-100" v-if="current_window == 'terima'">
 
-            <div v-for="row in pengajuanDisetujui" class="kartu diterima d-flex flex-column align-items-center justify-content-center mt-4">
+            <div v-for="row in pengajuanDisetujui" class="w-100 kartu diterima d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title">{{ row.namaBeasiswa }}</div>
               <div class="garis"></div>
               <div class="row w-100">
@@ -110,11 +110,11 @@
                 </div>
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
                   <p class="label-terima">Dosen Penganggung Jawab</p>
-                  <p class="value-terima">Rosyda Dianah SKM., MKM.</p>
+                  <p class="value-terima">{{ row.dosenPJ}}</p>
                 </div>
               </div>
               <div class="w-100 d-flex justify-content-end">
-                <button class="button-diterima">Unduh Rekomendasi</button>
+                <button v-on:click="getRekomendasi(row.idPengajuan)" class="button-diterima">Unduh Rekomendasi</button>
               </div>
             </div>
 
@@ -122,7 +122,7 @@
 
           <div class="w-100" v-if="current_window == 'tolak'">
 
-            <div v-for="row in pengajuanDitolak" class="kartu ditolak d-flex flex-column align-items-center justify-content-center mt-4">
+            <div v-for="row in pengajuanDitolak" class="w-100 kartu ditolak d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title">{{ row.namaBeasiswa }}</div>
               <div class="garis "></div>
               <div class="row w-100">
@@ -143,11 +143,11 @@
                 </div>
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
                   <p class="label-tolak">Deadline Beasiswa</p>
-                  <p class="value-tolak">{{ row.Deadline }}</p>
+                  <p class="value-tolak">{{ row.deadline }}</p>
                 </div>
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
                   <p class="label-tolak">Dosen Penganggung Jawab</p>
-                  <p class="value-tolak">Rosyda Dianah SKM., MKM.</p>
+                  <p class="value-tolak">{{ row.dosenPJ}}</p>
                 </div>
               </div>
               <div class="w-100 d-flex justify-content-end">

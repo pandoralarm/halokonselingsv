@@ -44,7 +44,7 @@
               <div class="row d-flex align-items-center justify-content-center">
                 <div class="col-8 d-flex flex-column justify-content-center align-items-center">
                   <h1 class="title-small blue">Pengajuan Saya</h1>
-                  <button class="button-saya" v-on:click="bukaSaya(<?= $logged; ?>,'<?= $nim; ?>');">Lihat</button>
+                  <button class="button-saya" v-on:click="bukaSaya(<?= $logged; ?>);">Lihat</button>
                 </div>
                 <div class="col-4 d-flex align-items-center justify-content-end">
                   <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_saya.svg'); ?>" alt="">

@@ -2,7 +2,7 @@ var home = new Vue({
   el: '#home',
   data: {
   },
-  computed: {    
+  computed: {
     current_menu: function () {
       return store.getters.getMenu;
     },
@@ -11,18 +11,14 @@ var home = new Vue({
     },
   },
   methods: {
-    changeMenu (target) {
+    changeMenu(target) {
       store.commit('changeMenu', target)
     },
-    changeSubmenu (target) {
+    changeSubmenu(target) {
       store.commit('changeSubmenu', target)
     },
-    mulai(logged){
-      if(logged){
-        this.changeSubmenu('menu');
-      }else{
-        $('.menu-toggle').click(); 
-      }
+    mulai(logged) {
+      this.changeSubmenu('menu');
     }
   },
 });

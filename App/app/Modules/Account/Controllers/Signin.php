@@ -144,6 +144,7 @@ class Signin extends Auth
 
       // SET USER SESSION DENGAN ROLE Mahasiswa
       $user_session = [
+        'mahasiswaid'      => $User->MahasiswaId,
         'user'    => $User->Username,
         'nama'    => $User->Nama,
         'nim'     => $User->NIM,

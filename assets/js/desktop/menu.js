@@ -2,8 +2,9 @@ var menu = new Vue({
   el: '#menu',
   data: {
     basepath: this.$cookies.get('basepath'),
+    nim: this.$cookies.get('id'),
   },
-  computed: {    
+  computed: {
     current_menu: function () {
       return store.getters.getMenu;
     },
@@ -12,28 +13,28 @@ var menu = new Vue({
     },
   },
   methods: {
-    changeMenu (target) {
+    changeMenu(target) {
       store.commit('changeMenu', target)
     },
-    changeSubmenu (target) {
+    changeSubmenu(target) {
       store.commit('changeSubmenu', target)
     },
-    bukaPengajuan (logged){
-      if(logged){
+    bukaPengajuan(logged) {
+      if (logged) {
         this.changeSubmenu('pengajuan');
-      }else{
-        $('.menu-toggle').click(); 
+      } else {
+        $('.menu-toggle').click();
       }
     },
-    bukaSaya (logged, nim){
-      if(logged){
+    bukaSaya(logged) {
+      if (logged) {
         this.changeSubmenu('saya');
-        saya.getPengajuanAll(nim);
-      }else{
-        $('.menu-toggle').click(); 
+        saya.getPengajuanAll(menu.nim);
+      } else {
+        $('.menu-toggle').click();
       }
     },
-    bukaBeasiswa (){
+    bukaBeasiswa() {
       this.changeSubmenu('dibuka');
       dibuka.getBeasiswaAll();
     },

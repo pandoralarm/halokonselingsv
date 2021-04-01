@@ -11,7 +11,7 @@ class MessagesModel extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['SenderID', 'Message', 'ThreadKey', 'Timestamp'];
+    protected $allowedFields = ['SenderID', 'MessageType', 'Message', 'ThreadKey', 'Timestamp'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

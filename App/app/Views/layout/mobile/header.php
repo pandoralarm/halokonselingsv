@@ -42,6 +42,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js" ></script>
   <!-- FONTAWESOME FREE 4.7 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <!-- GREEN PLAYER -->
+  <link rel="stylesheet" href="<?= base_url('assets/css/mobile/green-audio-player.min.css') ?>">
+  <script src="<?= base_url('assets/js/dependencies/green-audio-player.min.js') ?>"></script>
   <!-- HKSV Style -->
   <link rel="stylesheet" href="<?= base_url('assets/css/mobile/style.css') ?>" />
 

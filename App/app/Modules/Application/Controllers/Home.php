@@ -30,7 +30,6 @@ class Home extends Controller
       'url'         => base_url(),
       'site'        => 'HaloKonselingSV',
       'name'        => $this->session->get('nama'),
-      'nim'        => $this->session->get('nim'),
       'prodi'       => $this->session->get('prodi'),
       'role'        => $this->session->get('role'),
       'logged'      => $this->session->get('logged'),
@@ -56,12 +55,11 @@ class Home extends Controller
       echo view('layout/desktop/header', $appData);
       echo view('layout/desktop/nav', $appData);
       echo view('application/desktop/home', $appData);
-      if ($this->session->get('role') == 'MAHASISWA') {
-        echo view('perwa/desktop/menu');
-        echo view('perwa/desktop/pengajuan');
-        echo view('perwa/desktop/dibuka');
-        echo view('perwa/desktop/saya');
-      } elseif ($this->session->get('role') == 'KONSELOR') {
+      echo view('perwa/desktop/menu', $appData);
+      echo view('perwa/desktop/pengajuan');
+      echo view('perwa/desktop/dibuka');
+      echo view('perwa/desktop/saya');
+      if ($this->session->get('role') !== 'MAHASISWA') {
         echo view('perwa/desktop/menusekprodi');
         echo view('perwa/desktop/pengajuansekprodi');
       }

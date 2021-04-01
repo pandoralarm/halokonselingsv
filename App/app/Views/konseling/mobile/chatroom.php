@@ -29,17 +29,30 @@
           
           <div class="mt-4"></div>
           <div class="text-center text-white my-2"><small><small>--- Lihat detail sesi konseling pada opsi diatas ---</small></small></div>
-          <template>
-            <div class="recipient">
-              <p class="message"><img class="image" src="https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg" alt=""></p>
-              <div class="timestamp">12.26</div>
-            </div>
-          </template>
+
+
           <template v-for="(message, index) in messages" :key="message.index">
             <div :id="'msg'+message.id" :class="{'sender' : (message.sender == userid), 'recipient' : (message.sender != userid)}">
               <div class="name border-bottom pb-0"><small>{{ message.name }} : </small></div>
-              <p class="message" style="white-space: pre-line;">{{ message.message }}</p>
+              
+              <div v-if="message.messagetype == 'image'">
+                <p class="message"><img class="image" :src="message.message" alt=""></p>
+              </div>
+
+              <div v-else-if="message.messagetype == 'text'">
+                <p class="message" style="white-space: pre-line;">{{ message.message }}</p> 
+              </div>
               <div class="timestamp">{{ message.timestamp }}</div>
+            </div>
+          </template>
+
+          <template>
+            <div class="sender">
+              <div class="name border-bottom pb-0"><small>Admin</small></div>
+
+                <audio class="text-white" controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+              <div class="timestamp">15.15</div>
             </div>
           </template>
 
@@ -59,7 +72,7 @@
           <template>
             <div v-if="fileModel != null" class="input imagePreview">
               <img id="previewTarget" src="#" alt="Image Upload Preview">
-              <div v-on:click="sendMessage('NewMessage');" class="btn-send"><i class="fa fa-paper-plane fa-lg"></i></div>
+              <div v-on:click="sendImage(fileModel);" class="btn-send"><i class="fa fa-paper-plane fa-lg"></i></div>
               <div v-on:click="fileModel = null" class="btn-dismiss"><i class="fa fa-times fa-lg"></i></div>
             </div>
           </template>
@@ -231,6 +244,6 @@
 
 
 </section>
-
+     
 <script src="<?= base_url('assets/js/mobile/chatroom.js') ?>" ></script>
 

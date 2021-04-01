@@ -33,7 +33,7 @@ class Events extends Migration
 		$this->forge->addKey('EventID', TRUE);
 
 		// gives CONSTRAINT
-		$this->forge->addForeignKey('KonselorNIP','Dosen','NIP','CASCADE','CASCADE');
+		$this->forge->addForeignKey('KonselorNIP','dosen','NIP','CASCADE','CASCADE');
 
 		// Membuat tabel role
 		$this->forge->createTable('events', TRUE);

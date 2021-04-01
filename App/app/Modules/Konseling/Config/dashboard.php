@@ -24,6 +24,7 @@ $routes->group('konseling', ['namespace' => 'App\Modules\Konseling\Controllers']
 	$subroutes->add('chatroom/sendMessage', 'Chatroom::sendMessage');
 	$subroutes->add('chatroom/sessionInfo/(:alphanum)', 'Chatroom::sessionInfo/$1');
 	$subroutes->add('chatroom/closeSession', 'Chatroom::closeSession');
+	$subroutes->add('chatroom/mediaupload', 'Chatroom::mediaupload');
 
 	/*** Route for Dashboard ***/
 	$subroutes->add('dashboard', 'Dashboard::index');

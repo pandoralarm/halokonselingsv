@@ -14,7 +14,7 @@ class PengajuanModel extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nama', 'nim', 'prodi', 'namaBeasiswa', 'deadline', 'cv', 'tanggalPengajuan', 'status'];
+    protected $allowedFields = ['nama', 'nim', 'prodi', 'semester', 'ip1', 'ip2', 'ip3', 'ip4', 'ip5', 'ip6', 'ipk', 'namaBeasiswa', 'deadline', 'cv', 'tanggalPengajuan', 'status','dosenPJ'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

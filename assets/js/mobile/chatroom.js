@@ -14,6 +14,7 @@ var chatroom = new Vue({
     userid: this.$cookies.get('id'),
     messages: [],
     fileModel: null,
+    attachment: null,
     sessiondetail: [],
     dosensearch: {},
     dosenquery: '',
@@ -28,7 +29,6 @@ var chatroom = new Vue({
     }
   },
   created() {
-
   },  
   mounted() {
     /* SCOPE CONTROLS */
@@ -191,7 +191,7 @@ var chatroom = new Vue({
       }
 
       $('#sendmessage').val('=== SESI DITUTUP ===');
-      this.send();
+      this.send('text');
       var data = {
         datakey : this.ThreadKey,
         datamasalah : {arrayMasalah},
@@ -256,23 +256,31 @@ var chatroom = new Vue({
 
       console.log('Checking messages...');
     },
-    send() {
+    send(type) {
       var request = {
         key: this.ThreadKey,
+        messagetype: type,
         message: $('#sendmessage').val(),
       };
+
+      console.log(request);
 
       // POST request using axios with set headers
       axios.post(this.basepath+"/konseling/chatroom/sendMessage", request)
         .then(response => {
           this.info = response.data;
           console.log(response.data);
-          
+        })
+        .catch(() => {
+          this.alertNow('Gagal!', 'Jaringan error! ')
+          nav.loading(false);
         })
         .finally(() => {
           $('#sendmessage').val('');
           setTimeout(() => {
             this.checkMessages();
+            console.log(this.messages);
+            nav.loading(false);
           }, 500);
         });
     },
@@ -285,10 +293,43 @@ var chatroom = new Vue({
     },
     sendMessage(msg) {
       if (!$.trim($("#sendmessage").val())== ""){
+        nav.loading(true);
         key = this.ThreadKey;
         this.subscribe(key);
-        this.send();
+        this.send('text');
         this.conn.send(JSON.stringify({command: "message", message: msg}));
+      }
+    },
+    sendImage(url) {
+      if (this.fileModel != null) {
+        nav.loading(true);
+
+        var bodyFormData = new FormData();
+        var imageFile = $('#imageAttachment');
+        bodyFormData.append('key', this.ThreadKey);
+        bodyFormData.append('attachment', imageFile[0].files[0]);
+        axios.post(this.basepath+"/konseling/chatroom/mediaupload", 
+                    bodyFormData,
+                    {headers: {'content-type': 'multipart/form-data'}})
+              .catch(error => {
+                this.alertNow('Gagal!', error);
+                console.log(error);
+                this.fileModel = null;
+              })
+              .then(response => {
+                $('#sendmessage').val(this.basepath+'/uploads/'+this.ThreadKey+'/'+response.data.attachmentpath);
+                console.log('SEND THIS: '+$('#sendmessage').val());
+                this.alertNow('Berhasil!', 'Gambar berhasil dikirim.');
+                key = this.ThreadKey;
+                this.subscribe(key);
+                this.send('image');
+                this.conn.send(JSON.stringify({command: "message", message: url}));
+              })
+              .finally(() => {
+                this.fileModel = null;
+              });
+
+        
       }
     },
 
@@ -322,6 +363,7 @@ var chatroom = new Vue({
 
             reader.onload = function (e) {
                 $('#previewTarget').attr('src', e.target.result);
+                this.attachment = e.target.result;
             }
 
             reader.readAsDataURL(input.files[0]);

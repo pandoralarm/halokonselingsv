@@ -18,6 +18,11 @@ class Messages extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 			],
+			'MessageType'      => [
+				'type'           => 'ENUM',
+				'constraint'     => ['text', 'image', 'audio'],
+				'default'        => 'text',
+			],
 			'Message'      => [
 				'type'           => 'TEXT',
 			],

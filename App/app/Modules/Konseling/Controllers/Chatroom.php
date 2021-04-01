@@ -109,6 +109,7 @@ class Chatroom extends Controller
           'id' => $message->MessageID,
           'sender' => $message->SenderID,
           'name' => $nama,
+          'messagetype' => $message->MessageType,
           'message' => $message->Message,
           'timestamp' => $Time,
         ];
@@ -263,12 +264,14 @@ class Chatroom extends Controller
         $Sender = $this->session->get('nip');
       }
 
+      $MessageType = $ReceivedData['messagetype'];
       $Message = $ReceivedData['message'];
       $sessionUniqueKey = $ReceivedData['key'];
 
       $data = [
         'MessageID' => '',
         'SenderID' => $Sender,
+        'MessageType' => $MessageType,
         'Message' => $Message,
         'ThreadKey' => $sessionUniqueKey,
         'Timestamp' => date('Y-m-d H:i:s'),
@@ -333,6 +336,22 @@ class Chatroom extends Controller
 
       return json_encode($response);
     
+    }
+
+    public function mediaupload(){
+      $file = $this->request->getFile('attachment');
+      $ext = array_pop(explode('.', $file->getClientName()));
+      $newName = $this->session->get('user').'_'.date("YmdHis").'.'.$ext;
+      $sessionUniqueKey = $this->request->getPost('key');
+      
+
+      $file->move('./uploads/'.$sessionUniqueKey.'/', $newName);
+      $filePath = './uploads/'.$sessionUniqueKey.'/'.$newName;
+
+      $data = [
+          'attachmentpath' => $newName,
+      ];
+      return json_encode($data);
     }
 
 

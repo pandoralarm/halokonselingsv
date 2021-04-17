@@ -7,7 +7,7 @@
               $profiltarget = "";
               if ($role == "ADMIN") {
                 $KonselingTarget = "changeSubmenu('menuKonselor')";
-              } elseif ($role == 'MAHASISWA' || 'KONSELOR' || 'SEKPRODI') {
+              } elseif ($role == 'MAHASISWA' || 'KONSELOR' || 'SEKPRODI' || 'OTHER') {
                 $KonselingTarget = "checkThread()";
               } else {
                 $KonselingTarget = "alertNow('Error : ', 'Pastikan kamu seorang mahasiswa ya!')";

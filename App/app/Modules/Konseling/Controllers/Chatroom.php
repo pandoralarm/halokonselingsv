@@ -105,6 +105,11 @@ class Chatroom extends Controller
         }
         $Time = date("H:i", strtotime( $message->Timestamp)); 
 
+        $db     = \Config\Database::connect();
+        $query  = 'SELECT COUNT(DISTINCT(KonselorNIP)) as Participants FROM `chats` WHERE ThreadKey = "'.$key.'"';
+        $result = $db->query($query);
+        $result = $result->getRow();
+
         $response[] = [
           'id' => $message->MessageID,
           'sender' => $message->SenderID,
@@ -112,6 +117,7 @@ class Chatroom extends Controller
           'messagetype' => $message->MessageType,
           'message' => $message->Message,
           'timestamp' => $Time,
+          'participants' => $result->Participants + 1,
         ];
       }
       return json_encode($response);
@@ -183,6 +189,22 @@ class Chatroom extends Controller
       ];
 
       return json_encode($response);
+    }
+
+    private function removeDirectory($dir) {
+
+      if (is_dir($dir)) { 
+        $objects = scandir($dir);
+        foreach ($objects as $object) { 
+          if ($object != "." && $object != "..") { 
+            if (is_dir($dir. DIRECTORY_SEPARATOR .$object) && !is_link($dir."/".$object))
+              rrmdir($dir. DIRECTORY_SEPARATOR .$object);
+            else
+              unlink($dir. DIRECTORY_SEPARATOR .$object); 
+          } 
+        }
+        rmdir($dir); 
+      } 
     }
 
     public function findKonselor($query)
@@ -325,10 +347,12 @@ class Chatroom extends Controller
         'Masalah' => $totalmasalah,
       ];
 
-
+      $this->messagehandler->where('ThreadKey', $sessionUniqueKey)->where('MessageType', 'image')->set(['Message' => 'removed or session closed'])->update();
+      $this->messagehandler->where('ThreadKey', $sessionUniqueKey)->where('MessageType', 'audio')->set(['Message' => 'removed or session closed'])->update();
       $this->laporan->insert($data);
       $this->chats->where('ThreadKey', $sessionUniqueKey)->set(['ThreadStatus' => 'CLOSED', 'Closed_at' => date('Y-m-d H:i:s')])->update();
     
+      $this->removeDirectory('./uploads/'.$sessionUniqueKey);
       $response = [
         'status' => 'Berhasil!',
         'message' => 'Sesi berhasil ditutup dan laporan telah disimpan',

@@ -27,7 +27,7 @@
         </transition>
       <?php } else { ?>     
         <transition name="topright">
-          <div v-if="current_topright == 'default'" class="topicon-right"><i class="fa fa-user fa-lg"></i></div>
+          <a v-if="current_topright == 'default'" href="<?= base_url('account/signin') ?>" class="topicon-right"><i class="fa fa-user fa-lg"></i></a>
         </transition>   
       <transition name="topright">
           <div v-if="current_topright == 'search'" class="topicon-right"><i class="fa fa-search fa-lg"></i></div>

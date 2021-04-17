@@ -5,6 +5,7 @@ namespace App\Modules\Perwa\Controllers;
 use App\Modules\Perwa\Models\PengajuanModel;
 use CodeIgniter\Controller;
 
+
 class Pengajuan extends Controller
 {
 
@@ -17,7 +18,6 @@ class Pengajuan extends Controller
         $this->session = \Config\Services::session();
         $this->pengajuan = new PengajuanModel();
         $this->keys = new \Config\Api();
-        $this->session = \Config\Services::session();
     }
 
     public function index()
@@ -92,6 +92,11 @@ class Pengajuan extends Controller
         $result = $this->pengajuan->where("nim = '" . $nim . "' AND status = 'Disetujui'")->findAll();
         return json_encode($result);
     }
+    public function showDitunda($nim)
+    {
+        $result = $this->pengajuan->where("nim = '" . $nim . "' AND status = 'Ditunda'")->findAll();
+        return json_encode($result);
+    }
     public function showDitolak($nim)
     {
         $result = $this->pengajuan->where("nim = '" . $nim . "' AND status = 'Ditolak'")->findAll();
@@ -108,14 +113,16 @@ class Pengajuan extends Controller
 
     public function getCV($idPengajuan){
         $file = $this->pengajuan->where('idPengajuan', $idPengajuan)->findColumn('cv');
+        $nim = $this->pengajuan->where('idPengajuan', $idPengajuan)->findColumn('nim');
         $path = "./uploads/cv/".$file[0];
-        return $this->response->download($path, null);
+        return $this->response->download($path, null)->setFileName('CV_'.$nim[0].'.pdf');
     }
 
     public function getRekomendasi($idPengajuan){
         $file = $this->pengajuan->where('idPengajuan', $idPengajuan)->findColumn('rekomendasi');
+        $nim = $this->pengajuan->where('idPengajuan', $idPengajuan)->findColumn('nim');
         $path = "./uploads/rekomendasi/".$file[0];
-        return $this->response->download($path, null);
+        return $this->response->download($path, null)->setFileName('Rekomendasi_'.$nim[0].'.pdf');
     }
 
 
@@ -124,14 +131,19 @@ class Pengajuan extends Controller
         $result = $this->pengajuan->where("status = 'Diproses'")->findAll();
         return json_encode($result);
     }
+    public function showDitundaSekprodi()
+    {
+        $result = $this->pengajuan->where("status = 'Ditunda'")->findAll();
+        return json_encode($result);
+    }
     public function showDiselesaikanSekprodi()
     {
-        $result = $this->pengajuan->where("status != 'Diproses'")->findAll();
+        $result = $this->pengajuan->where("status = 'Ditolak' || status = 'Disetujui'")->findAll();
         return json_encode($result);
     }
     public function showPengajuanMhs($idpengajuan)
     {
-        $result = $this->pengajuan->where("idpengajuan = $idpengajuan")->findAll();
+        $result = $this->pengajuan->where("idPengajuan = $idpengajuan")->findAll();
         return json_encode($result);
     }
     public function getNilai(){
@@ -161,21 +173,5 @@ class Pengajuan extends Controller
         curl_close($curl);
 
         return json_decode($response);
-
-        // foreach($response as $ip) {
-        //     echo 'Semester : '.$ip->SemesterMahasiswa;
-        //     echo '<br />';
-        //     echo 'SKS Semester : '.$ip->SksSemester;
-        //     echo '<br />';
-        //     echo 'SKS Kumulatif : '.$ip->SksKumulatif;
-        //     echo '<br />';
-        //     echo 'IP Semester : '.$ip->IP;
-        //     echo '<br />';
-        //     echo 'IP Kumulatif : '.$ip->IPK;
-        //     echo '<br />';
-        //     echo 'Kelanjutan Studi : '.$ip->KelanjutanStudi;
-        //     echo '<br />';
-        //     echo '<br />';
-        // }
     }
 }

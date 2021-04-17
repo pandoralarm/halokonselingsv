@@ -26,13 +26,13 @@
               <p class="text-diproses">Rekomendasi diproses</p>
               <button v-if="current_window != 'prosesSekprod'" class="tampilkan-diproses" v-on:click="changeWindow('prosesSekprod')" style="margin-bottom: 5px;">Tampilkan</button>
             </div>
-            <div class="col-4 d-flex flex-column align-items-center justify-content-center diproses">
+            <div class="col-4 d-flex flex-column align-items-center justify-content-center ditunda">
               <div class="d-flex align-items-center justify-content-around">
-                <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDiproses.svg'); ?>" style="max-height: 50px;" alt="">
-                <div class="jumlah-diproses">{{ pengajuanDiproses.length }}</div>
+                <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDitunda.svg'); ?>" style="max-height: 53px;" alt="">
+                <div class="jumlah-ditunda">{{ pengajuanDitunda.length }}</div>
               </div>
-              <p class="text-diproses">Rekomendasi diproses</p>
-              <button v-if="current_window != 'prosesSekprod'" class="tampilkan-diproses" v-on:click="changeWindow('prosesSekprod')" style="margin-bottom: 5px;">Tampilkan</button>
+              <p class="text-ditunda">Rekomendasi Ditunda</p>
+              <button v-if="current_window != 'tundaSekprod'" class="tampilkan-ditunda" v-on:click="changeWindow('tundaSekprod')" style="margin-bottom: 5px;">Tampilkan</button>
             </div>
             <div class="col-4 d-flex flex-column align-items-center justify-content-center diterima">
               <div class="d-flex align-items-center justify-content-around">
@@ -69,6 +69,31 @@
 
           </div>
 
+          <div v-if="current_window == 'tundaSekprod'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+
+            <div class="kartu ditunda d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title">REKOMENDASI DIPROSES</div>
+              <div class="garis"></div>
+              <table style="width:100%" class="ditundasekprod">
+                <tr>
+                  <th>Tanggal Pengajuan</th>
+                  <th>Deadline Beasiswa</th>
+                  <th>Nama Mahasiswa</th>
+                  <th>NIM</th>
+                  <th></th>
+                </tr>
+                <tr v-for="row in pengajuanDitunda">
+                  <td>{{ row.tanggalPengajuan }}</td>
+                  <td>{{ row.deadline }}</td>
+                  <td>{{ row.nama }}</td>
+                  <td>{{ row.nim }}</td>
+                  <td><button v-on:click="detailPengajuanDiproses(row.idPengajuan)" class="button-ditundasekprod">Detail</button></td>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+
           <div v-if="current_window == 'selesaikanSekprod'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
 
             <div class="kartu diterima d-flex flex-column align-items-center justify-content-center mt-4">
@@ -95,7 +120,7 @@
           </div>
 
 
-          <div v-if="current_window == 'detailPengajuanDiproses' || current_window == 'detailPengajuanDiprosesDisetujui' || current_window == 'detailPengajuanDiprosesDitolak'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+          <div v-if="current_window == 'detailPengajuanDiproses'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
 
             <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title">Detail Pengajuan</div>
@@ -108,6 +133,10 @@
                 <tr>
                   <td>NIM</td>
                   <td>{{row.nim}}</td>
+                </tr>
+                <tr>
+                  <td>Semester</td>
+                  <td>{{row.semester}}</td>
                 </tr>
                 <tr>
                   <td>Program Studi</td>
@@ -149,15 +178,20 @@
                   <td><button class="button-diselesaikansekprod" v-on:click="getCV(row.idPengajuan)" >Unduh</button></td>
                 </tr>
               </table>
-              <div  v-if="current_window != 'detailPengajuanDiprosesDisetujui' && current_window != 'detailPengajuanDiprosesDitolak'" class="d-flex align-items-center justify-content-end w-100 mt-4">
+              <div class="d-flex align-items-center justify-content-end w-100 mt-4">
                 <button class="back" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiprosesDitolak')">Tolak Permohonan</button>
                 <button class="button-diselesaikansekprod" v-on:click="changeWindow('detailPengajuanDiprosesDisetujui')">Setujui Permohonan</button>
               </div>
-              
-              <div class="w-100" v-if="current_window == 'detailPengajuanDiprosesDisetujui'">
+            </div>
 
-                <div class="title mt-2">Form Persetujuan Rekomendasi</div>
-                <div class="garis"></div>
+          </div>
+
+          <div v-if="current_window == 'detailPengajuanDiprosesDisetujui'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+
+            <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title mt-2">Form Persetujuan Rekomendasi</div>
+              <div class="garis"></div>
+              <div class="row">
                 <form class="pengajuan d-flex flex-column w-100" method="POST">
                   <label for="kemampuanAkademik" style="color:#3ca7a7;">Kemampuan Akademik</label>
                   <div class="w-100 d-flex align-items-center justify-content-between">
@@ -343,27 +377,68 @@
                       Kurang kesempatan<br>untuk memperhatikan
                     </div>
                   </div>
-                  <button class="pengajuan-submit" style="width:7em; align-self:flex-end; margin-top:2em;">Submit</button>
                 </form>
-
-              </div>
-
-              <div class="w-100" v-if="current_window == 'detailPengajuanDiprosesDitolak'">
-
-                <div class="title mt-2">Form Penolakan Rekomendasi</div>
-                <div class="garis"></div>
-                <form class="pengajuan d-flex flex-column w-100" method="POST">
-                  <label for="alasan">Alasan Penolakan</label>
-                  <textarea id="alasan" name="alasan" rows="4" cols="50"></textarea>
-                  <button class="pengajuan-submit" style="width:7em; align-self:flex-end; margin-top:2em;">Submit</button>
-                </form>
-
-              </div>
-
+                <div class="d-flex align-items-center justify-content-end w-100 mt-4">
+                  <button class="back" style="margin:0 1em 0 0;"
+                    v-on:click="changeWindow('detailPengajuanDiproses')">Kembali</button>
+                  <button v-on:click="addPenilaian()" class="button-diselesaikansekprod">Submit</button>
+                </div>
+              </div>              
             </div>
 
           </div>
 
+          <div v-if="current_window == 'verifikasiRekomendasi'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+
+            <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title mt-2">Verifikasi Permohonan Rekomendasi</div>
+              <div class="garis"></div>
+              <div class="row">
+                <div class="col d-flex flex-column align-items-center justify-content-centers" style="padding:1em;">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_download.svg'); ?>" style="width:50px;">
+                  <small class="verifikasi mt-2" v-for="row in pengajuanMhs">
+                    Rekomendasi_{{row.nim}}.pdf
+                  </small>
+                  <button v-on:click="downloadRekomendasi()" class="button-verifikasi mt-3">Unduh</button>
+                </div>
+                <div class="col d-flex flex-column align-items-center justify-content-center" style="padding:1em;">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_upload.svg'); ?>" style="width:50px;">
+                  <small class="verifikasi mt-2" id="namaFile">
+                    Belum ada file dipilih
+                  </small>
+                  <input type="file" id="selectedFile" style="display: none;" onchange="getFileName()" />
+                  <input type="button" class="upRekom mt-3" value="Upload"
+                    onclick="document.getElementById('selectedFile').click();" />
+                </div>
+              </div>
+              <small class="verifikasi">
+                1. Silahkan unduh surat rekomendasi untuk di tanda tangani menggunakan DigiSign IPB
+              </small>
+              <br>
+              <small class="verifikasi">
+                2. Upload surat rekomendasi yang telah di tanda tangani menggunakan DigiSign IPB
+              </small>
+              <div class="d-flex align-items-center justify-content-end w-100 mt-4">
+                <button class="back" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiproses')">Kembali</button>
+                <button v-on:click="addRekomendasi()" class="button-diselesaikansekprod">Submit</button>
+              </div>              
+            </div>
+
+          </div>
+          
+          <div v-if="current_window == 'detailPengajuanDiprosesDitolak'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+
+            <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title mt-2">Form Penolakan Rekomendasi</div>
+              <div class="garis"></div>
+              <form class="pengajuan d-flex flex-column w-100" method="POST">
+                <label for="alasan">Alasan Penolakan</label>
+                <textarea id="alasan" name="alasan" rows="4" cols="50"></textarea>
+                <button class="pengajuan-submit" style="width:7em; align-self:flex-end; margin-top:2em;">Submit</button>
+              </form>
+            </div>
+
+          </div>
         </div>
 
       </div>

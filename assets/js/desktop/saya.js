@@ -4,6 +4,7 @@ var saya = new Vue({
     basepath: this.$cookies.get('basepath'),
     dosensearch: [],
     pengajuanDiproses: [],
+    pengajuanDitunda: [],
     pengajuanDisetujui: [],
     pengajuanDitolak: [],
     nim: this.$cookies.get('id'),
@@ -33,6 +34,12 @@ var saya = new Vue({
       axios.post(this.basepath + "/perwa/pengajuan/showDiproses/" + saya.nim)
         .then(response => {
           this.pengajuanDiproses = response.data;
+        })
+        .finally(() => {
+        });
+      axios.post(this.basepath + "/perwa/pengajuan/showDitunda/" + saya.nim)
+        .then(response => {
+          this.pengajuanDitunda = response.data;
         })
         .finally(() => {
         });

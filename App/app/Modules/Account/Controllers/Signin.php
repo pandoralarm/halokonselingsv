@@ -208,22 +208,4 @@ class Signin extends Auth
     return redirect()->to('/account/signin');
   }
 
-  public function testEnv($Credentials)
-  {
-    if ($Credentials->Username == 'admin' && $Credentials->Password == 'admin') {
-      $user_session = [
-        'user'    => 'adminDummy',
-        'nama'    => 'adminDummy, Ph.D',
-        'nip'     => 'NIP000000',
-        'prodi'   => '',
-        'role'    => 'ADMIN',
-        'logged'  => TRUE
-      ];
-
-      $this->session->set($user_session);
-      return redirect()->to('/account/signin');
-    } else {
-      return 0;
-    }
-  }
 }

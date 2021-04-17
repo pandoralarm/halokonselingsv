@@ -73,14 +73,15 @@ var home = new Vue({
         .then(response => (this.hasRequest = response.data));
       // POST request using axios with set headers
       axios.get(this.basepath+"/konseling/chatroom/getThreadKey")
-        .then(response => (store.commit('swapKey', response.data.ThreadKey)))
+        .then(response => {
+          store.commit('swapKey', response.data.ThreadKey);
+      })
         .catch(() => (this.alertNow('Halo!', 'Koneksi kamu sedang bermasalah, coba lagi ya!')))
         .finally(() => {
           if (this.ThreadKey != 'default') {
             this.loading(false);
             store.commit('swapKey', this.ThreadKey);
             chatroom.checkMessages();
-            this.changeWindow('chatroom');
           } else {
             if (this.hasRequest){
               this.loading(false);

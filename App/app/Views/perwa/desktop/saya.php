@@ -20,7 +20,7 @@
           </div>
 
           <div class="row mt-4 w-100">
-            <div class="col-4 d-flex flex-column align-items-center justify-content-center diproses">
+            <div class="col-3 d-flex flex-column align-items-center justify-content-center diproses">
               <div class="d-flex align-items-center justify-content-around">
                 <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDiproses.svg'); ?>" style="max-height: 50px;" alt="">
                 <div class="jumlah-diproses">{{ pengajuanDiproses.length }}</div>
@@ -28,7 +28,15 @@
               <p class="text-diproses">Rekomendasi diproses</p>
               <button v-if="current_window != 'proses'" class="tampilkan-diproses" v-on:click="changeWindow('proses')">Tampilkan</button>
             </div>
-            <div class="col-4 d-flex flex-column align-items-center justify-content-center diterima">
+            <div class="col-3 d-flex flex-column align-items-center justify-content-center ditunda">
+              <div class="d-flex align-items-center justify-content-around">
+                <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDitunda.svg'); ?>" style="max-height: 50px;" alt="">
+                <div class="jumlah-ditunda">{{ pengajuanDitunda.length }}</div>
+              </div>
+              <p class="text-ditunda">Rekomendasi ditunda</p>
+              <button v-if="current_window != 'tunda'" class="tampilkan-ditunda" v-on:click="changeWindow('tunda')">Tampilkan</button>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center justify-content-center diterima">
               <div class="d-flex align-items-center justify-content-around">
                 <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDiterima.svg'); ?>" style="max-height: 70px;" alt="">
                 <div class="jumlah-diterima">{{ pengajuanDisetujui.length }}</div>
@@ -36,7 +44,7 @@
               <p class="text-diterima">Rekomendasi diterima</p>
               <button v-if="current_window != 'terima'" class="tampilkan-diterima" v-on:click="changeWindow('terima')">Tampilkan</button>
             </div>
-            <div class="col-4 d-flex flex-column align-items-center justify-content-center ditolak">
+            <div class="col-3 d-flex flex-column align-items-center justify-content-center ditolak">
               <div class="d-flex align-items-center justify-content-around">
                 <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_jumlahDitolak.svg'); ?>" style="max-height: 40px;" alt="">
                 <div class="jumlah-ditolak">{{ pengajuanDitolak.length }}</div>
@@ -74,6 +82,43 @@
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
                   <p class="label-proses">Dosen Penganggung Jawab</p>
                   <p class="value-proses">{{ row.dosenPJ}}</p>
+                </div>
+              </div>
+              <div class="w-100 d-flex justify-content-end">
+                <button class="back" v-on:click="deletePengajuan(row.idPengajuan)">Batalkan Pengajuan</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="w-100" v-if="current_window == 'tunda'">
+
+            <div v-for="row in pengajuanDitunda" class="w-100 kartu ditunda d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title">{{ row.namaBeasiswa }}</div>
+              <div class="garis"></div>
+              <div class="row w-100">
+                <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_pengajuan_diproses.svg'); ?>" style="max-width: 50px; margin:2em 0;" alt="">
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_kalender_proses.svg'); ?>" style="max-width: 37px; margin:2em 0;" alt="">
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_dosen_proses.svg'); ?>" style="max-width: 30px; margin:2em 0;" alt="">
+                </div>
+              </div>
+              <div class="row w-100">
+                <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                  <p class="label-ditunda">Tanggal Pengajuan</p>
+                  <p class="value-ditunda">{{ row.tanggalPengajuan }}</p>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                  <p class="label-ditunda">Deadline Beasiswa</p>
+                  <p class="value-ditunda">{{ row.deadline }}</p>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                  <p class="label-ditunda">Dosen Penganggung Jawab</p>
+                  <p class="value-ditunda">{{ row.dosenPJ}}</p>
                 </div>
               </div>
               <div class="w-100 d-flex justify-content-end">

@@ -38,7 +38,7 @@
 
     <div class="bg-full">
       
-      <div class="signin-banner"><div class="text-center text-white power"><small>Poweered By:</small></div></div>
+      <div class="signin-banner"><div class="text-center text-white power"><small>Powered By:</small></div></div>
       <div class="signin-billboard">
         <div class="title">Masuk ke HaloKonselingSV</div>
       </div>

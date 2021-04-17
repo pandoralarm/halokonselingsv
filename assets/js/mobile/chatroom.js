@@ -8,14 +8,17 @@ var chatroom = new Vue({
     details: false,
     info: '',
     confirm: false,
+    imgfocus: false,
     username: this.$cookies.get('username'),
     basepath: this.$cookies.get('basepath'),
     hostname: this.$cookies.get('hostname'),
     userid: this.$cookies.get('id'),
+    messageinput: '',
     messages: [],
+    audios: [],
     fileModel: null,
     attachment: null,
-    sessiondetail: [],
+    sessiondetail: null,
     dosensearch: {},
     dosenquery: '',
     konselorchecked: [],
@@ -76,6 +79,13 @@ var chatroom = new Vue({
         return false;
       }
     },
+    enablerecord: function () {
+      if (this.messageinput != ''){
+        return true;
+      } else {
+        return false;
+      }
+    },
     buttonCheck: function () {
       return (this.masalahchecked.length == 0) ? 'disabledbutton' : '';
     },
@@ -84,6 +94,18 @@ var chatroom = new Vue({
     ThreadKey: function () {
       return store.getters.getThreadKey;
     },
+
+    /* ROOM TITLE */
+    currentdosen: function () {
+      if (this.sessiondetail != null){
+        arr = this.sessiondetail.daftarkonselor[0].split(",");
+        return arr[0];
+      } else {
+        return "Nama Dosen";
+      }
+      
+    }
+
   },
   methods: {
 
@@ -189,7 +211,7 @@ var chatroom = new Vue({
         masalah['kategori'] = this.masalahchecked[i];
         arrayMasalah.push(masalah);
       }
-
+      
       $('#sendmessage').val('=== SESI DITUTUP ===');
       this.send('text');
       var data = {
@@ -231,6 +253,16 @@ var chatroom = new Vue({
 
     /* THIS PART CONTAINS CHATROOM AND WEBSOCKET SPECIFIC METHODS */
     checkMessages() {
+      // HARD ERROR CHECKING
+      setTimeout(() => {
+        if (this.ThreadKey == ' ' || this.ThreadKey == null){
+          console.log('reloading');
+          location.reload();
+        } else {
+          console.log('room found');
+        }
+      }, 5000);
+
       // POST request using axios with set headers
       key = this.ThreadKey;
       console.log(key);
@@ -252,6 +284,10 @@ var chatroom = new Vue({
             var container = this.$el.querySelector("#messagebody");
             container.scrollTop = container.scrollHeight;
           }, 500);
+
+          if (this.sessiondetail == null){
+            this.openDetail();
+          }
         });
 
       console.log('Checking messages...');
@@ -300,14 +336,20 @@ var chatroom = new Vue({
         this.conn.send(JSON.stringify({command: "message", message: msg}));
       }
     },
-    sendImage(url) {
+    sendMedia(url, type) {
       if (this.fileModel != null) {
         nav.loading(true);
 
         var bodyFormData = new FormData();
-        var imageFile = $('#imageAttachment');
+        if (type == 'image'){
+          var mediaFile = $('#imageAttachment');
+        } else if (type == 'audio'){
+          var mediaFile = $('#audioAttachment');
+        }
+
+        console.log(mediaFile);
         bodyFormData.append('key', this.ThreadKey);
-        bodyFormData.append('attachment', imageFile[0].files[0]);
+        bodyFormData.append('attachment', mediaFile[0].files[0]);
         axios.post(this.basepath+"/konseling/chatroom/mediaupload", 
                     bodyFormData,
                     {headers: {'content-type': 'multipart/form-data'}})
@@ -319,10 +361,10 @@ var chatroom = new Vue({
               .then(response => {
                 $('#sendmessage').val(this.basepath+'/uploads/'+this.ThreadKey+'/'+response.data.attachmentpath);
                 console.log('SEND THIS: '+$('#sendmessage').val());
-                this.alertNow('Berhasil!', 'Gambar berhasil dikirim.');
+                this.alertNow('Berhasil!', 'Media berhasil dikirim.');
                 key = this.ThreadKey;
                 this.subscribe(key);
-                this.send('image');
+                this.send(type);
                 this.conn.send(JSON.stringify({command: "message", message: url}));
               })
               .finally(() => {
@@ -331,6 +373,15 @@ var chatroom = new Vue({
 
         
       }
+    },
+    imagefocus(url){
+      this.loading(true);
+      console.log(url);
+      this.imgfocus = true;
+      setTimeout(() => {
+        $('#img-object').attr('src', url);
+        this.loading(false);
+      }, 150);
     },
 
     /* CONFIRMATION DIALOG */
@@ -358,6 +409,7 @@ var chatroom = new Vue({
       if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
         //TO DO
         if (input.files && input.files[0]) {
+            console.log(input);
             this.fileModel = 'Enabled';
             var reader = new FileReader();
 
@@ -367,6 +419,21 @@ var chatroom = new Vue({
             }
 
             reader.readAsDataURL(input.files[0]);
+        };
+      }else{
+        home.alertNow('Halo!', 'Pastikan kamu hanya mengupload file gambar ya!');
+      };
+    },
+    audioPreview(input){
+      var fileName = $('#audioAttachment').val();
+      var idxDot = fileName.lastIndexOf(".") + 1;
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      if (extFile=="mp3" || extFile=="ogg" || extFile=="3gpp" || extFile=="wav" || extFile=="m4a"){
+        //TO DO
+        if (input.files && input.files[0]) {
+          console.log(input);
+          this.fileModel = 'EnabledAudio';
+          this.sendMedia(fileName, 'audio');
         };
       }else{
         home.alertNow('Halo!', 'Pastikan kamu hanya mengupload file gambar ya!');

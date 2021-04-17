@@ -81,7 +81,7 @@ ul {
   height: 84%;
 }
 
-.input>#imageAttachment {
+.input>.hide {
   display: none;
 }
 
@@ -954,8 +954,46 @@ ul {
   font-weight: bold;
 }
 
+.img-focus{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+
+  z-index: 29000;
+}
+
+.img-focus .btn-dismiss{
+  padding: 5%;
+  position: absolute;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  right: 2vw; top: 2vw;
+  z-index: 29001;
+}
+
+.img-focus img{
+  position: relative;
+
+  object-fit: contain;
+
+  height: 100%;
+  width: 100%;
+  z-index: 29000;
+  transition: all .4s ease;
+}
+
+img#img-object:active{
+  pointer-events: none;
+  transform: scale(1.3);
+  transform-origin: 50% 50%;
+}
 
 /* VUE TRANSITIONS */
+
+.fa {
+  transition: all .2s ease;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: all .2s;
@@ -972,6 +1010,14 @@ ul {
 .open-enter, .open-leave-to {
   opacity: 0;
 }
+
+.flip-enter-active, .flip-leave-active {
+  transition: all .5s ease;
+}
+.flip-enter, .flip-leave-to {
+  transform: scale(0);
+}
+
 
 .topright-enter-active, .topright-leave-active {
   transition: all .4s;
@@ -1581,27 +1627,31 @@ select.form-control:focus {
     overflow-y: scroll;
   }
 
-  audio::-webkit-media-controls-panel {
-    border-radius: 0;
-  border: none;
-  background-color: var(--secondaccent);
-  color: white;
+  /* AUDIO PLAYER STYLES */
+
+  .sender audio{
+    filter: invert(100%);
   }
 
-  audio::-webkit-media-controls-play-button,
-  audio::-webkit-media-controls-mute-button,
-  audio::-webkit-media-controls-timeline-container, 
-  audio::-webkit-media-controls-timeline, 
-  audio::-webkit-media-controls-current-time-display,
-  audio::-webkit-media-controls-time-remaining-display,
-  audio::-webkit-media-controls-volume-slider-container,
-  audio::-webkit-media-controls-volume-slider{
-    filter: invert(100%);
-    border: none;
-    color: white;
-    display:none;
-    
+  audio:focus {
+    outline: none;
   }
+
+  audio::-webkit-media-controls-panel {
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+
+  audio::-webkit-media-controls-current-time-display,
+  audio::-webkit-media-controls-time-remaining-display{
+    display: none;
+  }
+
+  audio::-webkit-media-controls-enclosure{
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+  }
+
 
   .window .input {
     position: sticky;
@@ -1626,7 +1676,7 @@ select.form-control:focus {
     border-radius: 50%;
 
     position: absolute;
-    top: 0%;
+    bottom: 12.5%;
     left: 85%;
 
     margin-top: 2%;
@@ -1736,6 +1786,8 @@ select.form-control:focus {
   .messages img {
     position: relative;
     height: 20vh;
+    border-radius: 10px;
+    border: solid 1px rgba(0, 0, 0, 0.2);
   }
 
   .messages .sender{
@@ -1823,9 +1875,6 @@ select.form-control:focus {
 
 @media (min-width: 640px) {
 
-
-
-  
   .admin-tools-menu .text{
     color: var(--secondaccent);
     font-size: 95%;
@@ -1838,7 +1887,6 @@ select.form-control:focus {
     word-wrap: break-word;
     height: 100%;
   }
-
 
 }
 

@@ -24,13 +24,22 @@ $routes->group('perwa', ['namespace' => 'App\Modules\Perwa\Controllers'], functi
 	$subroutes->add('pengajuan/commit', 'Pengajuan::commit');
 	$subroutes->add('pengajuan/showDiproses/(:alphanum)', 'Pengajuan::showDiproses/$1');
 	$subroutes->add('pengajuan/showDisetujui/(:alphanum)', 'Pengajuan::showDisetujui/$1');
+	$subroutes->add('pengajuan/showDitunda/(:alphanum)', 'Pengajuan::showDitunda/$1');
 	$subroutes->add('pengajuan/showDitolak/(:alphanum)', 'Pengajuan::showDitolak/$1');
 	$subroutes->add('pengajuan/deletePengajuan/(:alphanum)', 'Pengajuan::deletePengajuan/$1');
 	$subroutes->add('pengajuan/getCV/(:alphanum)', 'Pengajuan::getCV/$1');
 	$subroutes->add('pengajuan/getRekomendasi/(:alphanum)', 'Pengajuan::getRekomendasi/$1');
 	$subroutes->add('pengajuan/showDiprosesSekprodi', 'Pengajuan::showDiprosesSekprodi');
+	$subroutes->add('pengajuan/showDitundaSekprodi', 'Pengajuan::showDitundaSekprodi');
 	$subroutes->add('pengajuan/showDiselesaikanSekprodi', 'Pengajuan::showDiselesaikanSekprodi');
 	$subroutes->add('pengajuan/showPengajuanMhs/(:alphanum)', 'Pengajuan::showPengajuanMhs/$1');
 	$subroutes->add('pengajuan/getNilai', 'Pengajuan::getNilai');
+
+	/*** Route for Penilaian ***/
+	$subroutes->add('penilaian', 'Penilaian::index');
+	$subroutes->add('penilaian/index', 'Penilaian::index');
+	$subroutes->add('penilaian/addPenilaian', 'Penilaian::addPenilaian');
+	$subroutes->add('penilaian/addRekomendasi', 'Penilaian::addRekomendasi');
+	$subroutes->add('penilaian/cetakRekomendasi/(:alphanum)', 'Penilaian::cetakRekomendasi/$1');
 
 });

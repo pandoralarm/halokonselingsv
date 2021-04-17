@@ -36,7 +36,7 @@
                                  
                             </div>
                         </form>
-                        <button class="pengajuan-submit" style="float:right;"  v-on:click="addPengajuan()">Submit</button>
+                        <button class="pengajuan-submit" style="margin-left:auto; margin-right:2em ; width:7em"  v-on:click="addPengajuan()">Submit</button>
                     </div>
                 </div>
 

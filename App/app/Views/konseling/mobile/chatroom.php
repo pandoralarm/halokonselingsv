@@ -11,8 +11,10 @@
           <?php } ?>
           
           <div v-on:click="openDetail();" class="text">
-            <div class="title">Ruang Konseling</div>
-            <div class="subtitle w-100"><small>Detail Sesi</small>  </div>
+            <div>
+              <div class="title"><small>Ruang Konseling</small></div>
+              <div class="subtitle w-100"><small>Detail Sesi</small></div>
+            </div>
           </div>
         </div>
 
@@ -33,52 +35,77 @@
 
           <template v-for="(message, index) in messages" :key="message.index">
             <div :id="'msg'+message.id" :class="{'sender' : (message.sender == userid), 'recipient' : (message.sender != userid)}">
-              <div class="name border-bottom pb-0"><small>{{ message.name }} : </small></div>
-              
-              <div v-if="message.messagetype == 'image'">
-                <p class="message"><img class="image" :src="message.message" alt=""></p>
+              <div id="nametag">
+                <div v-if="index == 0" class="name border-bottom pb-0 "><small>{{ message.name }} </small>: </div>
+                <div v-if="index != 0 && message.name != messages[index-1].name" class="name border-bottom pb-0 mb-3"><small>{{ message.name }} </small>: </div>
               </div>
 
-              <div v-else-if="message.messagetype == 'text'">
-                <p class="message" style="white-space: pre-line;">{{ message.message }}</p> 
+              <div v-if="message.messagetype == 'text'">
+                <p class="message mt-2" style="white-space: pre-line;">{{ message.message }}</p> 
               </div>
-              <div class="timestamp">{{ message.timestamp }}</div>
+                            
+              <div v-else-if="message.messagetype == 'image'">
+                <p class="message text-center" ><img  v-on:click="imagefocus(message.message)" class="image" :src="message.message" alt="" style="object-fit: cover; width: 65vw;"></p>
+              </div>
+
+              <div v-else-if="message.messagetype == 'audio'">
+              <script>
+                  console.log('{{message.index}}');
+                  var chatroom.audios['{{message.index}}'] = new Audio(message.message);
+              </script>
+                <audio class="text-white" controls :src="message.message" style="width: 65vw;" controlsList="nofullscreen nodownload noremoteplayback"></audio>
+              </div>
+
+              <div class="timestamp"><small>{{ message.timestamp }}</small></div>
             </div>
           </template>
 
-          <template>
-            <div class="sender">
-              <div class="name border-bottom pb-0"><small>Admin</small></div>
-
-                <audio class="text-white" controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
-              <div class="timestamp">15.15</div>
-            </div>
-          </template>
 
         </div>
 
         <!-- INPUT BAR -->
         <div class="input">
-          <textarea id="sendmessage" class="chat-text"></textarea>
+          <textarea v-model="messageinput" id="sendmessage" class="chat-text"></textarea>
           <label for=imageAttachment>
             <div class="btn-attach"><i class="fa fa-paperclip fa-lg"></i></div>
           </label>
-          <input onchange="chatroom.imagePreview(this)" id="imageAttachment" type="file" accept="image/*;capture=camera" />
-          <div v-on:click="sendMessage('NewMessage');" class="btn-send"><i class="fa fa-paper-plane fa-lg"></i></div>
-        </div>
+          <input onchange="chatroom.imagePreview(this)" class="hide" id="imageAttachment" type="file" accept="image/*;capture=camera" />
+          <input oninput="chatroom.audioPreview(this)" id="audioAttachment" class="hide" type="file" accept="audio/*" capture>
+          <transition name="flip">
+            <div v-if="enablerecord" v-on:click="sendMessage('NewMessage');" class="btn-send">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </div>
+          </transition>
+          <transition name="flip"> 
+            <label v-if="!enablerecord" for="audioAttachment" class="btn-send">
+              <i class="fa fa-microphone" aria-hidden="true"></i>
+            </label>
+          </transition>
+     </div>
 
         <transition name="slidedown">
           <template>
-            <div v-if="fileModel != null" class="input imagePreview">
+            <div v-if="fileModel == 'Enabled'" class="input imagePreview">
               <img id="previewTarget" src="#" alt="Image Upload Preview">
-              <div v-on:click="sendImage(fileModel);" class="btn-send"><i class="fa fa-paper-plane fa-lg"></i></div>
+              <div v-on:click="sendMedia(fileModel, 'image');" class="btn-send" style=""><i class="fa fa-paper-plane fa-lg"></i></div>
               <div v-on:click="fileModel = null" class="btn-dismiss"><i class="fa fa-times fa-lg"></i></div>
             </div>
           </template>
         </transition>
 
 
+      </div>
+    </template>
+  </transition>
+
+  <!-- FOCUS IMAGE CONTAINER -->
+  <transition name="slidedown">
+    <template>
+      <div v-if="imgfocus" class="img-focus">
+        <div v-on:click="imgfocus = false;" class="btn-dismiss text-center">
+          <i class="fa fa-times fa-lg"></i>
+        </div>
+        <img id="img-object" src="https://img.pngio.com/black-square-icon-free-black-shape-icons-black-and-color-png-256_256.png" />
       </div>
     </template>
   </transition>
@@ -217,9 +244,8 @@
   </transition>
     
   <!-- SESSION DETAILS -->
-  
   <transition name="fade">
-    <div  v-if="details" class="dialog">
+    <div  v-if="details && current_window == 'chatroom'" class="dialog">
       <div class="sessiondetail">
         <div class="text-dialog">
           <div class="text-center"><b>Detail Sesi</b></div>

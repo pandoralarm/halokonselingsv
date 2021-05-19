@@ -67,8 +67,15 @@ var requestform = new Vue({
           console.log(response.data);
         })
         .finally(() => {
-          this.loading(false);
-          this.changeWindow('reqeustform');
+          setTimeout(() => {
+            this.loading(false);
+          }, 5000);
+          this.changeWindow('requestform');
+        });
+
+      axios.get(this.basepath+"/konseling/chatroom/isRequest")
+        .then(response => {
+          home.hasRequest = response.data;
         });
     },
     alertNow(strongMessage, smallMessage) {

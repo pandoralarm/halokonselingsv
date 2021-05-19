@@ -268,6 +268,7 @@ var chatroom = new Vue({
       console.log(key);
 
       this.subscribe(key);
+      
       axios.get(this.basepath+"/konseling/chatroom/getMessages/"+key)
         .then(response => {
           if (this.messages.length != response.data.length){

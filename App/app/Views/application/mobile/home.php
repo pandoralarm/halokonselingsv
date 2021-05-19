@@ -5,12 +5,26 @@
 
       <?php if ($logged) {
               $profiltarget = "";
-              if ($role == "ADMIN") {
-                $KonselingTarget = "changeSubmenu('menuKonselor')";
-              } elseif ($role == 'MAHASISWA' || 'KONSELOR' || 'SEKPRODI' || 'OTHER') {
-                $KonselingTarget = "checkThread()";
-              } else {
-                $KonselingTarget = "alertNow('Error : ', 'Pastikan kamu seorang mahasiswa ya!')";
+              switch ($role) {
+                case 'ADMIN':
+                  $KonselingTarget = "changeSubmenu('menuKonselor')";
+                  break;
+                
+                case 'MAHASISWA':
+                  $KonselingTarget = "checkThread()";
+                  break;
+
+                case 'KONSELOR':
+                  $KonselingTarget = "getOwnedThreads()";
+                  break;
+
+                case 'SEKPRODI':
+                  $KonselingTarget = "getOwnedThreads()";
+                  break;    
+
+                default:
+                  $KonselingTarget = "alertNow('Error : ', 'Pastikan kamu seorang mahasiswa ya!')";
+                  break;
               }
             } else {
               $KonselingTarget = ("goTo('account/signin')");
@@ -23,7 +37,7 @@
 
               <div class="text w-100">
                 <span class="title">Halo, Anonymous!</span>
-                <p class="subtitle">Tap disini untuk masuk.</p>
+                <p class="subtitle">Tap disini untuk masuk. </p>
                 
               </div>
 

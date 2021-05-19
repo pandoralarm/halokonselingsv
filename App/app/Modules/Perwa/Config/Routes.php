@@ -22,6 +22,8 @@ $routes->group('perwa', ['namespace' => 'App\Modules\Perwa\Controllers'], functi
 	$subroutes->add('pengajuan', 'Pengajuan::index');
 	$subroutes->add('pengajuan/index', 'Pengajuan::index');
 	$subroutes->add('pengajuan/commit', 'Pengajuan::commit');
+	$subroutes->add('pengajuan/tolakRekomendasi', 'Pengajuan::tolakRekomendasi');
+	$subroutes->add('pengajuan/tundaRekomendasi', 'Pengajuan::tundaRekomendasi');
 	$subroutes->add('pengajuan/showDiproses/(:alphanum)', 'Pengajuan::showDiproses/$1');
 	$subroutes->add('pengajuan/showDisetujui/(:alphanum)', 'Pengajuan::showDisetujui/$1');
 	$subroutes->add('pengajuan/showDitunda/(:alphanum)', 'Pengajuan::showDitunda/$1');

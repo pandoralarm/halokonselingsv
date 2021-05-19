@@ -67,15 +67,15 @@ class Pengajuan extends Migration
 			],
 			'rekomendasi' => [
 				'type'           => 'TEXT',
-				'null' => TRUE,
+				'null' 			 => TRUE,
 			],
 			'cv' => [
 				'type'           => 'TEXT',
-				'null' => TRUE,
+				'null' 			 => TRUE,
 			],
 			'dosenPJ' => [
 				'type'           => 'TEXT',
-				'null' => TRUE,
+				'null' 			 => TRUE,
 			],
 			'nip' => [
 				'type'           => 'VARCHAR',
@@ -84,7 +84,11 @@ class Pengajuan extends Migration
 			],
 			'catatan' => [
 				'type'           => 'TEXT',
-				'null' => TRUE,
+				'null' 			 => TRUE,
+			],
+			'butuhFile' => [
+				'type'           => 'INT',
+				'null'			 => TRUE,
 			],
 		]);
 

@@ -98,13 +98,13 @@
               <div class="garis"></div>
               <div class="row w-100">
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
-                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_pengajuan_diproses.svg'); ?>" style="max-width: 50px; margin:2em 0;" alt="">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_pengajuan_ditunda.svg'); ?>" style="max-width: 50px; margin:2em 0;" alt="">
                 </div>
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
-                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_kalender_proses.svg'); ?>" style="max-width: 37px; margin:2em 0;" alt="">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_kalender_ditunda.svg'); ?>" style="max-width: 37px; margin:2em 0;" alt="">
                 </div>
                 <div class="col-4 d-flex flex-column align-items-center justify-content-center">
-                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_dosen_proses.svg'); ?>" style="max-width: 30px; margin:2em 0;" alt="">
+                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_dosen_tunda.svg'); ?>" style="max-width: 30px; margin:2em 0;" alt="">
                 </div>
               </div>
               <div class="row w-100">
@@ -120,9 +120,6 @@
                   <p class="label-ditunda">Dosen Penganggung Jawab</p>
                   <p class="value-ditunda">{{ row.dosenPJ}}</p>
                 </div>
-              </div>
-              <div class="w-100 d-flex justify-content-end">
-                <button class="back" v-on:click="deletePengajuan(row.idPengajuan)">Batalkan Pengajuan</button>
               </div>
             </div>
 

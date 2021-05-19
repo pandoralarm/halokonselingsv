@@ -1,4 +1,33 @@
   <section id="nav">
+      <?php if ($logged) {
+              $profiltarget = "";
+              switch ($role) {
+                case 'ADMIN':
+                  $KonselingTarget = "changeSubmenu('menuKonselor')";
+                  break;
+                
+                case 'MAHASISWA':
+                  $KonselingTarget = "checkThread()";
+                  break;
+
+                case 'KONSELOR':
+                  $KonselingTarget = "getOwnedThreads()";
+                  break;
+
+                case 'SEKPRODI':
+                  $KonselingTarget = "getOwnedThreads()";
+                  break;    
+
+                default:
+                  $KonselingTarget = "alertNow('Error : ', 'Pastikan kamu seorang mahasiswa ya!')";
+                  break;
+              }
+            } else {
+              $KonselingTarget = ("goTo('account/signin')");
+              $profiltarget = "goTo('account/signin')";
+            }
+      ?>
+
     <template>
       <transtition name="fade">
         <div  v-if="isLoading">
@@ -67,18 +96,7 @@
           <?php } ?>
         </div>
 
-        <?php if ($logged) {
-              if ($role == "ADMIN") {
-                $KonselingTarget = "changeSubmenu('menuKonselor')";
-              } elseif ($role == 'MAHASISWA' || 'KONSELOR' || 'SEKPRODI') {
-                $KonselingTarget = "checkThread()";
-              } else {
-                $KonselingTarget = "alertNow('Error : ', 'Pastikan kamu seorang mahasiswa ya!')";
-              }
-            } else {
-              $KonselingTarget = ("goTo('account/signin')");
-            }
-      ?>
+    
         <div class="public-nav">
           <div v-on:click="changeMenu('konseling');" class="submenu" >HaloKonseling</div>
           <transition name="fade">
@@ -107,10 +125,10 @@
           <div v-on:click="changeMenu('admin');" class="submenu">Admin Tools</div>
           <transition name="fade">
             <ul id="sub_admin" v-if="current_menu == 'admin'">
-              <li class=" menu"><a href="#"><i class="fa fa-archive" aria-hidden="true"></i> - Kelola Blogs</a></li>
-              <li class=" menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Kelola Events</a></li>
-              <li class=" menu"><a href="#"><i class="fa fa-table" aria-hidden="true"></i> - Laporan Konseling</a></li>
-              <li class=" menu"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> - Data Konselor</a></li>
+              <li v-on:click="changeSubmenu('beasiswa')" class=" menu"><a href="#"><i class="fa fa-archive" aria-hidden="true"></i> - Kelola Blogs</a></li>
+              <li v-on:click="changeSubmenu('beasiswa')" class=" menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Kelola Events</a></li>
+              <li v-on:click="sidenavs(); changeWindow('laporanform'); changeTitle('LAPORAN KONSELING', '')" class=" menu"><a href="#"><i class="fa fa-table" aria-hidden="true"></i> - Laporan Konseling</a></li>
+              <li v-on:click="changeSubmenu('beasiswa')" class=" menu"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> - Data Konselor</a></li>
             </ul>
           </transition>
         </div>

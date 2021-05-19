@@ -22,9 +22,13 @@
         <transition name="slideup">
           <div v-if="options" class="options">
             <div v-on:click="confirmDialog(true)" class="end-session">Akhiri Sesi</div>
-            <div v-on:click="changeWindow('tambahkonselor')" class="add-konselor">Tambahkan Konselor Kedalam Sesi</div>
+            <?php if ($role == 'ADMIN'){ ?>
+              <div v-on:click="changeWindow('tambahkonselor')" class="add-konselor">Tambahkan Konselor Kedalam Sesi</div>
+            <?php } else { ?>
+              <div v-on:click="changeWindow('tambahkonselor')" class="add-konselor">Ajukan Penambahan Konselor/Pihak Lain</div>
+            <?php } ?>
           </div>
-        </transition>
+        </transition> 
         
         <!-- MESSAGES BODY -->
         <div id="messagebody" v-on:scroll="closeOptions" class="messages">
@@ -127,7 +131,7 @@
         
           <template v-for="konselor in dosensearch" :key="konselor.NIP">
             <div v-on:click="selectKonselor(konselor.NIP, konselor.Nama)" class="admin-tools-menu kelola-blogs shadow">
-              <div class="text w-75" style="margin: 0;"><small>{{ konselor.Nama }}</small></div>
+              <div class="text w-75" style="margin: 0; text-align: left;"><small>{{ konselor.Nama }}</small></div>
               <input type="checkbox" class="d-none" :id="konselor.NIP" :checked="selectedKonselor(konselor.NIP)" autocomplete="off" />
               <label v-on:click="selectKonselor(konselor.NIP, konselor.Nama)" :for="konselor.NIP" class="check-hksv"><i class="fa fa-check fa-lg" aria-hidden="true"></i></label>
             </div>

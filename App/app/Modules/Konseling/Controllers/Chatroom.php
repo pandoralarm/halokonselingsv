@@ -129,6 +129,7 @@ class Chatroom extends Controller
       $data = [
         'RequestID' => '',
         'MahasiswaNIM' => $this->session->get('nim'),
+        'MahasiswaPS' => $this->session->get('prodi'),
         'MahasiswaNama' => $this->session->get('nama'),
         'RequestDetail' => $Request['message'],
         'ThreadKey' => '',
@@ -175,6 +176,33 @@ class Chatroom extends Controller
       return json_encode($activerooms);
     }
 
+    public function getOwnedThread($owner)
+    {
+      $livechats = $this->chats->where('ThreadStatus', 'OPEN')->where('KonselorNIP', $owner)->findALl();
+      $activerooms = $livechats;
+
+      $index = 0;
+      foreach ($livechats as $chat) {
+        $konseli = $this->requests->where('ThreadKey', $chat->ThreadKey)->first();
+        $activerooms[$index]->MahasiswaNama = $konseli->MahasiswaNama;
+        $index++;
+      };
+      return json_encode($activerooms);
+    }
+
+    public function getOpenThreadOwner()
+    {
+      $nama = $query;
+      $db      = \Config\Database::connect();
+      $dosenquery = "SELECT DISTINCT d.NIP, d.Nama 
+                    FROM dosen d JOIN role r on r.NIP = d.NIP 
+                    WHERE d.Nama IN 
+                    (SELECT d2.nama FROM dosen d2 JOIN chats c ON c.KonselorNIP = d2.NIP WHERE c.ThreadStatus = 'OPEN')"; 
+      $response = $db->query($dosenquery);
+      $response = $response->getResult();
+      return json_encode($response);
+    }
+
     private function closeRequest($reqID, $key)
     {
 
@@ -190,6 +218,7 @@ class Chatroom extends Controller
 
       return json_encode($response);
     }
+    
 
     private function removeDirectory($dir) {
 

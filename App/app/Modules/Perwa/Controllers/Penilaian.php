@@ -57,6 +57,13 @@ class Penilaian extends Controller
         ];
 
         $this->pengajuan->update($this->request->getPost('idPengajuan'), $dataRekomendasi);
+
+        $response = [
+            'file' => $dataRekomendasi['rekomendasi'],
+            'status' => $dataRekomendasi['status'],
+        ];
+
+        return json_encode($response);
     }
 
     

@@ -5,11 +5,11 @@
     <div v-if="current_submenu == 'menuKonselor'" class="content">
       <template>
 
-        <div v-on:click="checkThread()" class="admin-tools-menu kelola-blogs shadow-sm border text-ce">
+        <div v-on:click="getOwnedThreads(usernip)" class="admin-tools-menu kelola-blogs shadow-sm border text-ce">
           <div class="text">Chat Konseli</div>
         </div>
 
-        <div v-on:click="getOpenThread();" class="admin-tools-menu kelola-events shadow-sm border">
+        <div v-on:click="getOpenThreadOwner();" class="admin-tools-menu kelola-events shadow-sm border">
           <div class="text">Pantau Sesi Konseling</div>
 
         </div>
@@ -23,9 +23,28 @@
     </div>
   </transition>
 
-  <!-- LIST OF ALL ACTIVE COUNSLING SESSIONS -->
+  <!-- LIST OF ALL ACTIVE OWNED COUNSLING SESSIONS -->
   <transition name="state">
     <div v-if="current_submenu == 'pantauKonseling'" class="content">
+      <template>
+        <div v-if="threadowners.length == 0" class="admin-tools-menu kelola-blogs shadow">
+          <div class="text w-100 text-center"><small> Tidak ada sesi konseling berlangsung</small></div>
+        </div>
+      </template> 
+      <template v-for="owner in threadowners" :key="owner.ThreadID">
+
+        <div class="admin-tools-menu kelola-blogs shadow">
+          <div v-on:click="getOwnedThreads(owner.NIP)" class="text"><small>{{ owner.Nama }}</small></div>
+ 
+        </div>
+       
+      </template>
+    </div>
+  </transition>
+
+  <!-- LIST OF ALL ACTIVE COUNSLING SESSIONS -->
+  <transition name="state">
+    <div v-if="current_submenu == 'daftarkonseli'" class="content">
       <template>
         <div v-if="threads.length == 0" class="admin-tools-menu kelola-blogs shadow">
           <div class="text w-100 text-center"><small> Tidak ada sesi konseling berlangsung</small></div>
@@ -168,7 +187,7 @@
     </template>
   </transition>
 
-
+  <!-- INDIVIDUAL ALERT FOR ADMINKONSELOR -->
   <transition name="state">
     <template>
       

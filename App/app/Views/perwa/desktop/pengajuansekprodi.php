@@ -151,6 +151,10 @@
                   <td>{{row.tanggalPengajuan}}</td>
                 </tr>
                 <tr>
+                  <td>Status Pengajuan</td>
+                  <td>{{row.status}}</td>
+                </tr>
+                <tr>
                   <td>Deadline</td>
                   <td>{{row.deadline}}</td>
                 </tr>
@@ -180,6 +184,7 @@
               </table>
               <div class="d-flex align-items-center justify-content-end w-100 mt-4">
                 <button class="back" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiprosesDitolak')">Tolak Permohonan</button>
+                <button class="button-ditundasekprod" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiprosesDitunda')">Tunda Permohonan</button>
                 <button class="button-diselesaikansekprod" v-on:click="changeWindow('detailPengajuanDiprosesDisetujui')">Setujui Permohonan</button>
               </div>
             </div>
@@ -426,16 +431,44 @@
 
           </div>
           
+          <div v-if="current_window == 'detailPengajuanDiprosesDitunda'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
+
+            <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
+              <div class="title mt-2">Form Penundaan Rekomendasi</div>
+              <div class="garis"></div>
+              <form class="pengajuan d-flex flex-column w-100" method="POST">
+                <label style="color:#3ca7a7">Upload file dibutuhkan?</label>
+                <div class="w-90 d-flex align-items-center">
+                  <input type="radio" id="butuhFile" name="butuhFile" value=1 style="margin-left:1em">
+                  <label for="butuhFile" style="margin-top:0; color:#3ca7a7">Iya</label><br>
+                  <input type="radio" id="butuhFile" name="butuhFile" value=0 style="margin-left:5em">
+                  <label for="butuhFile" style="margin-top:0; color:#3ca7a7">Tidak</label><br>
+                </div>
+                <label for="alasan" style="color:#3ca7a7;">Alasan Penundaan</label>
+                <textarea id="alasan" name="alasan" rows="4" cols="50" style="mb-3"></textarea>
+              </form>
+                <div class="d-flex align-items-center justify-content-end w-100 mt-4">
+                  <button class="back" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiproses')">Kembali</button>
+                  <button v-on:click="tundaRekomendasi()" class="button-diselesaikansekprod">Submit</button>
+                </div>   
+            </div>
+
+          </div>
+
           <div v-if="current_window == 'detailPengajuanDiprosesDitolak'" class="d-flex align-items-center justify-content-center" style="width: 100%;">
 
             <div class="kartu diproses d-flex flex-column align-items-center justify-content-center mt-4">
               <div class="title mt-2">Form Penolakan Rekomendasi</div>
               <div class="garis"></div>
               <form class="pengajuan d-flex flex-column w-100" method="POST">
-                <label for="alasan">Alasan Penolakan</label>
-                <textarea id="alasan" name="alasan" rows="4" cols="50"></textarea>
-                <button class="pengajuan-submit" style="width:7em; align-self:flex-end; margin-top:2em;">Submit</button>
+
+                <label for="alasan" style="color:#3ca7a7;">Alasan Penolakan</label>
+                <textarea id="alasan" name="alasan" rows="4" cols="50"></textarea> 
               </form>
+              <div class="d-flex align-items-center justify-content-end w-100 mt-4">
+                <button class="back" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiproses')">Kembali</button>
+                <button v-on:click="tolakRekomendasi()" class="button-diselesaikansekprod">Submit</button>
+              </div> 
             </div>
 
           </div>

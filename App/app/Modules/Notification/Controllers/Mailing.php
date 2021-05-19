@@ -194,7 +194,7 @@ class Mailing extends Controller
         $this->email->setMessage($this->compose($type, $key));
         return $this->compose($type, $key);
         
-        $this->email->setFrom('konselingsv@apps.ipb.ac.id', 'HaloKonselingSV [NO-REPLY]');
+        $this->email->setFrom('konseli  ngsv@apps.ipb.ac.id', 'HaloKonselingSV [NO-REPLY]');
 
         if ($this->email->send()) 
 		{

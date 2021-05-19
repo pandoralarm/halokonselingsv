@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 17, 2021 at 10:48 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.14
+-- Host: localhost:3306
+-- Generation Time: Apr 18, 2021 at 05:38 AM
+-- Server version: 8.0.23-0ubuntu0.20.04.1
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `articles` (
-  `ArticleID` int(11) NOT NULL,
+  `ArticleID` int NOT NULL,
   `Title` text NOT NULL,
   `Header` text NOT NULL,
   `Content` text NOT NULL,
@@ -39,11 +40,29 @@ CREATE TABLE `articles` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `beasiswa`
+--
+
+CREATE TABLE `beasiswa` (
+  `idBeasiswa` int NOT NULL,
+  `namaBeasiswa` varchar(255) NOT NULL,
+  `donatur` varchar(255) NOT NULL,
+  `nominal` varchar(255) NOT NULL,
+  `syaratSemester` int NOT NULL,
+  `syaratIPK` float NOT NULL,
+  `tglDibuka` date NOT NULL,
+  `tglDitutup` date NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `chats`
 --
 
 CREATE TABLE `chats` (
-  `ThreadID` int(11) NOT NULL,
+  `ThreadID` int NOT NULL,
   `ThreadKey` varchar(255) NOT NULL,
   `MahasiswaNIM` varchar(255) NOT NULL,
   `KonselorNIP` varchar(255) NOT NULL,
@@ -57,39 +76,12 @@ CREATE TABLE `chats` (
 --
 
 INSERT INTO `chats` (`ThreadID`, `ThreadKey`, `MahasiswaNIM`, `KonselorNIP`, `ThreadStatus`, `Started_at`, `Closed_at`) VALUES
-(6, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', 'NIP000000', 'CLOSED', '2021-03-17 23:40:12', '2021-03-18 02:30:41'),
-(7, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', 'NIP000002', 'CLOSED', '2021-03-17 23:40:12', '2021-03-18 02:30:41'),
-(8, 'de55dbad88b95c69d12db84cafe5bf3f', 'J3C118094', 'NIP000001', 'CLOSED', '2021-03-17 23:50:45', '2021-03-18 03:16:08'),
-(9, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201811199105111021', 'CLOSED', '2021-03-18 00:29:48', '2021-03-18 02:30:41'),
-(10, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201806198703072001', 'CLOSED', '2021-03-18 00:32:47', '2021-03-18 02:30:41'),
-(11, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198307101001', 'CLOSED', '2021-03-18 00:33:43', '2021-03-18 02:30:41'),
-(12, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201811198806252001', 'CLOSED', '2021-03-18 00:34:16', '2021-03-18 02:30:41'),
-(13, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201811197709092012', 'CLOSED', '2021-03-18 00:34:16', '2021-03-18 02:30:41'),
-(14, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198507182001', 'CLOSED', '2021-03-18 00:35:37', '2021-03-18 02:30:41'),
-(15, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198001031001', 'CLOSED', '2021-03-18 00:36:47', '2021-03-18 02:30:41'),
-(16, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807197006012001', 'CLOSED', '2021-03-18 00:37:24', '2021-03-18 02:30:41'),
-(17, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198705242001', 'CLOSED', '2021-03-18 00:42:41', '2021-03-18 02:30:41'),
-(18, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198705242001', 'CLOSED', '2021-03-18 00:43:34', '2021-03-18 02:30:41'),
-(19, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807197208122001', 'CLOSED', '2021-03-18 00:43:34', '2021-03-18 02:30:41'),
-(20, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201811198211141001', 'CLOSED', '2021-03-18 00:44:57', '2021-03-18 02:30:41'),
-(21, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807197509181001', 'CLOSED', '2021-03-18 00:47:21', '2021-03-18 02:30:41'),
-(22, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198103302001', 'CLOSED', '2021-03-18 00:48:22', '2021-03-18 02:30:41'),
-(23, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', 'J3P219078', '201807198501202001', 'CLOSED', '2021-03-18 00:49:52', '2021-03-18 02:30:41'),
-(24, 'de55dbad88b95c69d12db84cafe5bf3f', 'J3C118094', '201807198305122001', 'CLOSED', '2021-03-18 00:50:06', '2021-03-18 03:16:08'),
-(25, 'de55dbad88b95c69d12db84cafe5bf3f', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:00:51', '2021-03-18 03:16:08'),
-(26, 'b7a99126905a7c8218c893c35eb50c37', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:19:35', '2021-03-18 03:22:38'),
-(27, 'c74564078166bd3ff07e8d999234b09c', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:25:17', '2021-03-18 03:28:10'),
-(28, 'cb1eb23a41fe8c06354ae390f42c6a04', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:32:02', '2021-03-18 03:39:48'),
-(29, '4dbdfb2d20f0be698b2afe15968d64f1', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:47:23', '2021-03-18 03:47:39'),
-(30, '79b33c53834b7498ee50a9a66c759514', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:51:50', '2021-03-18 03:52:12'),
-(31, 'ae076fdb00ee462e4201af78457e7f19', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:55:23', '2021-03-18 03:55:39'),
-(32, '2fed96de71b30f66642e666654fd30b9', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:57:03', '2021-03-18 03:57:19'),
-(33, 'fe834342e6080fda7dd0c91622acdeee', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-18 03:58:53', '2021-03-18 03:59:09'),
-(34, '7e275e70a91bdc8dc715ac593780412e', 'J3P219078', 'NIP000000', 'CLOSED', '2021-03-18 04:00:21', '2021-03-18 04:00:42'),
-(35, '1ccef6a16e1ed9c8bb10f27fe0bc2972', 'J3P219078', 'NIP000000', 'CLOSED', '2021-03-18 04:34:48', '2021-03-18 04:35:34'),
-(36, 'e1f37b67810371756b21bb36f0b8e802', 'J3C118094', 'NIP000000', 'OPEN', '2021-03-18 04:34:58', NULL),
-(37, 'e1f37b67810371756b21bb36f0b8e802', 'J3C118094', 'NIP000002', 'OPEN', '2021-03-18 04:34:58', NULL),
-(38, 'e1f37b67810371756b21bb36f0b8e802', 'J3C118094', 'NIP000001', 'OPEN', '2021-03-18 04:38:40', NULL);
+(1, '3e6c77c189dc4403eabf3eca6b827c73', 'J3C118094', 'NIP000000', 'CLOSED', '2021-03-31 10:27:02', '2021-04-07 22:51:52'),
+(2, 'f450769bba9fe0faeffabd32b3f6136a', 'J3C118094', '202103198710102001', 'CLOSED', '2021-04-07 22:56:28', '2021-04-08 14:02:40'),
+(3, '51a3019eb14b23aab61feff772d8fa5b', 'J3C118094', 'NIP000000', 'CLOSED', '2021-04-11 18:47:19', '2021-04-11 18:48:14'),
+(4, '51a3019eb14b23aab61feff772d8fa5b', 'J3C118094', '201811199105111021', 'CLOSED', '2021-04-11 18:47:20', '2021-04-11 18:48:14'),
+(5, '51a3019eb14b23aab61feff772d8fa5b', 'J3C118094', '201806198703072001', 'CLOSED', '2021-04-11 18:47:20', '2021-04-11 18:48:14'),
+(6, '51a3019eb14b23aab61feff772d8fa5b', 'J3C118094', '202103198710102001', 'CLOSED', '2021-04-11 18:47:20', '2021-04-11 18:48:14');
 
 -- --------------------------------------------------------
 
@@ -277,7 +269,7 @@ INSERT INTO `dosen` (`NIP`, `Nama`, `Prodi`, `Pns`) VALUES
 --
 
 CREATE TABLE `events` (
-  `EventID` int(11) NOT NULL,
+  `EventID` int NOT NULL,
   `Title` text NOT NULL,
   `Location` text NOT NULL,
   `KonselorNIP` varchar(255) NOT NULL,
@@ -291,7 +283,7 @@ CREATE TABLE `events` (
 --
 
 CREATE TABLE `laporan` (
-  `LaporanID` int(11) NOT NULL,
+  `LaporanID` int NOT NULL,
   `ThreadKey` varchar(255) NOT NULL,
   `Masalah` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -301,18 +293,15 @@ CREATE TABLE `laporan` (
 --
 
 INSERT INTO `laporan` (`LaporanID`, `ThreadKey`, `Masalah`) VALUES
-(1, '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', ''),
-(2, 'de55dbad88b95c69d12db84cafe5bf3f', ''),
-(3, 'b7a99126905a7c8218c893c35eb50c37', ''),
-(4, 'c74564078166bd3ff07e8d999234b09c', ''),
-(5, 'cb1eb23a41fe8c06354ae390f42c6a04', 'Array;Array'),
-(6, '4dbdfb2d20f0be698b2afe15968d64f1', 'Array'),
-(7, '79b33c53834b7498ee50a9a66c759514', ''),
-(8, 'ae076fdb00ee462e4201af78457e7f19', ''),
-(9, '2fed96de71b30f66642e666654fd30b9', ''),
-(10, 'fe834342e6080fda7dd0c91622acdeee', 'AkademikKeluargaKemasyarakatan'),
-(11, '7e275e70a91bdc8dc715ac593780412e', 'Akademik;Pergaulan;Lain-lain;;'),
-(12, '1ccef6a16e1ed9c8bb10f27fe0bc2972', 'Ekonomi;Keluarga;;');
+(1, '3e6c77c189dc4403eabf3eca6b827c73', 'Akademik;;'),
+(2, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;;'),
+(3, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;;'),
+(4, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;;'),
+(5, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;;'),
+(6, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;;'),
+(7, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;Akademik;;'),
+(8, 'f450769bba9fe0faeffabd32b3f6136a', 'Ekonomi;Pergaulan;Akademik;;'),
+(9, '51a3019eb14b23aab61feff772d8fa5b', 'Akademik;Pergaulan;Kemasyarakatan;;');
 
 -- --------------------------------------------------------
 
@@ -321,7 +310,7 @@ INSERT INTO `laporan` (`LaporanID`, `ThreadKey`, `Masalah`) VALUES
 --
 
 CREATE TABLE `logs` (
-  `LogID` int(11) NOT NULL,
+  `LogID` int NOT NULL,
   `ActorUsername` text NOT NULL,
   `Action` text NOT NULL,
   `Timestamp` datetime NOT NULL
@@ -334,8 +323,9 @@ CREATE TABLE `logs` (
 --
 
 CREATE TABLE `messages` (
-  `MessageID` int(11) NOT NULL,
+  `MessageID` int NOT NULL,
   `SenderID` varchar(255) NOT NULL,
+  `MessageType` enum('text','image','audio') NOT NULL DEFAULT 'text',
   `Message` text NOT NULL,
   `ThreadKey` varchar(255) NOT NULL,
   `Timestamp` datetime NOT NULL
@@ -345,40 +335,96 @@ CREATE TABLE `messages` (
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`MessageID`, `SenderID`, `Message`, `ThreadKey`, `Timestamp`) VALUES
-(35, 'NIP000000', 'Halo', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-17 23:40:21'),
-(36, 'J3P219078', 'Iya bu', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-17 23:40:28'),
-(37, 'NIP000000', 'Iya', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-17 23:41:18'),
-(38, 'NIP000000', 'Iya kah?', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-17 23:49:00'),
-(39, 'J3P219078', 'IIya lo\n', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-17 23:49:10'),
-(40, 'J3C118094', 'Hola', 'de55dbad88b95c69d12db84cafe5bf3f', '2021-03-17 23:51:08'),
-(41, 'NIP000000', 'up', 'de55dbad88b95c69d12db84cafe5bf3f', '2021-03-17 23:59:32'),
-(42, 'J3P219078', 'bru\n', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:14:15'),
-(43, 'J3P219078', 'cmon la', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:14:19'),
-(44, 'J3P219078', 'wat', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:14:48'),
-(45, 'J3P219078', 'duh', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:15:09'),
-(46, 'J3P219078', 'lah\n\n\n\nkogitu', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:16:05'),
-(47, 'J3P219078', 'bruh', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:16:10'),
-(48, 'NIP000000', 'wat', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:17:08'),
-(49, 'J3P219078', 'lol', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-18 00:17:16'),
-(50, 'NIP000000', 'ad', 'de55dbad88b95c69d12db84cafe5bf3f', '2021-03-18 03:01:10'),
-(51, 'J3C118094', 'lol', 'de55dbad88b95c69d12db84cafe5bf3f', '2021-03-18 03:02:45'),
-(52, 'J3C118094', 'try', 'de55dbad88b95c69d12db84cafe5bf3f', '2021-03-18 03:03:13'),
-(53, 'NIP000000', 'Assalamualaikum bu', 'b7a99126905a7c8218c893c35eb50c37', '2021-03-18 03:19:52'),
-(54, 'J3C118094', 'Eh kebalik', 'b7a99126905a7c8218c893c35eb50c37', '2021-03-18 03:20:00'),
-(55, 'J3C118094', 'assda', 'c74564078166bd3ff07e8d999234b09c', '2021-03-18 03:25:22'),
-(56, 'NIP000000', 'k', 'c74564078166bd3ff07e8d999234b09c', '2021-03-18 03:25:30'),
-(57, 'J3C118094', 'bu', 'c74564078166bd3ff07e8d999234b09c', '2021-03-18 03:31:21'),
-(58, 'J3C118094', 'bu yah', 'c74564078166bd3ff07e8d999234b09c', '2021-03-18 03:31:28'),
-(59, 'J3C118094', 'ilang', 'c74564078166bd3ff07e8d999234b09c', '2021-03-18 03:31:34'),
-(60, 'NIP000000', 'a', 'cb1eb23a41fe8c06354ae390f42c6a04', '2021-03-18 03:32:10'),
-(61, 'NIP000000', 'test', '4dbdfb2d20f0be698b2afe15968d64f1', '2021-03-18 03:47:33'),
-(62, 'NIP000000', 'Jadi', '79b33c53834b7498ee50a9a66c759514', '2021-03-18 03:52:01'),
-(63, 'J3C118094', 'Coba baer dah', '79b33c53834b7498ee50a9a66c759514', '2021-03-18 03:52:05'),
-(64, 'NIP000000', 'a', 'ae076fdb00ee462e4201af78457e7f19', '2021-03-18 03:55:31'),
-(65, 'J3C118094', 'a', 'ae076fdb00ee462e4201af78457e7f19', '2021-03-18 03:55:33'),
-(66, 'NIP000000', 'ad', 'fe834342e6080fda7dd0c91622acdeee', '2021-03-18 03:59:02'),
-(67, 'NIP000000', 'ad', '1ccef6a16e1ed9c8bb10f27fe0bc2972', '2021-03-18 04:35:11');
+INSERT INTO `messages` (`MessageID`, `SenderID`, `MessageType`, `Message`, `ThreadKey`, `Timestamp`) VALUES
+(1, 'NIP000000', 'text', 'cek', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:27:12'),
+(2, 'J3C118094', 'text', 'Up', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:27:41'),
+(3, 'J3C118094', 'text', 'Normal yes', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:27:46'),
+(4, 'NIP000000', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:39:22'),
+(5, 'NIP000000', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:40:28'),
+(6, 'NIP000000', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:40:38'),
+(7, 'NIP000000', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 10:43:10'),
+(8, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 15:02:03'),
+(9, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 20:18:28'),
+(10, 'J3C118094', 'text', 'alan_ipb_20210331201828.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 20:18:35'),
+(11, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 20:22:43'),
+(12, 'J3C118094', 'text', 'alan_ipb_20210331202243.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 20:22:46'),
+(13, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 20:27:46'),
+(14, 'J3C118094', 'text', 'alan_ipb_20210331202746.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 20:27:51'),
+(15, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:12:47'),
+(16, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:16:57'),
+(17, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:18:12'),
+(18, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:19:03'),
+(19, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:19:04'),
+(20, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:19:10'),
+(21, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:19:23'),
+(22, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:19:26'),
+(23, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:19:29'),
+(24, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:22:01'),
+(25, 'J3C118094', 'text', 'alan_ipb_20210401012302.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:23:49'),
+(26, 'J3C118094', 'text', '', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 01:24:15'),
+(27, 'J3C118094', 'text', 'alan_ipb_20210401020541.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 02:05:41'),
+(28, 'J3C118094', 'text', 'alan_ipb_20210401020612.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 02:06:13'),
+(29, 'J3C118094', 'text', 'alan_ipb_20210401020820.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 02:08:20'),
+(30, 'J3C118094', 'text', 'alan_ipb_20210401020940.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 02:09:40'),
+(31, 'J3C118094', 'text', 'alan_ipb_20210401021312.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 02:13:12'),
+(32, 'J3C118094', 'text', 'lol', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 02:13:19'),
+(33, 'J3C118094', 'text', 'alan_ipb_20210401031401.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:14:01'),
+(34, 'J3C118094', 'text', 'alan_ipb_20210401031641.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:16:41'),
+(35, 'J3C118094', 'text', 'alan_ipb_20210401031905.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:19:05'),
+(36, 'J3C118094', 'image', 'alan_ipb_20210401032203.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:22:03'),
+(37, 'J3C118094', 'image', 'http://alansbox.onlineuploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210401032901.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:29:01'),
+(38, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210401032955.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:29:55'),
+(39, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210401033008.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:30:08'),
+(40, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210401033230.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:32:30'),
+(41, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210401033400.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:34:00'),
+(42, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210401033520.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:35:21'),
+(43, 'J3C118094', 'text', 'BISA KIRIM GAMBARRRRR', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 03:37:48'),
+(44, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210401062736.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 06:27:36'),
+(45, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210401063058.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 06:30:58'),
+(46, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210401063125.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 06:31:25'),
+(47, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210401103013.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 10:30:14'),
+(48, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210401103106.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 10:31:07'),
+(49, 'NIP000000', 'text', 'Up', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-01 10:31:13'),
+(50, 'NIP000000', 'text', 'l', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-04 03:46:12'),
+(51, 'J3C118094', 'text', 'a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-04 04:45:58'),
+(52, 'NIP000000', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210405102532.png', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-05 10:25:33'),
+(53, 'NIP000000', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210405102951.mp3', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-05 10:29:51'),
+(54, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210405103933.mp3', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-05 10:39:33'),
+(55, 'NIP000000', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210406003148.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 00:31:48'),
+(56, 'NIP000000', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/admin_20210406003210.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 00:32:11'),
+(57, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406034555.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 03:45:55'),
+(58, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406035712.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 03:57:12'),
+(59, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406035739.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 03:57:39'),
+(60, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406035802.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 03:58:02'),
+(61, 'J3C118094', 'text', 'jhsdgbfhjasbf', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 04:08:48'),
+(62, 'J3C118094', 'text', '\nProperty	Description\naudioTracks	Returns an AudioTrackList object representing available audio tracks\nautoplay	Sets or returns whether the audio should start playing as soon as it is ready\nbuffered	Returns a TimeRanges object representing the buffered parts of an audio\ncontroller	Returns the MediaController object representing the current media controller of an audio\ncontrols	Sets or returns whether an audio should have controls displayed (play/pause etc)\ncrossOrigin	Sets or returns the CORS settings of an audio\ncurrentSrc	Returns the URL of the current audio\ncurrentTime	Sets or returns the current playback position in an audio (in seconds)\ndefaultMuted	Sets or returns whether the audio should be muted by default\ndefaultPlaybackRate	Sets or returns whether the default playback speed of the audio\nduration	Returns the length of an audio(in seconds)\nended	Returns whether the playback of the audio has ended\nerror	Returns a MediaError object representing the error state of the audio\nloop	Sets or returns whether the audio should start playing over again, every time it is finished\nmediaGroup	Sets or returns the name of the media group the audio(s) is a part of\nmuted	Sets or returns whether the sound should be turned off\nnetworkState	Returns the current network state of an audio\npaused	Sets or returns whether an audio is paused\nplaybackRate	Sets or returns the speed of the audio playback\nplayed	Returns a TimeRanges object representing the played parts of the audio\npreload	Sets or returns the value of the preload attribute of an audio\nreadyState	Returns the current ready state of an audio\nseekable	Returns a TimeRanges object representing the seekable parts of an audio\nseeking	Returns whether the user is currently seeking in the audio\nsrc	Sets or returns the value of the src attribute of an audio\ntextTracks	Returns a TextTrackList object representing the available text tracks\nvolume	Sets or returns the audio volume of an audio', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 04:17:15'),
+(63, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406045913.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 04:59:13'),
+(64, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406045920.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 04:59:20'),
+(65, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210406050031.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 05:00:31'),
+(66, 'J3C118094', 'text', 'H', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 09:55:29'),
+(67, 'J3C118094', 'text', 'Hapi', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-06 09:55:40'),
+(68, 'J3C118094', 'text', 'Laaa', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 13:54:25'),
+(69, 'J3C118094', 'text', 'a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 13:54:39'),
+(70, 'J3C118094', 'text', 'sdf', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 13:56:10'),
+(71, 'J3C118094', 'text', 'adada', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 13:56:17'),
+(72, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210407151713.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 15:17:14'),
+(73, 'J3C118094', 'image', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210407151915.jpg', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 15:19:15'),
+(74, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210407152040.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 15:20:40'),
+(75, 'J3C118094', 'audio', 'http://alansbox.online/uploads/3e6c77c189dc4403eabf3eca6b827c73/alan_ipb_20210407184159.m4a', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 18:42:00'),
+(76, 'NIP000000', 'text', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 22:40:23'),
+(77, 'NIP000000', 'text', 'Lorem Ipsum dolor sit amet', '3e6c77c189dc4403eabf3eca6b827c73', '2021-04-07 22:40:55'),
+(79, 'J3C118094', 'text', 'Selamat siang bu ', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-07 11:13:41'),
+(80, '202103198710102001', 'text', 'Siang juga Alan', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-07 11:15:32'),
+(81, 'J3C118094', 'audio', 'removed or session closed', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-07 11:15:52'),
+(82, '202103198710102001', 'image', 'removed or session closed', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-07 11:17:03'),
+(83, '202103198710102001', 'text', 'Seperti ini contohnya?', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-07 11:18:26'),
+(84, '202103198710102001', 'text', 'Message A', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 01:24:13'),
+(85, '202103198710102001', 'text', 'Message B', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 01:24:17'),
+(86, '202103198710102001', 'image', 'removed or session closed', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 01:25:33'),
+(87, 'J3C118094', 'text', 'Response A', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 01:26:03'),
+(88, 'J3C118094', 'text', 'Response A', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 01:28:19'),
+(89, 'J3C118094', 'image', 'removed or session closed', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 03:34:12'),
+(90, 'J3C118094', 'audio', 'removed or session closed', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-08 03:47:16');
 
 -- --------------------------------------------------------
 
@@ -387,13 +433,13 @@ INSERT INTO `messages` (`MessageID`, `SenderID`, `Message`, `ThreadKey`, `Timest
 --
 
 CREATE TABLE `migrations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `version` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
   `group` varchar(255) NOT NULL,
   `namespace` varchar(255) NOT NULL,
-  `time` int(11) NOT NULL,
-  `batch` int(11) UNSIGNED NOT NULL
+  `time` int NOT NULL,
+  `batch` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -401,15 +447,84 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-(1, '2021-03-10-055400', 'App\\Database\\Migrations\\Dosen', 'default', 'App', 1615950269, 1),
-(2, '2021-03-10-063553', 'App\\Database\\Migrations\\Role', 'default', 'App', 1615950269, 1),
-(3, '2021-03-10-071818', 'App\\Database\\Migrations\\Chats', 'default', 'App', 1615950269, 1),
-(4, '2021-03-10-072728', 'App\\Database\\Migrations\\Request', 'default', 'App', 1615950269, 1),
-(5, '2021-03-10-073310', 'App\\Database\\Migrations\\Messages', 'default', 'App', 1615950269, 1),
-(6, '2021-03-10-074057', 'App\\Database\\Migrations\\Events', 'default', 'App', 1615950269, 1),
-(7, '2021-03-10-074925', 'App\\Database\\Migrations\\Articles', 'default', 'App', 1615950269, 1),
-(8, '2021-03-10-075235', 'App\\Database\\Migrations\\Logs', 'default', 'App', 1615950269, 1),
-(9, '2021-03-17-175139', 'App\\Database\\Migrations\\Laporan', 'default', 'App', 1616004233, 2);
+(1, '2021-03-10-055400', 'App\\Database\\Migrations\\Dosen', 'default', 'App', 1617130538, 1),
+(2, '2021-03-10-063553', 'App\\Database\\Migrations\\Role', 'default', 'App', 1617130538, 1),
+(3, '2021-03-10-071818', 'App\\Database\\Migrations\\Chats', 'default', 'App', 1617130538, 1),
+(4, '2021-03-10-072728', 'App\\Database\\Migrations\\Request', 'default', 'App', 1617130538, 1),
+(5, '2021-03-10-073310', 'App\\Database\\Migrations\\Messages', 'default', 'App', 1617130538, 1),
+(6, '2021-03-10-074057', 'App\\Database\\Migrations\\Events', 'default', 'App', 1617130538, 1),
+(7, '2021-03-10-074925', 'App\\Database\\Migrations\\Articles', 'default', 'App', 1617130538, 1),
+(8, '2021-03-10-075235', 'App\\Database\\Migrations\\Logs', 'default', 'App', 1617130538, 1),
+(9, '2021-03-17-175139', 'App\\Database\\Migrations\\Laporan', 'default', 'App', 1617130538, 1),
+(26, '2021-04-06-100109', 'App\\Database\\Migrations\\Pengajuan', 'default', 'App', 1618148115, 2),
+(27, '2021-04-06-154053', 'App\\Database\\Migrations\\Beasiswa', 'default', 'App', 1618148115, 2),
+(28, '2021-04-06-154326', 'App\\Database\\Migrations\\Penilaian', 'default', 'App', 1618148115, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengajuan`
+--
+
+CREATE TABLE `pengajuan` (
+  `idPengajuan` int NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `nim` varchar(255) NOT NULL,
+  `prodi` varchar(255) NOT NULL,
+  `semester` int NOT NULL,
+  `ip1` float NOT NULL,
+  `ip2` float NOT NULL,
+  `ip3` float NOT NULL,
+  `ip4` float NOT NULL,
+  `ip5` float NOT NULL,
+  `ip6` float NOT NULL,
+  `ipk` float NOT NULL,
+  `namaBeasiswa` varchar(255) NOT NULL,
+  `deadline` date NOT NULL,
+  `tanggalPengajuan` date NOT NULL,
+  `status` enum('Diproses','Ditunda','Disetujui','Ditolak') NOT NULL DEFAULT 'Diproses',
+  `rekomendasi` text,
+  `cv` text,
+  `dosenPJ` text,
+  `nip` varchar(255) DEFAULT NULL,
+  `catatan` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pengajuan`
+--
+
+INSERT INTO `pengajuan` (`idPengajuan`, `nama`, `nim`, `prodi`, `semester`, `ip1`, `ip2`, `ip3`, `ip4`, `ip5`, `ip6`, `ipk`, `namaBeasiswa`, `deadline`, `tanggalPengajuan`, `status`, `rekomendasi`, `cv`, `dosenPJ`, `nip`, `catatan`) VALUES
+(1, 'Akhmad Nazhar Aji S', 'J3C118158', 'Manajemen Informatika', 6, 3.47, 3.61, 3.86, 3.94, 3.76, 0, 3.74, 'Beasiswa IPB Foundation', '2021-04-25', '2021-04-12', 'Disetujui', '1618240661_45adb87933f2f3bd06fa.pdf', '1618198054_8a7fc950651b85a9e658.pdf', 'konselorDummy, Ph.D', 'NIP000001', NULL),
+(2, 'Asma Khoerunnisa', 'J3C218165', 'Manajemen Informatika', 6, 2.76, 2.59, 3.29, 3.69, 4, 0, 3.26, 'kaldakld', '2021-04-12', '2021-04-12', 'Disetujui', '1618240070_7ee6016683e13c75222b.pdf', '1618203771_df5461ed75359dd0d2f7.pdf', 'konselorDummy, Ph.D', 'NIP000001', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penilaian`
+--
+
+CREATE TABLE `penilaian` (
+  `idPenilaian` int NOT NULL,
+  `idPengajuan` int NOT NULL,
+  `kemampuanAkademik` int NOT NULL,
+  `kemampuanLisan` int NOT NULL,
+  `kemampuanTertulis` int NOT NULL,
+  `motivasi` int NOT NULL,
+  `kestabilan` int NOT NULL,
+  `kreativitas` int NOT NULL,
+  `kemampuanBerkelompok` int NOT NULL,
+  `kemampuanTeknis` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `penilaian`
+--
+
+INSERT INTO `penilaian` (`idPenilaian`, `idPengajuan`, `kemampuanAkademik`, `kemampuanLisan`, `kemampuanTertulis`, `motivasi`, `kestabilan`, `kreativitas`, `kemampuanBerkelompok`, `kemampuanTeknis`) VALUES
+(1, 1, 4, 3, 2, 1, 0, 1, 2, 3),
+(2, 2, 3, 3, 2, 2, 3, 3, 2, 3),
+(3, 1, 4, 4, 4, 4, 4, 4, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -418,7 +533,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 --
 
 CREATE TABLE `request` (
-  `RequestID` int(11) NOT NULL,
+  `RequestID` int NOT NULL,
   `MahasiswaNIM` varchar(255) NOT NULL,
   `MahasiswaNama` varchar(255) NOT NULL,
   `RequestDetail` text NOT NULL,
@@ -431,19 +546,9 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`RequestID`, `MahasiswaNIM`, `MahasiswaNama`, `RequestDetail`, `ThreadKey`, `Timestamp`) VALUES
-(4, 'J3P219078', 'Berliana Savira Putri', 'test', '5ec6f1d8cf8f4cf28f0dc2c41ff7c39d', '2021-03-17 23:39:32'),
-(5, 'J3C118094', 'Alan Raihan Maulana', 'joanna', 'de55dbad88b95c69d12db84cafe5bf3f', '2021-03-17 23:50:29'),
-(6, 'J3C118094', 'Alan Raihan Maulana', 'Try', 'b7a99126905a7c8218c893c35eb50c37', '2021-03-18 03:19:23'),
-(7, 'J3C118094', 'Alan Raihan Maulana', 'bru', 'c74564078166bd3ff07e8d999234b09c', '2021-03-18 03:25:05'),
-(8, 'J3C118094', 'Alan Raihan Maulana', 'Coba sesi', 'cb1eb23a41fe8c06354ae390f42c6a04', '2021-03-18 03:31:53'),
-(9, 'J3C118094', 'Alan Raihan Maulana', 'asdasd', '4dbdfb2d20f0be698b2afe15968d64f1', '2021-03-18 03:47:14'),
-(10, 'J3C118094', 'Alan Raihan Maulana', 'again', '79b33c53834b7498ee50a9a66c759514', '2021-03-18 03:51:41'),
-(11, 'J3C118094', 'Alan Raihan Maulana', 'test', 'ae076fdb00ee462e4201af78457e7f19', '2021-03-18 03:55:15'),
-(12, 'J3C118094', 'Alan Raihan Maulana', 'adad', '2fed96de71b30f66642e666654fd30b9', '2021-03-18 03:56:52'),
-(13, 'J3C118094', 'Alan Raihan Maulana', 'asdfasf', 'fe834342e6080fda7dd0c91622acdeee', '2021-03-18 03:58:46'),
-(14, 'J3C118094', 'Alan Raihan Maulana', 'adad', 'e1f37b67810371756b21bb36f0b8e802', '2021-03-18 03:59:51'),
-(15, 'J3P219078', 'Berliana Savira Putri', 'asdasd', '7e275e70a91bdc8dc715ac593780412e', '2021-03-18 04:00:12'),
-(16, 'J3P219078', 'Berliana Savira Putri', 'asdsad', '1ccef6a16e1ed9c8bb10f27fe0bc2972', '2021-03-18 04:34:38');
+(1, 'J3C118094', 'Alan Raihan Maulana', 'Alan', '3e6c77c189dc4403eabf3eca6b827c73', '2021-03-31 03:33:29'),
+(2, 'J3C118094', 'Alan Raihan Maulana', 'Ini adalah contoh cerita yang disampaikan konseli', 'f450769bba9fe0faeffabd32b3f6136a', '2021-04-07 22:55:47'),
+(4, 'J3C118094', 'Alan Raihan Maulana', 'Shvdjdkaj', '51a3019eb14b23aab61feff772d8fa5b', '2021-04-11 18:46:34');
 
 -- --------------------------------------------------------
 
@@ -452,7 +557,7 @@ INSERT INTO `request` (`RequestID`, `MahasiswaNIM`, `MahasiswaNama`, `RequestDet
 --
 
 CREATE TABLE `role` (
-  `Id` int(11) NOT NULL,
+  `Id` int NOT NULL,
   `NIP` varchar(255) NOT NULL,
   `Role` enum('dosen','konselor','sekprodi','admin') NOT NULL DEFAULT 'dosen'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -633,14 +738,20 @@ INSERT INTO `role` (`Id`, `NIP`, `Role`) VALUES
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`ArticleID`),
-  ADD KEY `Articles_KonselorNIP_foreign` (`KonselorNIP`);
+  ADD KEY `articles_KonselorNIP_foreign` (`KonselorNIP`);
+
+--
+-- Indexes for table `beasiswa`
+--
+ALTER TABLE `beasiswa`
+  ADD PRIMARY KEY (`idBeasiswa`);
 
 --
 -- Indexes for table `chats`
 --
 ALTER TABLE `chats`
   ADD PRIMARY KEY (`ThreadID`),
-  ADD KEY `Chats_KonselorNIP_foreign` (`KonselorNIP`);
+  ADD KEY `chats_KonselorNIP_foreign` (`KonselorNIP`);
 
 --
 -- Indexes for table `dosen`
@@ -653,7 +764,7 @@ ALTER TABLE `dosen`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`EventID`),
-  ADD KEY `Events_KonselorNIP_foreign` (`KonselorNIP`);
+  ADD KEY `events_KonselorNIP_foreign` (`KonselorNIP`);
 
 --
 -- Indexes for table `laporan`
@@ -680,6 +791,19 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  ADD PRIMARY KEY (`idPengajuan`);
+
+--
+-- Indexes for table `penilaian`
+--
+ALTER TABLE `penilaian`
+  ADD PRIMARY KEY (`idPenilaian`),
+  ADD KEY `penilaian_idPengajuan_foreign` (`idPengajuan`);
+
+--
 -- Indexes for table `request`
 --
 ALTER TABLE `request`
@@ -690,7 +814,7 @@ ALTER TABLE `request`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Role_NIP_foreign` (`NIP`);
+  ADD KEY `role_NIP_foreign` (`NIP`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -700,55 +824,73 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `ArticleID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ArticleID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `beasiswa`
+--
+ALTER TABLE `beasiswa`
+  MODIFY `idBeasiswa` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `ThreadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ThreadID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EventID` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `LaporanID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `LaporanID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `LogID` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `MessageID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  MODIFY `idPengajuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `penilaian`
+--
+ALTER TABLE `penilaian`
+  MODIFY `idPenilaian` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `RequestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `RequestID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- Constraints for dumped tables
@@ -758,25 +900,31 @@ ALTER TABLE `role`
 -- Constraints for table `articles`
 --
 ALTER TABLE `articles`
-  ADD CONSTRAINT `Articles_KonselorNIP_foreign` FOREIGN KEY (`KonselorNIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `articles_KonselorNIP_foreign` FOREIGN KEY (`KonselorNIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `chats`
 --
 ALTER TABLE `chats`
-  ADD CONSTRAINT `Chats_KonselorNIP_foreign` FOREIGN KEY (`KonselorNIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `chats_KonselorNIP_foreign` FOREIGN KEY (`KonselorNIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `Events_KonselorNIP_foreign` FOREIGN KEY (`KonselorNIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `events_KonselorNIP_foreign` FOREIGN KEY (`KonselorNIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `penilaian`
+--
+ALTER TABLE `penilaian`
+  ADD CONSTRAINT `penilaian_idPengajuan_foreign` FOREIGN KEY (`idPengajuan`) REFERENCES `pengajuan` (`idPengajuan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `role`
 --
 ALTER TABLE `role`
-  ADD CONSTRAINT `Role_NIP_foreign` FOREIGN KEY (`NIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `role_NIP_foreign` FOREIGN KEY (`NIP`) REFERENCES `dosen` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

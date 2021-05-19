@@ -42,7 +42,7 @@ class Home extends Controller
       echo view('layout/mobile/header', $appData);
       echo view('layout/mobile/nav', $appData);
       echo view('application/mobile/home', $appData);
-      if ($this->session->get('role') == 'ADMIN') {
+      if ($this->session->get('role') != 'MAHASISWA') {
         echo view('konseling/mobile/adminkonselor');
       }
       echo view('konseling/mobile/blogs');
@@ -50,6 +50,7 @@ class Home extends Controller
       echo view('konseling/mobile/chatroom', $appData);
       echo view('konseling/mobile/pantauchat', $appData);
       echo view('konseling/mobile/requestform');
+      echo view('admintools/mobile/laporanform');
       echo view('layout/mobile/footer');
     } else {
       echo view('layout/desktop/header', $appData);

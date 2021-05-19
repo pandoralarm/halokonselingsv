@@ -11,7 +11,7 @@ class RequestModel extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['MahasiswaNIM', 'MahasiswaNama', 'RequestDetail', 'ThreadKey', 'Timestamp'];
+    protected $allowedFields = ['MahasiswaNIM', 'MahasiswaPS', 'MahasiswaNama', 'RequestDetail', 'ThreadKey', 'Timestamp'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

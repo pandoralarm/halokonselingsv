@@ -5,6 +5,7 @@ var adminkonselor = new Vue({
     sidenav: false,
     chatroom: false,
     username: this.$cookies.get('username'),
+    usernip: this.$cookies.get('id'),
     basepath: this.$cookies.get('basepath'),
     userrole: this.$cookies.get('role'),
     ThreadID: '',
@@ -16,6 +17,7 @@ var adminkonselor = new Vue({
     requests: {},
     requestdetail: {},
     threads: {},
+    threadowners: {},
     dosensearch: {},
     dosenquery: '',
     konselorchecked: [],
@@ -46,6 +48,9 @@ var adminkonselor = new Vue({
       } else {
         return false;
       }
+    },
+    isLoading: function () {
+      return store.getters.isLoading;
     },
   },
   methods: {
@@ -84,11 +89,19 @@ var adminkonselor = new Vue({
       }, 1500);
     },
     getOpenRequest(){
-      nav.loading(true);
+      this.loading(true);
 
       axios.get(this.basepath+"/konseling/chatroom/getOpenRequest")
       
-        .then(response => (this.requests = response.data))
+        .then(response => {
+          setTimeout(() => {
+            if (this.isLoading == true){
+              this.loading(false);
+              nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.')
+            }
+          }, 5000);
+          this.requests = response.data
+        })
         .catch(error => {
           if (error.response) {
             // Request made and server responded
@@ -105,7 +118,7 @@ var adminkonselor = new Vue({
         })
         .finally(response => {
           this.changeSubmenu('requestKonseling');
-          nav.loading(false);
+          this.loading(false);
         });
     },
     openDetail(nama, nim, message, reqid){
@@ -119,11 +132,68 @@ var adminkonselor = new Vue({
     },
     getOpenThread(){
       
-      nav.loading(true);
+      this.loading(true);
       axios.get(this.basepath+"/konseling/chatroom/getOpenThread")
-        .then(response => (this.threads = response.data))
+        .catch(error => {
+          this.loading(false);
+          nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.');
+        })
+        .then(response => {
+          setTimeout(() => {
+            if (this.isLoading == true){
+              this.loading(false);
+              nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.')
+            }
+          }, 5000);
+          this.threads = response.data
+        })
         .finally(response => {
-          nav.loading(false);
+          this.loading(false);
+          this.changeSubmenu('pantauKonseling');
+        });
+    },
+    getOwnedThreads(owner){
+
+      this.loading(true);
+      axios.get(this.basepath+"/konseling/chatroom/getOwnedThread/"+owner)
+        .catch(error => {
+          this.loading(false);
+          console.log(error);
+          nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.');
+        })
+        .then(response => {
+          setTimeout(() => {
+            if (this.isLoading == true){
+              this.loading(false);
+              nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.')
+            }
+          }, 5000);
+          this.threads = response.data
+        })
+        .finally(response => {
+          this.loading(false);
+          this.changeSubmenu('daftarkonseli');
+        });
+    },
+    getOpenThreadOwner(){
+      
+      this.loading(true);
+      axios.get(this.basepath+"/konseling/chatroom/getOpenThreadOwner")
+        .catch(error => {
+          this.loading(false);
+          nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.');
+        })
+        .then(response => {
+          setTimeout(() => {
+            if (this.isLoading == true){
+              this.loading(false);
+              nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.')
+            }
+          }, 5000);
+          this.threadowners = response.data
+        })
+        .finally(response => {
+          this.loading(false);
           this.changeSubmenu('pantauKonseling');
         });
     },
@@ -229,14 +299,12 @@ var adminkonselor = new Vue({
     },
     openSpecificThread(key){
       store.commit('swapKey', key);
-      chatroom.checkMessages();
       this.changeWindow('chatroom');
+      chatroom.checkMessages();
     },
     loading(state) {
       console.log(state)
       store.commit('setLoading', state);
-    },
-    
-
+    }, 
   }
 });

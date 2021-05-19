@@ -22,7 +22,6 @@ $routes->group('account', ['namespace' => 'App\Modules\Account\Controllers'], fu
 	$subroutes->add('signin/auth', 'Signin::auth');
 	$subroutes->add('signin/desktopAuth', 'Signin::desktopAuth');
 	$subroutes->add('signin/signout', 'Signin::signout');
-	$subroutes->add('signin/testEnv/(:alphanum)', 'Signin::testEnv/$1');
 	$subroutes->add('signin/post/(:alphanum)/(:alphanum)', 'Signin::post/$1/$2');
 
 });

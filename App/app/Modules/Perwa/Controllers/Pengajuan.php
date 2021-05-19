@@ -78,6 +78,45 @@ class Pengajuan extends Controller
             'namaBeasiswa' => $data['namaBeasiswa'],
         ];
 
+        return json_encode($response);
+    }
+    public function tolakRekomendasi(){
+        $data = [
+            'catatan'   => $this->request->getPost('alasan'),
+            'status'    => "Ditolak",
+            'nip'       => $this->session->get('nip'),
+            'dosenPJ'   => $this->session->get('nama'),
+        ];
+
+        $this->pengajuan->update($this->request->getPost('idPengajuan'), $data);
+
+        $response = [
+            'alasan' => $data['catatan'],
+            'status' => $data['status'],
+            'nip' => $data['nip'],
+            'dosenPJ' => $data['dosenPJ'],
+        ];
+
+        return json_encode($response);
+    }
+    public function tundaRekomendasi(){
+        $data = [
+            'butuhFile' => $this->request->getPost('butuhFile'),
+            'catatan'   => $this->request->getPost('alasan'),
+            'status'    => "Ditunda",
+            'nip'       => $this->session->get('nip'),
+            'dosenPJ'   => $this->session->get('nama'),
+        ];
+
+        $this->pengajuan->update($this->request->getPost('idPengajuan'), $data);
+
+        $response = [
+            'butuhFile' => $data['butuhFile'],
+            'catatan' => $data['catatan'],
+            'status' => $data['status'],
+            'nip' => $data['nip'],
+            'dosenPJ' => $data['dosenPJ'],
+        ];
 
         return json_encode($response);
     }

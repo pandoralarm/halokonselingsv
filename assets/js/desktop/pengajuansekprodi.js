@@ -96,7 +96,7 @@ var pengajuansekprodi = new Vue({
           console.log(response);
         })
         .finally(() => {
-          this.changeWindow('verifikasiRekomendasi')
+          this.changeWindow('verifikasiRekomendasi');
         });
     },
     downloadRekomendasi() {
@@ -116,8 +116,46 @@ var pengajuansekprodi = new Vue({
           console.log(response);
         })
         .finally(() => {
-          this.changeSubmenu('menu');
+          this.changeWindow('proses');
+          this.changeSubmenu('pengajuansekprodi');
         });
-    }
+    },
+    tolakRekomendasi() {
+      var formPenolakan = new FormData();
+      formPenolakan.append('idPengajuan', this.pengajuanMhs[0].idPengajuan);
+      formPenolakan.append('alasan', $('#alasan').val());
+      axios.post(this.basepath + "/perwa/pengajuan/tolakRekomendasi",
+        formPenolakan,
+        { headers: { 'content-type': 'multipart/form-data' } })
+        .catch(error => {
+          console.log(error);
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .finally(() => {
+          this.changeWindow('proses');
+          this.changeSubmenu('pengajuansekprodi');
+        });
+    },
+    tundaRekomendasi() {
+      var formPenundaan = new FormData();
+      formPenundaan.append('idPengajuan', this.pengajuanMhs[0].idPengajuan);
+      formPenundaan.append('butuhFile', $('input[name="butuhFile"]:checked').val());
+      formPenundaan.append('alasan', $('#alasan').val());
+      axios.post(this.basepath + "/perwa/pengajuan/tundaRekomendasi",
+        formPenundaan,
+        { headers: { 'content-type': 'multipart/form-data' } })
+        .catch(error => {
+          console.log(error);
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .finally(() => {
+          this.changeWindow('proses');
+          this.changeSubmenu('pengajuansekprodi');
+        });
+    },
   },
 });

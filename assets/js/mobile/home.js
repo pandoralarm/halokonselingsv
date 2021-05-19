@@ -7,6 +7,7 @@ var home = new Vue({
     username: this.$cookies.get('username'),
     basepath: this.$cookies.get('basepath'),
     userrole: this.$cookies.get('role'),
+    userid: this.$cookies.get('id'),
     error: {
       alert: false,
       strong: '',
@@ -81,6 +82,7 @@ var home = new Vue({
           if (this.ThreadKey != 'default') {
             this.loading(false);
             store.commit('swapKey', this.ThreadKey);
+            this.changeWindow('chatroom')
             chatroom.checkMessages();
           } else {
             if (this.hasRequest){
@@ -96,6 +98,28 @@ var home = new Vue({
               }
             }
           }
+        });
+    },
+    getOwnedThreads(){
+      this.loading(true);
+      axios.get(this.basepath+"/konseling/chatroom/getOwnedThread/"+this.userid)
+        .catch(error => {
+          this.loading(false);
+          console.log(error);
+          nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.');
+        })
+        .then(response => {
+          setTimeout(() => {
+            if (this.isLoading == true){
+              this.loading(false);
+              nav.alertNow('Gagal!', 'Periksa jaringan lalu coba lagi.')
+            }
+          }, 5000);
+          adminkonselor.threads = response.data
+        })
+        .finally(response => {
+          this.loading(false);
+          this.changeSubmenu('daftarkonseli');
         });
     },
     alertNow(strongMessage, smallMessage) {

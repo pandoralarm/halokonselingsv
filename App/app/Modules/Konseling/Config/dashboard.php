@@ -18,6 +18,8 @@ $routes->group('konseling', ['namespace' => 'App\Modules\Konseling\Controllers']
 	$subroutes->add('chatroom/isRequest', 'Chatroom::isRequest');
 	$subroutes->add('chatroom/getOpenRequest', 'Chatroom::getOpenRequest');
 	$subroutes->add('chatroom/getOpenThread', 'Chatroom::getOpenThread');
+	$subroutes->add('chatroom/getOwnedThread/(:alphanum)', 'Chatroom::getOwnedThread/$1');
+	$subroutes->add('chatroom/getOpenThreadOwner', 'Chatroom::getOpenThreadOwner');
 	$subroutes->add('chatroom/findKonselor/(:alphanum)', 'Chatroom::findKonselor/$1');
 	$subroutes->add('chatroom/confirmSession', 'Chatroom::confirmSession');
 	$subroutes->add('chatroom/addToSession', 'Chatroom::addToSession');

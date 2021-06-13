@@ -17,6 +17,54 @@ Filevalidation = () => {
   }
 };
 
+function validasiFormPengajuan() {
+
+  var namaBeasiswa = document.getElementById('beasiswa').value;
+  var deadlineBeasiswa = document.getElementById('deadline').value;
+  var cvBeasiswa = document.getElementById('cv').value;
+  var pernyataanBeasiswa = document.getElementById('pernyataan').checked;
+
+  var validasiNamaBeasiswa = document.getElementById('validasiNamaBeasiswa');
+  var validasiDeadlineBeasiswa = document.getElementById('validasiDeadlineBeasiswa');
+  var validasiCvBeasiswa = document.getElementById('validasiCvBeasiswa');
+  var validasiPernyataanBeasiswa = document.getElementById('validasiPernyataanBeasiswa');
+
+  var jumlahError = 0;
+
+  if (namaBeasiswa == "") {
+    validasiNamaBeasiswa.innerHTML = "Harap isi bidang ini!";
+    jumlahError++;
+  } else {
+    validasiNamaBeasiswa.innerHTML = "";
+    jumlahError - 1;
+  }
+  if (deadlineBeasiswa == "") {
+    validasiDeadlineBeasiswa.innerHTML = "Harap isi bidang ini!";
+    jumlahError++;
+  } else {
+    validasiDeadlineBeasiswa.innerHTML = "";
+    jumlahError - 1;
+  }
+  if (cvBeasiswa == "") {
+    validasiCvBeasiswa.innerHTML = "Harap isi bidang ini!";
+    jumlahError++;
+  } else {
+    validasiCvBeasiswa.innerHTML = "";
+    jumlahError - 1;
+  }
+  if (pernyataanBeasiswa == false) {
+    validasiPernyataanBeasiswa.innerHTML = "Harap isi bidang ini!";
+    jumlahError++;
+  } else {
+    validasiPernyataanBeasiswa.innerHTML = "";
+    jumlahError - 1;
+  }
+
+  if (jumlahError == 0) {
+    $('#exampleModal').modal('show');
+  }
+};
+
 var pengajuan = new Vue({
   el: '#pengajuan',
   data: {

@@ -74,6 +74,10 @@
       </div>
     </div>
 
+
+
+
+
     <div class="bg-top"></div>
     <transition name="slider">
       <nav v-if="sidenav" id="side-nav" class="side-nav"> 
@@ -125,10 +129,10 @@
           <div v-on:click="changeMenu('admin');" class="submenu">Admin Tools</div>
           <transition name="fade">
             <ul id="sub_admin" v-if="current_menu == 'admin'">
-              <li v-on:click="changeSubmenu('beasiswa')" class=" menu"><a href="#"><i class="fa fa-archive" aria-hidden="true"></i> - Kelola Blogs</a></li>
-              <li v-on:click="changeSubmenu('beasiswa')" class=" menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Kelola Events</a></li>
+              <li v-on:click="changeSubmenu('editblogs');" class=" menu"><a href="#"><i class="fa fa-archive" aria-hidden="true"></i> - Kelola Blogs</a></li>
+              <li v-on:click="changeSubmenu('editevents')" class=" menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Kelola Events</a></li>
               <li v-on:click="sidenavs(); changeWindow('laporanform'); changeTitle('LAPORAN KONSELING', '')" class=" menu"><a href="#"><i class="fa fa-table" aria-hidden="true"></i> - Laporan Konseling</a></li>
-              <li v-on:click="changeSubmenu('beasiswa')" class=" menu"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> - Data Konselor</a></li>
+              <li v-on:click="changeSubmenu('editevents')" class=" menu"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> - Data Konselor</a></li>
             </ul>
           </transition>
         </div>

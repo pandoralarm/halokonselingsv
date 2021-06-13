@@ -37,9 +37,9 @@ const store = new Vuex.Store({
   },
   mutations: {
     changeSubmenu (state, newSubmenu) {
-      searchEnabled = ['blogs', 'events', 'kelolaBlogs', 'kelolaEvents'];
-      optionsEnabled = ['blogDetail'];
-      helpEnabled = ['editBlogs', 'editEvents', 'addKonselor', 'createLaporan', 'getLaporan', 'manageRoles', 'adminTools', 'requestForm'];
+      searchEnabled = ['editevents', 'editblogs', 'blogs', 'events', 'kelolaBlogs', 'kelolaEvents'];
+      optionsEnabled = ['blogDetail'], ['editblogDetail'];
+      helpEnabled = [ 'addKonselor', 'createLaporan', 'getLaporan', 'manageRoles', 'adminTools', 'requestForm'];
       blogs_submenu = ['blogs', 'blogDetail'];
       events_submenu = ['events'];
       beasiswa_submenu = ['beasiswa'];

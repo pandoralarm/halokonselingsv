@@ -44,6 +44,8 @@ class Home extends Controller
       echo view('application/mobile/home', $appData);
       if ($this->session->get('role') != 'MAHASISWA') {
         echo view('konseling/mobile/adminkonselor');
+        echo view('admintools/mobile/editblogs');
+        echo view('admintools/mobile/editevents');
       }
       echo view('konseling/mobile/blogs');
       echo view('konseling/mobile/events');

@@ -28,6 +28,21 @@ html {
   opacity: 0.4;
 }
 
+.btn-add {
+  line-height: 35px;
+  display: block;
+  margin: 25px;
+  position:fixed;
+  right:0;
+  bottom:0;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  border: 1px solid red;
+  background-color: white;
+  z-index: 5000;
+}
+
 .whitespace {
   position: fixed;
   top: 0;
@@ -724,6 +739,14 @@ select.form-control:focus {
   color: white;
   position: absolute;
   z-index: -6250;
+}
+
+.topelements{
+  height: 10vh;
+  width: 100vw;
+  color: white;
+  position: absolute;
+  z-index: -6260;
 }
 
 .topnav .text {

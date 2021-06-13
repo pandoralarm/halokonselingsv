@@ -936,3 +936,18 @@ small.verifikasi{
   color: white;
   transition: all 0.3 ease;
 }
+
+.modal-confirmation.judul{
+  margin-bottom: 0;
+  font-family: "Roboto", sans-serif;
+  color: #D8B088;
+  text-align: center;
+  font-size: 25px;
+}
+
+.modal-confirmation.detail{
+  font-family: "Roboto", sans-serif;
+  color: #7F7F7F;
+  text-align: center;
+  font-size: 14px;
+}

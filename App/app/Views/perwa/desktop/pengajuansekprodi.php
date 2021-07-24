@@ -386,7 +386,7 @@
                 <div class="d-flex align-items-center justify-content-end w-100 mt-4">
                   <button class="back" style="margin:0 1em 0 0;"
                     v-on:click="changeWindow('detailPengajuanDiproses')">Kembali</button>
-                  <button v-on:click="addPenilaian()" class="button-diselesaikansekprod">Submit</button>
+                  <button v-on:click="addPenilaian();downloadRekomendasi()" class="button-diselesaikansekprod">Submit</button>
                 </div>
               </div>              
             </div>
@@ -399,13 +399,6 @@
               <div class="title mt-2">Verifikasi Permohonan Rekomendasi</div>
               <div class="garis"></div>
               <div class="row">
-                <div class="col d-flex flex-column align-items-center justify-content-centers" style="padding:1em;">
-                  <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_download.svg'); ?>" style="width:50px;">
-                  <small class="verifikasi mt-2" v-for="row in pengajuanMhs">
-                    Rekomendasi_{{row.nim}}.pdf
-                  </small>
-                  <button v-on:click="downloadRekomendasi()" class="button-verifikasi mt-3">Unduh</button>
-                </div>
                 <div class="col d-flex flex-column align-items-center justify-content-center" style="padding:1em;">
                   <img src="<?php echo base_url('assets/img/Components/Home/Desktop/icon_upload.svg'); ?>" style="width:50px;">
                   <small class="verifikasi mt-2" id="namaFile">
@@ -417,11 +410,7 @@
                 </div>
               </div>
               <small class="verifikasi">
-                1. Silahkan unduh surat rekomendasi untuk di tanda tangani menggunakan DigiSign IPB
-              </small>
-              <br>
-              <small class="verifikasi">
-                2. Upload surat rekomendasi yang telah di tanda tangani menggunakan DigiSign IPB
+                Upload surat rekomendasi yang telah di tanda tangani menggunakan DigiSign IPB
               </small>
               <div class="d-flex align-items-center justify-content-end w-100 mt-4">
                 <button class="back" style="margin:0 1em 0 0;" v-on:click="changeWindow('detailPengajuanDiproses')">Kembali</button>

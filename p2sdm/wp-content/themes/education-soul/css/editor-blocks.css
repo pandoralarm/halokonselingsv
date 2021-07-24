@@ -1,0 +1,160 @@
+/*
+Theme Name: Education Soul
+Description: Used to style blocks in the editor.
+*/
+
+/* General Typography */
+.edit-post-visual-editor .block-editor-block-list__block,
+.edit-post-visual-editor .block-editor-block-list__block p,
+.editor-default-block-appender textarea.editor-default-block-appender__content {
+	font-family: "Roboto",sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #727272;
+}
+
+.edit-post-visual-editor__post-title-wrapper .editor-post-title {
+	margin-bottom: 0;
+}
+
+.editor-post-title__block .editor-post-title__input {
+	font-family: "Roboto",sans-serif;
+	font-size: 22px;
+	line-height: 1.5;
+	color: #00387d;
+	padding-bottom: 0;
+	margin-bottom: 20px;
+}
+
+.edit-post-visual-editor .block-editor-block-list__block {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.edit-post-visual-editor .block-editor-inner-blocks .wp-block {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h1,
+.edit-post-visual-editor .block-editor-block-list__layout h2,
+.edit-post-visual-editor .block-editor-block-list__layout h3,
+.edit-post-visual-editor .block-editor-block-list__layout h4,
+.edit-post-visual-editor .block-editor-block-list__layout h5,
+.edit-post-visual-editor .block-editor-block-list__layout h6 {
+	font-family: "Roboto",sans-serif;
+	font-weight: 600;
+	line-height: 1.5;
+	margin-bottom: 15px;
+	color: #00387d;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h1 {
+	font-size: 30px;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h2 {
+	font-size: 22px;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h3 {
+	font-size: 20px;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h4 {
+	font-size: 18px;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h5 {
+	font-size: 16px;
+}
+
+.edit-post-visual-editor .block-editor-block-list__layout h6 {
+	font-size: 14px;
+}
+
+/* Button */
+
+.wp-block-button .wp-block-button__link {
+	border-radius: 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 12px 30px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+	vertical-align: baseline;
+}
+
+.wp-block-button__link {
+    background: #aa0000;
+    color: #fff;
+}
+
+.is-style-outline .wp-block-button__link {
+	color: #aa0000;
+}
+
+/* General Block Styles */
+
+.editor-styles-wrapper {
+	max-width: 100% !important; /* Override where editor-style.css is affecting this */
+}
+
+.wp-block {
+	max-width: 729px;
+}
+
+/* Link styles */
+
+.edit-post-visual-editor a,
+.editor-block-list__block a,
+.wp-block-freeform.block-library-rich-text__tinymce a {
+	color: #007acc;
+}
+
+/* List styles */
+.block-editor-block-list__block .wp-block-gallery .blocks-gallery-grid {
+	margin-left: 0;
+}
+
+.rtl .edit-post-visual-editor ul:not(.wp-block-gallery),
+.rtl .editor-block-list__block ul:not(.wp-block-gallery),
+.rtl .block-library-list ul,
+.rtl .edit-post-visual-editor ol,
+.rtl .editor-block-list__block ol,
+.rtl .block-library-list ol {
+	margin-left: 0;
+	margin-right: 20px;
+	padding: 0;
+}
+
+.rtl .block-editor-block-list__block .wp-block-gallery .blocks-gallery-grid {
+	margin-right: 0;
+}
+
+.edit-post-visual-editor ul:not(.wp-block-gallery),
+.editor-block-list__block ul:not(.wp-block-gallery),
+.block-library-list ul {
+	list-style: disc;
+}
+
+.edit-post-visual-editor ol,
+.editor-block-list__block ol,
+.block-library-list ol {
+	list-style: decimal;
+}
+
+
+/* Captions */
+
+[class^="wp-block-"] figcaption {
+	margin-top: -15px;
+	font-style: italic;
+	text-align: left;
+}
+
+.rtl [class^="wp-block-"] figcaption {
+	text-align: right;
+}

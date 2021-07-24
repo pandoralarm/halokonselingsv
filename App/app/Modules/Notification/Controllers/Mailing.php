@@ -125,7 +125,7 @@ class Mailing extends Controller
           ob_end_clean();
           break;
 
-        case 'newmessage':
+        /* case 'newmessage':
           //EMAIL NOTIFIKASI ADA PESAN BARU
 
           $this->email->setSubject('PESAN BARU');
@@ -139,7 +139,7 @@ class Mailing extends Controller
           include $path;
           $message = ob_get_contents();
           ob_end_clean();
-          break;
+          break; */
           
         case 'survey':
           //EMAIL PERMINTAAN MENGISI SURVEY KEPUASAN
@@ -157,7 +157,7 @@ class Mailing extends Controller
           ob_end_clean();
           break;
 
-        case 'report':
+        /* case 'report':
           //EMAIL PERMINTAAN MENGISI SURVEY KEPUASAN
 
           $this->email->setSubject('LAPORAN HALOKONSELING');
@@ -171,7 +171,7 @@ class Mailing extends Controller
           include $path;
           $message = ob_get_contents();
           ob_end_clean();
-          break;
+          break; */
 
         default:
           //code to be executed if n is different from all labels;
@@ -190,19 +190,19 @@ class Mailing extends Controller
 
         //CALL PRIVATE FUNCTION COMPOSE MESSAGE
         //Type variable decides message type going to be composed
-        $this->email->setTo('pandoralan.m46@gmail.com');
+        $this->email->setTo('alan_ipb@apps.ipb.ac.id');
         $this->email->setMessage($this->compose($type, $key));
-        return $this->compose($type, $key);
+        $this->compose($type, $key);
         
-        $this->email->setFrom('konseli  ngsv@apps.ipb.ac.id', 'HaloKonselingSV [NO-REPLY]');
+        $this->email->setFrom('konselingsv@apps.ipb.ac.id', 'HaloKonselingSV [NO-REPLY]');
 
         if ($this->email->send()) 
 		{
-            echo 'Email successfully sent to '.'pandoralan.m46@gmail.com';
+            echo 'Email successfully sent to '.'alan_ipb@apps.ipb.ac.id';
         } 
 		else 
 		{
-            $data = $email->printDebugger(['headers']);
+            $data = $this->email->printDebugger(['headers']);
             print_r($data);
         }
     }

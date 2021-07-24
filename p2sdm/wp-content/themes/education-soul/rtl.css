@@ -1,0 +1,1192 @@
+/*
+Theme Name: Education Soul
+
+Adding support for languages written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+
+https://codex.wordpress.org/Right-to-Left_Language_Support
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms/Custom Button
+# Navigation
+    ## Menus
+# Alignments
+# Content
+## Posts and pages
+## Comments
+# Custom By WEN Themes
+##  Header Style By WEN Themes
+## Social Links Style By WEN Themes
+## Header Image Style By WEN Themes
+## Main slider Style By WEN Themes
+## Main Content Style By WEN Themes
+## Sidebar Style By WEN Themes
+## Footer Style By WEN Themes
+## Layout sidebar By WEN Themes
+## Inner Pages Style By WEN Themes
+## Extra CSS for Pro By WEN Themes
+## Service Section CSS By WEN Themes
+## Latest News post section style By WEN Themes
+## Recent post widget style By WEN Themes
+## Our Team section style By WEN Themes
+## Featured Page Widget style By WEN Themes
+## Featured Content style By WEN Themes
+## Quick Contact Widget style By WEN Themes
+## Featured News Events section style By WEN Themes
+## Testimonial section style By WEN Themes
+## WooCommercce Carousel widget style By WEN Themes
+## Custom WooCommerce Style By WEN Themes
+## Custom Block Style
+## Media Queries By WEN Themes
+
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+
+body {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+
+blockquote {
+    border-right: 5px solid #ddd;
+    border-left: none;
+    padding-right: 25px;
+    padding-left: 0;
+}
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+
+ul,
+ol {
+    margin: 0 20px 15px 0;
+}
+
+li > ul,
+li > ol {
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+/*--------------------------------------------------------------
+# Forms/Custom Button
+--------------------------------------------------------------*/
+
+#tophead .searchform input[type="submit"] {
+    float: left;
+}
+
+.woocommerce-product-search .search-field {
+    padding: 10px 20px 10px 55px;
+}
+
+.woocommerce-product-search button {
+    left: 0;
+    right: auto;
+}
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+
+.main-navigation ul ul {
+    text-align: right;
+}
+
+.dropdown-toggle {
+    left: 0;
+    right: auto;
+}
+
+.dropdown-toggle:after {
+    border-right-width: 1px;
+    left: auto;
+    right: 1px;
+}
+
+.menu-toggle .fas {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+#main-nav {
+    float: right;
+}
+
+/* More than standard 910px (devices and browsers) */
+@media screen and (min-width: 910px) {
+    .main-navigation ul ul {
+        right: -999em;
+        left: auto;
+    }
+
+    .main-navigation ul ul:before {
+        left: 9px;
+        right: auto;
+    }
+
+    .main-navigation li:hover > ul,
+    .main-navigation li.focus > ul {
+        left: 0;
+        right: auto;
+    }
+
+    .main-navigation ul ul li:hover > ul,
+    .main-navigation ul ul li.focus > ul {
+        right: auto;
+        left: 100%;
+    }
+
+    .main-navigation .menu-item-has-children > a {
+        padding-left: 35px;
+        padding-right: 10px;
+    }
+
+    .main-navigation .menu-item-has-children > a:after {
+        left: 14px;
+        right: auto;
+    }
+
+    .main-navigation ul ul .menu-item-has-children > a {
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+
+    .main-navigation ul ul .menu-item-has-children > a:after {
+        left: 10px;
+        right: auto;
+    }
+
+    .main-navigation ul ul .menu-item-has-children > a:after {
+        -webkit-transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+
+}
+
+/* More than standard 910px (devices and browsers) */
+@media screen and (max-width: 909px) {
+    .site-header-menu.toggled-on, .no-js .site-header-menu {
+        left: 0;
+        right: auto;
+    }
+
+    .main-navigation ul ul li li a {
+        padding-right: 40px;
+        padding-left: 20px;
+    }
+
+    .main-navigation ul ul li a {
+        padding-right: 30px;
+        padding-left: 20px;
+    }
+}
+
+/*comment and post navigation*/
+.meta-nav {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+/*Page/Post Navigation*/
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+    float: right;
+}
+
+.comment-navigation .nav-previous a:before,
+.posts-navigation .nav-previous a:before,
+.post-navigation .nav-previous a:before {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.comment-navigation .nav-next a:after,
+.posts-navigation .nav-next a:after,
+.post-navigation .nav-next a:after{
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+    float: left;
+    text-align: left;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+
+.col-grid-1,
+.col-grid-2,
+.col-grid-3,
+.col-grid-4,
+.col-grid-5,
+.col-grid-6,
+.col-grid-7,
+.col-grid-8,
+.col-grid-9,
+.col-grid-10,
+.col-grid-11,
+.col-grid-12 {
+    float: right;
+}
+
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+
+.entry-meta {
+    direction: rtl;
+}
+
+.entry-meta span:before,
+.comment-edit-link:before {
+    margin-left: 5px;
+     margin-right: 0;
+}
+
+.entry-meta > span {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.entry-meta .byline .author.vcard {
+    margin-right: -4px;
+    margin-left: 0;
+}
+
+.custom-entry-date {
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.sticky .post-thumbnail .sticky-post {
+    right: 0;
+    left: auto;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url{
+    float: right;
+}
+
+.comment-list li {
+    padding-right: 0;
+}
+
+.comment {
+    float: right;
+}
+
+ol.comment-list {
+    float: right;
+}
+
+ol.comment-list .children {
+    float: right;
+    margin: 15px 15px 15px 0;
+}
+
+.comment .comment-body {
+    float: right;
+    text-align: right;
+}
+
+.comment-list .children {
+    background-position: right 20px;
+    background-repeat: no-repeat;
+    border-right: 1px solid rgb(238, 238, 238);
+    border-left: none;
+    margin-right: 0;
+    padding-right: 40px;
+}
+
+.comment-list li.comment > div img.avatar {
+    right: 29px;
+    left: auto;
+}
+
+.vcard .avatar {
+    float: right;
+    margin: 7px 0 15px 15px;
+}
+
+.comment-metadata > a{
+     margin-left: 30px;
+}
+
+.authorbox  .author-info,
+.authorbox  .author-bio-posts-content {
+    float: right;
+}
+
+#commentform input[type="checkbox"],
+#commentform input[type="radio"] {
+    margin-left: 10px;
+}
+
+/*--------------------------------------------------------------
+# Custom By WEN Themes
+--------------------------------------------------------------*/
+
+.site-layout-boxed #page .top-news-title {
+    margin-right: -16px;
+    margin-left: 0;
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+a.read-more::after {
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+a.read-more {
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+/*--------------------------------------------------------------
+##  Header Style By WEN Themes
+--------------------------------------------------------------*/
+
+a.custom-logo-link {
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+#header-social {
+    float: left;
+    text-align: left;
+}
+
+.header-search-box {
+    float: left;
+}
+
+.header-search-box > a,
+.header-search-box > a:visited {
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+.header-search-box .search-box-wrap {
+    left: 0;
+    right: auto;
+}
+
+.search-form .search-submit {
+    left: 0;
+    right: auto;
+}
+
+.header-search-box .search-form input.search-field {
+    padding-left: 105px;
+    padding-right: 15px;
+}
+
+.woocommerce-product-search .search-field {
+    padding: 10px 10px 10px 55px;
+}
+
+.woocommerce-product-search button {
+    left: 0;
+    right: auto;
+}
+
+
+.enabled-sticky-primary-menu .site-header.fixed {
+    right: 0;
+    left: auto;
+}
+
+#site-identity {
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
+    text-align: right;
+}
+
+.site-branding {
+    float: right;
+}
+
+a.custom-button.header-link-button {
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+/* Top Header */
+#tophead {
+    float: right;
+}
+
+.header-social {
+    float: left;
+}
+
+/* quick contact */
+#quick-contact {
+    float: right;
+    text-align: right;
+}
+
+
+#quick-contact li:before {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+#quick-contact li {
+    text-align: right;
+}
+
+#quick-contact li.quick-call:before {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+
+/* Top News */
+.top-news .quick-news > span {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+.top-news .quick-news {
+    float: right;
+    text-align: right;
+}
+
+.ticket-buttons a {
+    float: right;
+}
+
+.top-news {
+    float: right;
+}
+
+.top-news .top-news-title {
+    float: right;
+}
+
+.top-news #news-ticker {
+    float: right;
+    margin: 10px 20px 6px 0;
+}
+
+.news-ticker-inner-wrap {
+    padding-left: 60px;
+    padding-right: 0;
+}
+
+.ticket-buttons.pull-right {
+    float: left;
+}
+
+.main-right-header.pull-right {
+    float: left;
+}
+
+.head-right.pull-right {
+    float: left;
+}
+
+/*--------------------------------------------------------------
+## Header Image Style By WEN Themes
+--------------------------------------------------------------*/
+
+#custom-header .header-image-caption {
+    right: 15%;
+    left: 0;
+}
+
+#custom-header .header-image-buttons a {
+    margin: 8px 0 0 15px;
+}
+
+/*--------------------------------------------------------------
+## Main slider Style By WEN Themes
+--------------------------------------------------------------*/
+
+#main-slider .cycle-caption {
+    right: 15%;
+    left: 0;
+}
+
+/*slider pager box*/
+#main-slider .cycle-pager {
+    text-align: left;
+    right: 15%;
+    left: auto;
+}
+
+/*--------------------------------------------------------------
+## Main Content Style By WEN Themes
+--------------------------------------------------------------*/
+
+#primary {
+    float: right;
+}
+
+/*--------------------------------------------------------------
+## Sidebar Style By WEN Themes
+--------------------------------------------------------------*/
+
+.sidebar {
+    float: right;
+}
+
+#sidebar-primary {
+    float: left;
+}
+
+#sidebar-secondary {
+    float: right;
+}
+
+.sidebar .widget-title {
+    text-align: right;
+}
+
+.sidebar ul li {
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+.sidebar ul li:before {
+    right: 2px;
+    left: auto;
+    float: right;
+}
+
+/*--------------------------------------------------------------
+## Footer Style By WEN Themes
+--------------------------------------------------------------*/
+
+.colophon-bottom .colophon-column {
+    border-right: 1px solid;
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+.colophon-bottom .colophon-column:first-child {
+    padding-right: 0;
+}
+
+.colophon-bottom .colophon-column {
+    border-right: 1px solid;
+    border-left: none;
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+#footer-widgets ul li {
+    padding: 3px 13px 3px 15px;
+}
+
+#footer-widgets ul li:before {
+    right: 0;
+    left: auto;
+}
+
+.sidebar ul li:before,
+#footer-widgets ul li:before,
+.entry-content a.read-more:after {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.entry-content a.read-more:after {
+    vertical-align: bottom;
+}
+
+#footer-widgets a .footer-widget-area {
+    float: right;
+}
+
+#footer-widgets .footer-widget-area {
+    float: right;
+}
+
+/*Footer Navigation*/
+#footer-navigation li a {
+    border-right: 1px solid;
+    border-left: none;
+}
+
+#footer-navigation li:first-child a {
+    padding-left: 15px;
+    padding-right: 0;
+}
+
+/*Scrollup Style*/
+.scrollup {
+    float: left;
+    right: auto;
+    left: 20px;
+}
+
+/*--------------------------------------------------------------
+## Layout sidebar By WEN Themes
+--------------------------------------------------------------*/
+
+.global-layout-three-columns .sidebar {
+    float: left;
+}
+
+/*--------------------------------------------------------------
+## Inner Pages Style By WEN Themes
+--------------------------------------------------------------*/
+
+/*Basic Breadcrumb */
+#breadcrumb .breadcrumb-trail li {
+    float: right;
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+#breadcrumb .breadcrumb-trail li:after {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+/*--------------------------------------------------------------
+## Extra CSS for Pro By WEN Themes
+--------------------------------------------------------------*/
+
+/* Global layout sidebar By WEN Themes*/
+.global-layout-three-columns-pcs #sidebar-primary,
+.global-layout-three-columns-cps #sidebar-primary,
+.global-layout-three-columns-psc #sidebar-primary {
+    float: right;
+}
+
+.global-layout-three-columns-pcs #sidebar-secondary,
+.global-layout-three-columns-cps #sidebar-secondary {
+    float: left;
+}
+
+.global-layout-three-columns-cps #primary {
+    float: right;
+}
+
+.global-layout-three-columns-pcs-equal #sidebar-primary {
+    float: right;
+}
+
+.global-layout-three-columns-pcs-equal #sidebar-secondary {
+    float: left;
+}
+
+/*--------------------------------------------------------------
+## Service Section CSS By WEN Themes
+--------------------------------------------------------------*/
+
+.home-section-services .services-item {
+    float: right;
+}
+
+/*--------------------------------------------------------------
+## Latest News post section style By WEN Themes
+--------------------------------------------------------------*/
+
+.home-section-latest-news .latest-news-item {
+    float: right;
+}
+
+.home-section-latest-news .latest-news-layout-2 .latest-news-text-wrap {
+    float: right;
+}
+
+.home-section-latest-news .latest-news-layout-2 .latest-news-thumb:before {
+    border-left: 35px solid #fff;
+    border-right: none;
+    right: auto;
+    left: 0;
+}
+
+.home-section-latest-news .latest-news-layout-2 .latest-news-thumb {
+    float: right;
+}
+
+/*--------------------------------------------------------------
+## Recent post widget style By WEN Themes
+--------------------------------------------------------------*/
+
+.education_soul_widget_recent_posts .recent-posts-date:before {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/*--------------------------------------------------------------
+## Our Team section style By WEN Themes
+--------------------------------------------------------------*/
+
+.home-section-team .team-item {
+    float: right;
+}
+
+.home-section-team .team-meta span {
+    text-align: right;
+}
+
+.home-section-team .team-meta span:before {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.home-section-team .team-title:before {
+    right: 40%;
+    left: auto;
+}
+
+/*--------------------------------------------------------------
+## Featured Page Widget style By WEN Themes
+--------------------------------------------------------------*/
+
+.education-soul-carousel .slick-list {
+    text-align: right;
+}
+
+.slick-track {
+    direction: ltr;
+}
+
+
+/*--------------------------------------------------------------
+## Featured Content style By WEN Themes
+--------------------------------------------------------------*/
+
+.home-section-featured-blocks .featured-block-item {
+    float: right;
+}
+
+.home-section-featured-blocks {
+    float: right;
+}
+
+.home-section-featured-blocks .block-title a:after {
+    right: 0;
+    left: auto;
+}
+
+/*--------------------------------------------------------------
+## Quick Contact Widget style By WEN Themes
+--------------------------------------------------------------*/
+
+.education_soul_widget_quick_contact .contact-info-wrapper::before {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.education_soul_widget_quick_contact strong.contact-type {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/*--------------------------------------------------------------
+## Featured News Events section style By WEN Themes
+--------------------------------------------------------------*/
+
+.home-section-news-and-events .block-meta span {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.home-section-news-and-events .recent-news {
+    float: right;
+}
+
+.home-section-news-and-events .recent-events {
+    float: left;
+}
+
+.home-section-news-and-events .event-post {
+    float: right;
+}
+
+.home-section-news-and-events .custom-entry-date {
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+/*--------------------------------------------------------------
+## Testimonial section style By WEN Themes
+--------------------------------------------------------------*/
+
+.testimonials-item {
+    float: right;
+}
+
+.home-section-testimonials .cycle-pager {
+    left: 0;
+    right: auto;
+}
+
+.home-section-testimonials .testimonials-content-area p:before {
+    content: "\f10e";
+    float: right;
+    margin-left: 20px;
+}
+
+/*--------------------------------------------------------------
+## WooCommercce Carousel widget style By WEN Themes
+--------------------------------------------------------------*/
+
+.education-soul-woocommerce  ul.products li.product,
+.education-soul-woocommerce -page ul.products li.product {
+    float: right;
+}
+
+.education-soul-woocommerce  ul.products li.product .onsale::after{
+    left: 2px;
+    right: auto;
+}
+
+.education-soul-woocommerce  ul.products li.product .onsale {
+    left: -40px;
+    right: auto;
+}
+
+.education-soul-woocommerce.education-soul-woocommerce-product-grid-3 ul.products li.product .button {
+    right: 32%;
+}
+
+.education-soul-woocommerce ul.products li.product .button {
+    right: 21%;
+    left: auto;
+}
+
+.education-soul-woocommerce .star-rating {
+    float: left;
+}
+
+.education-soul-woocommerce .star-rating::before {
+    float: right;
+    right: 0;
+    left: auto;
+}
+
+.education-soul-woocommerce .star-rating span {
+    right: 0;
+    left: auto;
+}
+
+.education-soul-woocommerce .star-rating span::before {
+    right: 0;
+    left: auto;
+}
+
+.education-soul-woocommerce  .woocommerce-product-rating .star-rating {
+    float: right;
+    margin: 0.5em 0 0 4px;
+}
+
+.education-soul-woocommerce  .products .star-rating {
+    right: 25px;
+    left: auto;
+}
+
+.education-soul-woocommerce a.button:after {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+/*--------------------------------------------------------------
+## Custom WooCommerce Style By WEN Themes
+--------------------------------------------------------------*/
+
+.woocommerce div.product .button {
+    float: right;
+}
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    float: right;
+}
+
+.woocommerce ul.products li.product .button::after {
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.woocommerce ul.products li.product .star-rating {
+    right: 20px;
+    left: auto;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+    float: right;
+}
+
+.woocommerce #content table.cart td.actions .input-text,
+.woocommerce table.cart td.actions .input-text,
+.woocommerce-page #content table.cart td.actions .input-text,
+.woocommerce-page table.cart td.actions .input-text {
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+.cart button.single_add_to_cart_button {
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+.woocommerce .authorbox .author-avatar {
+    float: right;
+    margin: 5px 0 10px 15px;
+}
+
+.woocommerce .authorbox.no-author-avatar .author-info {
+    margin-right: 0;
+}
+
+/*Bio Autherbox*/
+.authorbox .author-avatar {
+    float: right;
+    margin: 5px 0 10px 15px;
+}
+
+.authorbox.no-author-avatar .author-info {
+    margin-right: 0;
+}
+
+/*--------------------------------------------------------------
+## Custom Block Style
+--------------------------------------------------------------*/
+
+[class^="wp-block-"]:not(.wp-block-gallery) figcaption {
+    text-align: right;
+}
+
+.wp-block-quote:not(.is-large):not(.is-style-large),
+blockquote {
+    border-right: 5px solid #179bd7;
+    border-left: none;
+}
+
+blockquote {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+.entry-content ul,.entry-content ol {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+.entry-content .read-more {
+    display: block;
+}
+
+/*--------------------------------------------------------------
+## Media Queries By WEN Themes
+--------------------------------------------------------------*/
+
+/* Smaller than standard 1300px (devices and browsers) */
+@media only screen and (max-width:1300px) {
+    .top-news {
+        float: right;
+    }
+
+    #quick-contact {
+        float: left;
+        text-align: left;
+    }
+
+    a.custom-button.button-secondary.header-link-button {
+        margin-right: 5px;
+        margin-left: 0;
+    }
+
+    a.custom-logo-link {
+        float: right;
+        margin-left: 15px;
+        margin-right: 0;
+    }
+
+    .header-search-box > a,
+    .header-search-box > a:visited {
+        margin-right: 5px;
+        margin-left: 0;
+    }
+
+    .home-section-latest-news .latest-news-layout-2 .latest-news-text-wrap {
+        float: right;
+    }
+
+    #header-social {
+        float: none;
+        clear: both;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Smaller than standard 1024 (devices and browsers) */
+@media only screen and (max-width:1023px) {
+    .education_soul_widget_recent_posts .recent-posts-item {
+        float: right;
+    }
+
+    #quick-contact {
+        float: right;
+        text-align: right;
+    }
+
+    .home-section-news-and-events .recent-news,
+    .home-section-news-and-events .recent-events {
+        float: left;
+    }
+
+    #header-social {
+        clear: none;
+        float: left;
+        width: 35%;
+    }
+
+    #quick-contact li:before {
+        margin-left: 3px;
+        margin-right: 0;
+    }
+
+    .home-section-latest-news .latest-news-layout-2 .latest-news-thumb:before {
+        border-left: 21px solid #fff;
+        border-right: none;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width:767px) {
+    #header-social {
+        float: left;
+    }
+
+    .home-section-latest-news .latest-news-layout-2 .latest-news-thumb,
+    .home-section-latest-news .latest-news-layout-2 .latest-news-text-wrap {
+        float: right;
+    }
+
+    .home-section-latest-news .latest-news-layout-2 .latest-news-thumb:before {
+        right: auto;
+        left: 45%;
+    }
+
+    /*footer widget area*/
+    #footer-widgets .footer-widget-area {
+        float: right;
+    }
+
+    .education-soul-woocommerce-product-grid-4 ul.products li.product .button,
+    .education-soul-woocommerce-product-grid-3 ul.products li.product .button {
+        left: auto;
+        right: 22%;
+    }
+
+    .home-section-team .teams-col-4 .team-item,
+    .home-section-team .teams-col-3 .team-item,
+    .home-section-team .teams-col-2 .team-item,
+    .home-section-team .teams-col-1 .team-item {
+        float: right;
+    }
+
+    #colophon .colophon-column {
+        float: right;
+    }
+
+    .entry-footer > span {
+        border-left: medium none;
+        float: right;
+    }
+
+    #quick-contact {
+        width: 100%;
+        text-align: center;
+    }
+
+    #header-social {
+        float: right;
+        clear: inherit;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width:479px) {
+    .header-search-box .search-box-wrap {
+        right: auto;
+        left: -7px;
+    }
+
+    .header-search-box .search-form input.search-field {
+        padding: 10px 10px 10px 85px;
+    }
+
+    #main-slider .slider-buttons a,
+    #custom-header .header-image-buttons a {
+        margin: 0 0 0 7px;
+    }
+
+    .education-soul-woocommerce-product-grid-4 ul.products li.product .button,
+    .education-soul-woocommerce-product-grid-3 ul.products li.product .button {
+        right: 28%;
+        left: auto;
+    }
+
+    .main-right-header.pull-right {
+        float: right;
+    }
+
+    .site-header-menu.toggled-on, .no-js .site-header-menu {
+        right: -7px;
+        left: auto;
+    }
+
+    .header-search-box > a,
+    .header-search-box > a:visited {
+        margin: 0 8px 0 0;
+    }
+
+    .main-right-header.pull-right {
+        float: right;
+    }
+}

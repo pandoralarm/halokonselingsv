@@ -37,6 +37,7 @@ var chatroom = new Vue({
     /* SCOPE CONTROLS */
     let self=this;
 
+
     /* WEBSOCKET INSTANTIATION */
     console.log("Starting connection to WebSocket Server")
     this.conn = new WebSocket("ws://"+this.hostname+":8081/");
@@ -313,7 +314,6 @@ var chatroom = new Vue({
           nav.loading(false);
         })
         .finally(() => {
-          $('#sendmessage').val('');
           setTimeout(() => {
             this.checkMessages();
             console.log(this.messages);
@@ -335,6 +335,9 @@ var chatroom = new Vue({
         this.subscribe(key);
         this.send('text');
         this.conn.send(JSON.stringify({command: "message", message: msg}));
+        setTimeout(() => {
+          this.messageinput = '';
+        }, 100);
       }
     },
     sendMedia(url, type) {

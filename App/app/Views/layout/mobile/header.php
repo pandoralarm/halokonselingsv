@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <!-- HKSV Style -->
   <link rel="stylesheet" href="<?= base_url('assets/css/mobile/style.css') ?>" />
+  <script type="text/javascript"  src="<?= base_url('assets/js/dependencies/tinymce/tinymce.min.js') ?>" ></script>
 
+  
 </head>
   <body>
   <script src="<?= base_url('assets/js/mobile/globals.js') ?>" ></script>

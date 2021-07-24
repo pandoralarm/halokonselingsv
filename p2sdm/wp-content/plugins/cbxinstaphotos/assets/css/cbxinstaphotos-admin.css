@@ -1,0 +1,28 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.page-title-action {
+    display: none;
+}
+
+.cbxinstaphotosshortcodecopy {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #000;
+    padding: 5px;
+    display: inline-block;
+}
+
+.inline-radio-buttons{}
+.inline-radio-buttons .label{
+    margin-right: 20px;
+}
+.inline-radio-buttons .label:last-child{
+    margin-right: 0px;
+}
+
+.cbxinstaphotosmetabox_api_hide{
+    display: none;
+}

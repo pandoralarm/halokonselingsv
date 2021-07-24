@@ -1,13 +1,12 @@
-var events = new Vue({
+var editevents = new Vue({
   el: '#editevents',
   data: {
     active_menu: '',
     sidenav: false,
     chatroom: false,
     username: this.$cookies.get('username'),
-    shownpost: ['id'],
-    collapsed: ['id'],
-    expanded: [],
+    shownpost: ['ide1','ide2'],
+    focusedpost: [],
   },  
   computed: {
     current_menu: function () {
@@ -44,21 +43,20 @@ var events = new Vue({
       store.commit('changeSubtitle', newSubtitle);
       return 0;
     },
-    collapse(blogid){
-      this.expanded = this.expanded.filter(val => val !== blogid);
-      this.collapsed.push(blogid);
-      return this.changeSubmenu('blogs');
+    defocus(){
+      eventid = this.focusedpost.pop()
+      $('#'+eventid).toggleClass('editevent-item-focused');
+      this.changeSubmenu('editevents')
     },
-    isCollapsed(blogid) {
-      return this.collapsed.includes(blogid);
-    },
-    expand(blogid) {
-      this.collapsed = this.collapsed.filter(val => val !== blogid);
-      this.expanded.push(blogid);
-      return this.changeSubmenu('blogDetail');
-    },
-    isExpanded(blogid) {
-      return this.expanded.includes(blogid);
+    focused(eventid) {
+      if (this.focusedpost.includes(eventid)){
+        this.defocus();
+      } else {
+        this.defocus();
+        this.changeSubmenu('editeventsfocus')
+        this.focusedpost.push(eventid);
+        $('#'+eventid).toggleClass('editevent-item-focused');
+      }
     },
     isShown(blogid) {
       return this.shownpost.includes(blogid);

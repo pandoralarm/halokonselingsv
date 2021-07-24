@@ -7,6 +7,7 @@ var saya = new Vue({
     pengajuanDitunda: [],
     pengajuanDisetujui: [],
     pengajuanDitolak: [],
+    detailDiproses: [],
     nim: this.$cookies.get('id'),
   },
   computed: {
@@ -29,6 +30,9 @@ var saya = new Vue({
     },
     changeWindow(target) {
       store.commit('changeWindow', target)
+    },
+    getDetailDiproses(index) {
+      this.detailDiproses = this.pengajuanDiproses[index];
     },
     getPengajuanAll() {
       axios.post(this.basepath + "/perwa/pengajuan/showDiproses/" + saya.nim)
@@ -56,16 +60,23 @@ var saya = new Vue({
         .finally(() => {
         });
     },
+    getCV() {
+      var idPengajuanCV = parseInt(this.detailDiproses.idPengajuan);
+      path = this.basepath + "/perwa/pengajuan/getCV/" + idPengajuanCV;
+      window.location = path;
+    },
     getRekomendasi(idPengajuan) {
       path = this.basepath + "/perwa/pengajuan/getRekomendasi/" + idPengajuan;
       window.location = path;
     },
-    deletePengajuan(idPengajuan) {
-      axios.post(this.basepath + "/perwa/pengajuan/deletePengajuan/" + idPengajuan)
+    deletePengajuan() {
+      var IdPengajuanDihapus = parseInt(this.detailDiproses.idPengajuan);
+      axios.post(this.basepath + "/perwa/pengajuan/deletePengajuan/" + IdPengajuanDihapus)
         .then(response => {
           this.getPengajuanAll(saya.nim)
         })
         .finally(() => {
+          this.changeWindow('proses');
         })
     }
   },

@@ -4,6 +4,7 @@ namespace App\Modules\Application\Controllers;
 
 use App\Modules\Application\Models\UserModel;
 use App\Modules\Perwa\Controllers\Pengajuan;
+use App\Modules\Account\Models\EmailsModel;
 use CodeIgniter\Controller;
 
 class Home extends Controller
@@ -19,6 +20,7 @@ class Home extends Controller
     $this->ua = strtolower($_SERVER['HTTP_USER_AGENT']);
     $this->isMob = is_numeric(strpos($this->ua, "mobile"));
     $this->pengajuan = new Pengajuan();
+    $this->EmailsModel = new EmailsModel();
   }
 
   public function index()
@@ -30,6 +32,7 @@ class Home extends Controller
       'url'         => base_url(),
       'site'        => 'HaloKonselingSV',
       'name'        => $this->session->get('nama'),
+      'user'        => $this->session->get('user'),
       'prodi'       => $this->session->get('prodi'),
       'role'        => $this->session->get('role'),
       'logged'      => $this->session->get('logged'),
@@ -41,11 +44,15 @@ class Home extends Controller
     if ($this->isMob) {
       echo view('layout/mobile/header', $appData);
       echo view('layout/mobile/nav', $appData);
+      echo view('konseling/mobile/profileform', $appData);
       echo view('application/mobile/home', $appData);
       if ($this->session->get('role') != 'MAHASISWA') {
         echo view('konseling/mobile/adminkonselor');
         echo view('admintools/mobile/editblogs');
         echo view('admintools/mobile/editevents');
+        echo view('admintools/mobile/blogform');
+        echo view('admintools/mobile/eventform');
+        echo view('admintools/mobile/managestaff');
       }
       echo view('konseling/mobile/blogs');
       echo view('konseling/mobile/events');

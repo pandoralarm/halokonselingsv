@@ -4,7 +4,7 @@
       <template>
 
       <?php if ($logged) {
-              $profiltarget = "";
+              $profiltarget = " nav.changeWindow('profileform');  profileform.notifycheck();";
               switch ($role) {
                 case 'ADMIN':
                   $KonselingTarget = "changeSubmenu('menuKonselor')";
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div v-on:click="changeSubmenu('blogs')" class="konseling-menu blogs shadow-sm border">
+        <div v-on:click="changeSubmenu('beasiswa'); changeMenu('beasiswa');" class="konseling-menu blogs shadow-sm border">
           <div class="text">
             <span class="title">Permohonan Beasiswa</span>
             <p class="subtitle">Kamu bisa mencari informasi beasiswa

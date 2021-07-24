@@ -641,6 +641,12 @@ button.tampilkan-diproses:hover {
   transition: all 0.3 ease;
 }
 
+button.tampilkan-ditunda:hover {
+  background: #ff964f;
+  color: white;
+  transition: all 0.3 ease;
+}
+
 button.tampilkan-diterima {
   margin-top: 0.5em;
   font-size: 10px;
@@ -950,4 +956,19 @@ small.verifikasi{
   color: #7F7F7F;
   text-align: center;
   font-size: 14px;
+}
+
+.btn-submit{
+  margin-top: 1em;
+  padding: 0px 15px;
+  background: white;
+  border-radius: 5px;
+  color: #55b667;
+  border: 1px solid#55b667;
+}
+
+.btn-submit:hover {
+  background: #55b667;
+  color: white;
+  transition: all 0.3 ease;
 }

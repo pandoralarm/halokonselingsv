@@ -137,6 +137,7 @@ class Chatroom extends Controller
       ];
       
       return $this->requests->insert($data);
+  
     }
 
     public function isRequest()

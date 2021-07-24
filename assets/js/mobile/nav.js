@@ -5,7 +5,12 @@ var nav = new Vue({
     username: this.$cookies.get('username'),
     basepath: this.$cookies.get('basepath'),
     userrole: this.$cookies.get('role'),
+    blogquery: '',
     whitespace: false,
+    editdialog: false,
+    navoptions: false,
+    navsearch: false,
+    confirmdeletion: false,
   },
   mounted() {
   },
@@ -36,9 +41,37 @@ var nav = new Vue({
     },
   },
   methods: {
+    
+    closeDialog() {
+      this.confirmdeletion = false;
+    },
+    edititem(){
+      switch(this.current_submenu) {
+        case 'editblogDetail':
+          this.changeWindow('blogform'); 
+          this.changeTitle('Pojok Edukasi', ''); 
+          blogform.checkheaderopt();
+          break;
+        case 'editeventsfocus':
+          this.changeWindow('eventform'); 
+          thihs.changeTitle('Papan Events', ''); 
+          break;
+        default:
+          // code block
+      };
+    },
+    deleteitem() {
+      this.confirmdeletion = true;
+    },
+    options() {
+      this.navoptions = !this.navoptions;
+    },
+    search() {
+      this.navsearch = !this.navsearch;
+    },
     sidenavs() {
       this.sidenav = !this.sidenav;
-    },
+    }, 
     changeMenu(target) {
       if (this.current_menu == target){
         return store.commit('changeMenu', '');
@@ -92,6 +125,10 @@ var nav = new Vue({
             }
           }
         });
+    },
+    clipboard() {
+      this.options();
+      home.alertNow('Disalin!', 'Link external telah disalin ke clipboard');
     },
   }
 });

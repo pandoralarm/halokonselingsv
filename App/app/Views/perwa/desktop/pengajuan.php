@@ -14,9 +14,9 @@
                     <p class="modal-confirmation judul">Apakah kamu yakin?</p>
                     <p class="modal-confirmation detail">Data yang telah dikirim tidak dapat dirubah</p>
                 </div>
-                <div class="row d-flex align-items-end">
-                    <button style="width:7em;" data-bs-dismiss="modal" class="back">Kembali</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="row d-flex align-items-center justify-content-center">
+                    <button style="width:7em; margin-right:1em; margin-top:0" data-bs-dismiss="modal" class="back">Kembali</button>
+                    <button style="width:7em; margin-right:1em; margin-top:0" data-bs-dismiss="modal" v-on:click="addPengajuan()" class="btn-submit" >Submit</button>
                 </div>
             </div>
             </div>

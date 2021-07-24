@@ -34,7 +34,24 @@
   <meta name="theme-color" content="#9D6EC1">
 </head>
 <body>
+  <script src="<?= base_url('assets/js/mobile/globals.js') ?>" ></script>
+
   <section id="signin">
+
+
+    <template>
+      <transtition name="fade">
+        <div  v-if="isLoading">
+          <div class="overlay-dark"></div>
+        </div>
+      </transtition>
+
+      <transition name="droptop">
+        <div class="loading-handler text-center" v-if="isLoading">
+          <span class="loading-handler-text">Memuat</span><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+      </transition>
+  </template>
 
     <div class="bg-full">
       
@@ -56,7 +73,7 @@
             Remember username
           </label>
         </div>
-        <button type="submit" class="btn btn-light w-100 mt-3">Masuk</button>
+        <button type="submit" v-on:click="loading(true);" class="btn btn-light w-100 mt-3">Masuk</button>
         <div class="text-right">
           <a href="https://akun.ipb.ac.id/resetpassword" class="lupa"><small>Lupa Password ?</small></a>
         </div>
@@ -64,7 +81,7 @@
         <?php if ($errmsg) { ?>
           <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
             <strong><small><?= $errmsg ?></small></strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button type="button"  class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>

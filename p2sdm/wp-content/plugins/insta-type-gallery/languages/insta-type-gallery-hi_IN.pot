@@ -1,0 +1,435 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-08-09 13:51+0530\n"
+"PO-Revision-Date: 2018-08-09 13:52+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: insta-setting.php:76
+msgid "1. Profile Settings"
+msgstr "1. प्रोफाइल सेटिंग्स"
+
+#: insta-setting.php:83
+msgid "1. Show Profile"
+msgstr "1. प्रोफाइल दिखाएं"
+
+#: insta-setting.php:87 insta-setting.php:297 insta-setting.php:344
+msgid "Yes"
+msgstr "हाँ"
+
+#: insta-setting.php:89 insta-setting.php:299 insta-setting.php:346
+msgid "No"
+msgstr "नहीं"
+
+#: insta-setting.php:95
+#, fuzzy
+#| msgid " 2.Profile Image"
+msgid "2.Profile Image"
+msgstr "2.प्रोफाइल छवि"
+
+#: insta-setting.php:115
+msgid "3.Profile Title"
+msgstr "3. प्रोफाइल शीर्षक"
+
+#: insta-setting.php:121
+msgid "4.Profile Description"
+msgstr "4. प्रोफाइल विवरण"
+
+#: insta-setting.php:127
+msgid "5.Follow Button text"
+msgstr "5. फॉलो बटन पाठ"
+
+#: insta-setting.php:133
+msgid "6.Instragram Username"
+msgstr "6. इंस्ट्रग्राम उपयोगकर्ता नाम"
+
+#: insta-setting.php:139
+msgid "7.Number Of Post"
+msgstr "7. पोस्ट की संख्या"
+
+#: insta-setting.php:145
+msgid "8.Number Of Followers"
+msgstr "8. अनुयायियों की संख्या"
+
+#: insta-setting.php:151
+msgid "9.Number Of Followings"
+msgstr "9. अनुवर्ती संख्या"
+
+#: insta-setting.php:165
+msgid "2. Gallery Settings"
+msgstr "2. गैलरी सेटिंग्स"
+
+#: insta-setting.php:172
+msgid "1. Gallery Thumbnail Size"
+msgstr "1. गैलरी थंबनेल आकार"
+
+#: insta-setting.php:175
+msgid "Thumbnail - 150  x 150"
+msgstr "थंबनेल - 150 x 150"
+
+#: insta-setting.php:176
+msgid "Medium - 300 x 169"
+msgstr "मध्यम - 300 x 16 9"
+
+#: insta-setting.php:177
+msgid "Large - 840 x 473"
+msgstr "बड़ा - 840 x 473"
+
+#: insta-setting.php:178
+msgid "Full Size - 1280 x 720"
+msgstr "पूर्ण आकार - 1280 x 720"
+
+#: insta-setting.php:180
+msgid "Select gallery thumbnails size to display into gallery"
+msgstr "गैलरी में प्रदर्शित करने के लिए गैलरी थंबनेल आकार का चयन करें"
+
+#: insta-setting.php:185
+msgid "2. Columns Layout Settings"
+msgstr "2. कॉलम लेआउट सेटिंग्स"
+
+#: insta-setting.php:186
+msgid "A .Columns On Large Desktops"
+msgstr "बड़े डेस्कटॉप पर एक कॉलम"
+
+#: insta-setting.php:189 insta-setting.php:201 insta-setting.php:213 insta-setting.php:224
+msgid "1 Column"
+msgstr "1 कॉलम"
+
+#: insta-setting.php:190 insta-setting.php:202 insta-setting.php:214 insta-setting.php:225
+msgid "2 Column"
+msgstr "2 कॉलम"
+
+#: insta-setting.php:191 insta-setting.php:203 insta-setting.php:215 insta-setting.php:226
+msgid "3 Column"
+msgstr "3 कॉलम"
+
+#: insta-setting.php:192 insta-setting.php:204 insta-setting.php:216 insta-setting.php:227
+msgid "4 Column"
+msgstr "4 कॉलम"
+
+#: insta-setting.php:193 insta-setting.php:205 insta-setting.php:217
+msgid "6 Column"
+msgstr "6 कॉलम"
+
+#: insta-setting.php:194 insta-setting.php:206
+msgid "12 Column"
+msgstr "12 कॉलम"
+
+#: insta-setting.php:196
+msgid "Select gallery column layout for large desktop devices"
+msgstr "बड़े डेस्कटॉप उपकरणों के लिए गैलरी कॉलम लेआउट का चयन करें"
+
+#: insta-setting.php:198
+msgid "B. Colums On Desktops"
+msgstr "B. डेस्कटॉप पर कॉलम"
+
+#: insta-setting.php:208
+msgid "Select gallery column layout for desktop devices"
+msgstr "डेस्कटॉप उपकरणों के लिए गैलरी कॉलम लेआउट का चयन करें"
+
+#: insta-setting.php:210
+msgid "C. Colums On Tablets"
+msgstr "C. टैबलेट पर कॉलम"
+
+#: insta-setting.php:219
+msgid "Select gallery column layout for tablet devices"
+msgstr "टैबलेट उपकरणों के लिए गैलरी कॉलम लेआउट का चयन करें"
+
+#: insta-setting.php:221
+msgid "D. Colums On Phones"
+msgstr "D. फ़ोन पर कॉलम"
+
+#: insta-setting.php:229
+msgid "Select gallery column layout for phone devices"
+msgstr "फोन उपकरणों के लिए गैलरी कॉलम लेआउट का चयन करें"
+
+#: insta-setting.php:235
+msgid "3. Light Box Style"
+msgstr "3. लाइट बॉक्स स्टाइल"
+
+#: insta-setting.php:238 insta-setting.php:251 insta-setting.php:281
+msgid "None"
+msgstr "कोई नहीं"
+
+#: insta-setting.php:239
+msgid "Bootstrap 3 Light Box"
+msgstr "बूटस्ट्रैप 3 लाइट बॉक्स"
+
+#: insta-setting.php:241
+msgid "Select a light box style"
+msgstr "एक लाइट बॉक्स शैली का चयन करें"
+
+#: insta-setting.php:247
+msgid "4. Image Hover Effect Type"
+msgstr "4. छवि होवर प्रभाव प्रकार"
+
+#: insta-setting.php:253
+msgid "2D Transitions"
+msgstr "2 डी संक्रमण"
+
+#: insta-setting.php:255
+msgid "Select and Set a image hover effect type for Gallery"
+msgstr "गैलरी के लिए एक छवि होवर प्रभाव प्रकार का चयन करें और सेट करें"
+
+#: insta-setting.php:259
+msgid "Image Hover Effects"
+msgstr "छवि होवर प्रभाव प्रकार"
+
+#: insta-setting.php:263
+msgid "Grow Shadow"
+msgstr "छाया बढ़ो"
+
+#: insta-setting.php:264
+msgid "Float Shadow"
+msgstr "छाया फ्लोट"
+
+#: insta-setting.php:265
+msgid "Glow"
+msgstr "चमक"
+
+#: insta-setting.php:267
+msgid "Box Shadow Outset"
+msgstr "डब्बे की छाया शुरू"
+
+#: insta-setting.php:268
+msgid "Box Shadow Inset"
+msgstr "डब्बे की छाया क्षेपक"
+
+#: insta-setting.php:277
+msgid "5. Animation Eeffect"
+msgstr "5. एनीमेशन इफैक्ट"
+
+#: insta-setting.php:282
+msgid "bounce"
+msgstr "उछाल"
+
+#: insta-setting.php:283
+msgid "pulse"
+msgstr "कंपन"
+
+#: insta-setting.php:284
+msgid "rubberBand"
+msgstr "रबर बैंड"
+
+#: insta-setting.php:285
+msgid "wobble"
+msgstr "लडखडाना"
+
+#: insta-setting.php:286
+msgid "rotateIn"
+msgstr "घूमना"
+
+#: insta-setting.php:293
+msgid "6. Hide Thumbnails Spacing"
+msgstr "6. थंबनेल रिक्ति छुपाएं"
+
+#: insta-setting.php:301
+msgid "Hide gap / margin / padding / spacing between gallery thumbnails"
+msgstr "गैलरी थंबनेल के बीच अंतर / मार्जिन / पैडिंग / रिक्ति छुपाएं"
+
+#: insta-setting.php:305
+msgid "7. Gallery Thumbnail Order"
+msgstr "7. गैलरी थंबनेल ऑर्डर"
+
+#: insta-setting.php:309
+msgid "Old First"
+msgstr "पुराना पहला"
+
+#: insta-setting.php:311
+msgid "New First"
+msgstr "नया पहला"
+
+#: insta-setting.php:313
+msgid "Random"
+msgstr "क्रमरहित"
+
+#: insta-setting.php:314
+msgid "Set a image order in which you want to display gallery thumbnails"
+msgstr "एक छवि आदेश सेट करें जिसमें आप गैलरी थंबनेल प्रदर्शित करना चाहते हैं"
+
+#: insta-setting.php:319
+msgid "8. Custom CSS"
+msgstr "8. कस्टम सीएसएस"
+
+#: insta-setting.php:322
+msgid "Apply own css on image gallery and dont use style tag"
+msgstr "छवि गैलरी पर अपने सीएसएस लागू करें और स्टाइल टैग का उपयोग न करें"
+
+#: insta-setting.php:333
+msgid "3. Pagination Settings"
+msgstr "3. अंकन सेटिंग्स"
+
+#: insta-setting.php:340
+msgid "1. Show Pagination"
+msgstr "1. अंकन दिखाओ"
+
+#: insta-setting.php:352
+msgid "Show Per Page"
+msgstr "प्रति पेज दिखाएं"
+
+#: insta-setting.php:360
+msgid "Pagination Middle Range"
+msgstr "अंकन मध्य रेंज"
+
+#: insta-setting.php:368
+msgid "Pagination Buttons Color"
+msgstr "अंकन बटन रंग"
+
+#: insta-setting.php:374
+msgid "Buttons Background Color"
+msgstr "बटन पृष्ठभूमि रंग"
+
+#: insta-setting.php:380
+msgid "Selected Page Color"
+msgstr "चयनित पेज रंग"
+
+#: insta-setting.php:386
+msgid "Select Page Background Color"
+msgstr "पेज पृष्ठभूमि रंग का चयन करें"
+
+#: insta-setting.php:392
+msgid "Next Button Text"
+msgstr "अगला बटन पाठ"
+
+#: insta-setting.php:398
+msgid "Previous button Text"
+msgstr "पिछला बटन पाठ"
+
+#: insta-type-gallery.php:49 insta-type-gallery.php:122 insta-type-gallery.php:123
+#: insta-type-gallery.php:124 insta-type-gallery.php:125
+msgid "Insta Type Gallery"
+msgstr "इंस्टा टाइप गैलरी"
+
+#: insta-type-gallery.php:111
+msgid "Docs"
+msgstr "प्रलेखन"
+
+#: insta-type-gallery.php:112
+msgid "Our Theme"
+msgstr "हमारी थीम"
+
+#: insta-type-gallery.php:126
+msgid "Parent Item:"
+msgstr "अभिभावक आइटम:"
+
+#: insta-type-gallery.php:127
+msgid "All Insta Gallery"
+msgstr "सभी इंस्टा गैलरी"
+
+#: insta-type-gallery.php:128
+msgid "Add New Insta Gallery"
+msgstr "नई इंस्टा गैलरी जोड़ें"
+
+#: insta-type-gallery.php:129
+msgid "Add Insta Gallery"
+msgstr "इंस्टा गैलरी जोड़ें"
+
+#: insta-type-gallery.php:130
+msgid "New Insta Gallery"
+msgstr "नई इंस्टा गैलरी"
+
+#: insta-type-gallery.php:131
+msgid "Edit Insta Gallery"
+msgstr "इंस्टा गैलरी संपादित करें"
+
+#: insta-type-gallery.php:132
+msgid "Update Insta Gallery"
+msgstr "इंस्टा गैलरी अपडेट करें"
+
+#: insta-type-gallery.php:133
+msgid "Search Insta Gallery"
+msgstr "इंस्टा गैलरी खोजें"
+
+#: insta-type-gallery.php:134
+msgid "Insta Gallery Not found"
+msgstr "इंस्टा गैलरी नहीं मिला"
+
+#: insta-type-gallery.php:135
+msgid "Insta Gallery Not found in Trash"
+msgstr "इंस्टा गैलरी ट्रैश में नहीं मिली"
+
+#: insta-type-gallery.php:138
+msgid "Insta Type GalleryInsta Type Gallery"
+msgstr "इंस्टा टाइप गैलरीइस्टा टाइप गैलरी"
+
+#: insta-type-gallery.php:139
+msgid "Custom Post Type For Insta Gallery"
+msgstr "इंस्टा गैलरी के लिए कस्टम पोस्ट प्रकार"
+
+#: insta-type-gallery.php:169 insta-type-gallery.php:234
+msgid "Add Image"
+msgstr "छवि जोड़ें"
+
+#: insta-type-gallery.php:170
+msgid "Upgrade Instagram Type Gallery Pro"
+msgstr "इंस्टाग्राम प्रकार गैलरी प्रो अपग्रेड करें"
+
+#: insta-type-gallery.php:171
+msgid "Rate Our Plugin"
+msgstr "हमारे प्लगइन को रेट करें"
+
+#: insta-type-gallery.php:182
+msgid "If you like our plugin then please"
+msgstr "यदि आप हमारी प्लगइन पसंद करते हैं तो कृपया"
+
+#: insta-type-gallery.php:182
+msgid "Rate us"
+msgstr "हमें रेटिंग दें"
+
+#: insta-type-gallery.php:182
+#, fuzzy
+#| msgid " on WordPress"
+msgid "on WordPress"
+msgstr "वर्डप्रेस पर"
+
+#: insta-type-gallery.php:207
+msgid "Delete All Images"
+msgstr "सभी छवियों को हटाएं"
+
+#: insta-type-gallery.php:239
+msgid "Copy Insta Type Gallery Shortcode"
+msgstr "इंस्टा टाइप गैलरी शोर्ट कॉपी करें"
+
+#: insta-type-gallery.php:242
+msgid ""
+"Copy & Embed shotcode into any Page/ Post / Text Widget to display your Insta gallery "
+"on site"
+msgstr ""
+"साइट पर अपनी इंस्टा गैलरी प्रदर्शित करने के लिए किसी भी पेज / पोस्ट / टेक्स्ट विजेट में कॉपीकोड एम्बेड "
+"करें और एम्बेड करें"
+
+#: insta-type-gallery.php:247
+msgid "Insta TYPE GALLERY SETTINGS"
+msgstr "इंस्टा प्रकार गैलरी सेटिंग"
+
+#: itg-bootstrap-lightbox.php:123 itg-no-lightbox.php:119
+msgid "Posts"
+msgstr "पोस्ट"
+
+#: itg-bootstrap-lightbox.php:128 itg-no-lightbox.php:124
+msgid "Followers"
+msgstr "समर्थक"
+
+#: itg-bootstrap-lightbox.php:133 itg-no-lightbox.php:129
+msgid "Following"
+msgstr "निम्नलिखित"
+
+#: itg-bootstrap-lightbox.php:187
+#, fuzzy
+#| msgid "Sorry! No image gallery found "
+msgid "Sorry! No image gallery found"
+msgstr "माफ़ कीजिये! कोई छवि गैलरी नहीं मिली"
+
+#: itg-no-lightbox.php:178
+msgid "Sorry! No insta gallery found"
+msgstr "माफ़ कीजिये! कोई छवि गैलरी नहीं मिली"

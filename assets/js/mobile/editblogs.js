@@ -26,6 +26,29 @@ var editblogs = new Vue({
         return store.commit('changeWindow', '');
       }
       return store.commit('changeWindow', target);
+    },    
+    tinyform() {
+      setTimeout(() => {
+        console.log('TinyMCE Start');
+        tinymce.remove();
+        tinymce.init({
+          selector: '#contentarea',
+          branding: false,  
+          plugins: 'fullscreen',
+          toolbar: 'fullscreen | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ',
+          setup: function(editor) {
+            editor.on('focus', function() {
+              $('.tinyeditor').css({
+                "position" : "absolute",
+                "top" : "0", "left" : "0",
+                "width" : "100%", "height" : " 100%",
+                "z-index" : "25000",
+              });
+            });
+          },
+        });
+        
+      }, 50);
     },
     changeMenu(target) {
       if ( this.current_menu == target ){

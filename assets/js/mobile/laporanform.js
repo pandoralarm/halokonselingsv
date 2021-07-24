@@ -64,6 +64,7 @@ var laporanform = new Vue({
     setMinDate() {
       var targetdate = $('#startdate').val();
       $('#enddate').attr('min', targetdate);
+      $('#enddate').attr('max', Date().toISOString().split("T")[0]);
     },
     download() {
       if ($('#startdate').val() === "" || $('#enddate').val() === ""){
@@ -72,7 +73,7 @@ var laporanform = new Vue({
       };
       
       var data = {startdate: $('#startdate').val(), enddate: $('#enddate').val()}
-      axios.post(this.basepath+"/application/debug", data)
+      axios.post(this.basepath+"/admin/laporan", data)
         .then(response => {
           console.log(response);
           const url = response.data.url;

@@ -4,6 +4,7 @@ namespace App\Modules\Account\Controllers;
 
 
 use App\Modules\Account\Models\DosenModel;
+use App\Modules\Account\Models\EmailsModel;
 use App\Modules\Account\Models\RoleModel;
 use App\Modules\Account\Models\MhsModel;
 use CodeIgniter\Controller;
@@ -23,6 +24,7 @@ class Auth extends Controller
     $this->keys = new \Config\Api();
     $this->RoleModel = new RoleModel();
     $this->DosenModel = new DosenModel();
+    $this->EmailsModel = new EmailsModel();
     $this->session = \Config\Services::session();
     $this->request = \Config\Services::request();
     $this->isMob = is_numeric(strpos($this->ua, "mobile"));

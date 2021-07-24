@@ -73,7 +73,7 @@
           <label for=imageAttachment>
             <div class="btn-attach"><i class="fa fa-paperclip fa-lg"></i></div>
           </label>
-          <input onchange="chatroom.imagePreview(this)" class="hide" id="imageAttachment" type="file" accept="image/*;capture=camera" />
+          <input onchange="chatroom.imagePreview(this)" class="hide" id="imageAttachment" type="file" accept="image/*;"  capture="camera"/>
           <input oninput="chatroom.audioPreview(this)" id="audioAttachment" class="hide" type="file" accept="audio/*" capture>
           <transition name="flip">
             <div v-if="enablerecord" v-on:click="sendMessage('NewMessage');" class="btn-send">
@@ -276,4 +276,3 @@
 </section>
      
 <script src="<?= base_url('assets/js/mobile/chatroom.js') ?>" ></script>
-

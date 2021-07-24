@@ -1,0 +1,533 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-16 05:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: admin/class-cbxinstaphotos-admin.php:127
+msgctxt "Post Type General Name"
+msgid "CBX Insta Photos"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:128
+msgctxt "Post Type Singular Name"
+msgid "CBX Insta Photo"
+msgstr ""
+
+#. Name of the plugin
+#: admin/class-cbxinstaphotos-admin.php:129
+#: admin/class-cbxinstaphotos-admin.php:144
+msgid "CBX Insta Photos"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:130
+msgid "Parent CBX Insta Photos:"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:131
+msgid "All CBX Insta Photos"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:132
+msgid "View CBX Insta Photo"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:133
+msgid "Add New CBX Insta Photo"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:134
+msgid "Add New"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:135
+msgid "Edit CBX Insta Photo"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:136
+msgid "Update CBX Insta Photo"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:137
+msgid "Search CBX Insta Photo"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:138
+msgid "Not found"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:139
+msgid "Not found in Trash"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:143
+msgid "cbxinstaphotos"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:173
+msgid "CBX Insta Phostos Settings"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:181
+msgid "Get the Shortcode"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:189
+msgid "Reset Cache"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:228
+#: admin/class-cbxinstaphotos-admin.php:699
+#: admin/class-cbxinstaphotos-admin.php:699
+msgid "Copy to clipboard"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:255
+msgid "Reset"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:345
+msgid "Enable/Disable"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:351
+#: admin/class-cbxinstaphotos-admin.php:487
+#: admin/class-cbxinstaphotos-admin.php:503
+#: admin/class-cbxinstaphotos-admin.php:519
+#: admin/class-cbxinstaphotos-admin.php:539
+#: admin/class-cbxinstaphotos-admin.php:553
+msgid "Yes"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:354
+#: admin/class-cbxinstaphotos-admin.php:490
+#: admin/class-cbxinstaphotos-admin.php:506
+#: admin/class-cbxinstaphotos-admin.php:522
+#: admin/class-cbxinstaphotos-admin.php:536
+#: admin/class-cbxinstaphotos-admin.php:556
+msgid "No"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:359
+msgid "Instagram Username"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:369
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:123
+msgid "Photo Count"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:379
+#: admin/class-cbxinstaphotos-admin.php:665
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:103
+#: widgets/cbxinstaphotos-widget/views/admin.php:36
+msgid "Layout"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:393
+msgid "Authentication Method"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:399
+msgid "No Api Key(Simple)"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:402
+msgid "Api Key(Advance)"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:408
+msgid "Client ID"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:418
+msgid "Client Secret"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:428
+msgid "Instagram Connect"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:444
+msgid "Please add Client ID and Client Secret"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:445
+#: admin/class-cbxinstaphotos-admin.php:456
+msgid "Go to Instagram Developer portal to create app"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:446
+#: admin/class-cbxinstaphotos-admin.php:457
+#, php-format
+msgid "Use \"<strong>%s</strong>\" as redeirect url in app setting."
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:451
+msgid "cURL is installed on this server"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:453
+msgid ""
+"cURL is NOT installed on this server, Php curl extension is needed to make "
+"this extension work."
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:458
+msgid "Connect Instagram"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:460
+msgid "Remove Instagram"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:462
+msgid "Connected"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:462
+msgid "Days ago"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:465
+msgid ""
+"Instagram connection expires in 60 days. Please disconnect and reconnect it "
+"again"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:481
+#: admin/class-cbxinstaphotos-admin.php:857
+#: widgets/cbxinstaphotos-widget/views/admin.php:59
+msgid "Show Follow Button"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:497
+msgid "Show Like Count"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:513
+msgid "Show Comment Count"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:530
+msgid "Load Https Image url"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:547
+msgid "Cache Enabled"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:563
+msgid "Cache Time"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:664
+msgid "Status"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:666
+msgid "Shortcode"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:768
+#, php-format
+msgid ""
+"Sorry, you can not create more than one post in free verion, <a "
+"target=\"_blank\" href=\"%s\">Grab Pro</a>"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:792
+msgid "Get Pro"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:810
+#: admin/class-cbxinstaphotos-admin.php:850
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:91
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:93
+#: widgets/cbxinstaphotos-widget/views/admin.php:24
+msgid "Select Instagram Post"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:845
+#: widgets/cbxinstaphotos-widget/cbxinstaphotos-widget.php:36
+#: widgets/cbxinstaphotos-widget/cbxinstaphotos-widget.php:78
+#: widgets/cbxinstaphotos-widget/cbxinstaphotos-widget.php:135
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:36
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:83
+msgid "Insta Photos"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:849
+msgid "Insta Photos Settings"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:852
+msgid "Select Layout"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:855
+#: widgets/cbxinstaphotos-widget/views/admin.php:48
+msgid "Photo count"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:859
+#: widgets/cbxinstaphotos-widget/views/admin.php:72
+msgid "Show Like"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:861
+#: widgets/cbxinstaphotos-widget/views/admin.php:84
+msgid "Show Comments"
+msgstr ""
+
+#: admin/class-cbxinstaphotos-admin.php:964
+msgid "CBX Blocks"
+msgstr ""
+
+#. %s template
+#: includes/cbxinstaphotos-functions.php:95
+#, php-format
+msgid "%s does not exist."
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:107
+msgid "Default"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:141
+msgid "1 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:142
+msgid "2 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:143
+msgid "3 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:144
+msgid "4 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:145
+msgid "5 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:146
+msgid "6 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:147
+msgid "7 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:148
+msgid "8 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:149
+msgid "9 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:150
+msgid "10 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:151
+msgid "11 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:152
+msgid "12 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:153
+msgid "13 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:154
+msgid "14 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:155
+msgid "15 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:156
+msgid "16 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:157
+msgid "17 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:158
+msgid "18 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:159
+msgid "19 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:160
+msgid "20 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:161
+msgid "21 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:162
+msgid "22 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:163
+msgid "23 Hour"
+msgstr ""
+
+#: includes/class-cbxinstaphotos-helper.php:164
+msgid "24 Hour"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:212
+msgid "Api keys are missing or incorrect"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:217
+msgid "Access token missing or instagram not connected from backend"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:221
+msgid "Username is missing"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:309
+msgid "Error retrieving data"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:315
+#, php-format
+msgid "Error retrieving data. Error: %s"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:318
+msgid "Error retrieving data. Error unknown"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:343
+msgid "General error to grab photos, please refresh or check api setting."
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:345
+#, php-format
+msgid "Error loading user photos. Error code: %d"
+msgstr ""
+
+#: public/class-cbxinstaphotos-public.php:547
+msgid "Codeboxr Widgets"
+msgstr ""
+
+#: templates/default.php:10
+msgid "CBX Insta Photos: Possible list of errors"
+msgstr ""
+
+#: templates/default.php:29
+#, php-format
+msgid "Likes: %d"
+msgstr ""
+
+#: templates/default.php:36
+#, php-format
+msgid "Comments: %d"
+msgstr ""
+
+#: templates/default.php:81 templates/default.php:82
+msgid "Follow Me on Instagram"
+msgstr ""
+
+#: widgets/cbxinstaphotos-widget/cbxinstaphotos-widget.php:39
+msgid "This widget shows Instagram Photos from single account"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:96
+msgid "Choose from saved cbxinstaphotos posts"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:105
+msgid "Select layout"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:125
+msgid "No of photo"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:134
+msgid "Show Follow Button:"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:137
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:150
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:163
+msgid "Enable"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:138
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:151
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:164
+msgid "Disable"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:147
+msgid "Show Like:"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:160
+msgid "Show Comments:"
+msgstr ""
+
+#: widgets/elementor-elements/class-cbxinstaphotos-elemwidget.php:190
+msgid "No Instagram(CBX Insta Photos/cbxinstaphotos) post selected"
+msgstr ""
+
+#: widgets/cbxinstaphotos-widget/views/admin.php:11
+msgid "Title:"
+msgstr ""
+
+#: widgets/cbxinstaphotos-widget/views/admin.php:63
+#: widgets/cbxinstaphotos-widget/views/admin.php:76
+#: widgets/cbxinstaphotos-widget/views/admin.php:88
+msgid "Yes:"
+msgstr ""
+
+#: widgets/cbxinstaphotos-widget/views/admin.php:65
+#: widgets/cbxinstaphotos-widget/views/admin.php:78
+#: widgets/cbxinstaphotos-widget/views/admin.php:90
+msgid "No:"
+msgstr ""
+
+#. Description of the plugin
+msgid "Instagram photo display for wordpress"
+msgstr ""
+
+#. URI of the plugin
+msgid "http://codeboxr.com/product/cbx-insta-photo-for-wordpress/"
+msgstr ""
+
+#. Author of the plugin
+msgid "codeboxr"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://codeboxr.com"
+msgstr ""

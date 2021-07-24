@@ -4,6 +4,7 @@ namespace App\Modules\Account\Controllers;
 
 
 use App\Modules\Account\Models\DosenModel;
+use App\Modules\Account\Models\EmailsModel;
 use App\Modules\Account\Models\RoleModel;
 use App\Modules\Account\Models\MhsModel;
 use CodeIgniter\Controller;
@@ -46,12 +47,12 @@ class Signin extends Auth
 
     //Check for DUMMY ADMIN PURPOSES DELETE ON LAUNCH!!!!!!!
     $this->dummyAdmin($UsernamePOST, $PasswordPOST);
-
+  
     if (isset($remember)) {
       setcookie('username', $UsernamePOST, time() + 86400, '/');
       setcookie('rememberme', 'checked', time() + 86400, '/');
     } else {
-      setcookie('username', '', time() - 1, '/');
+      setcookie('username', $UsernamePOST, time() - 1, '/');
       setcookie('rememberme', '', time() + 86400, '/');
     }
 
@@ -59,6 +60,7 @@ class Signin extends Auth
     if ($Response->Code == 200) {
       $this->setUserSession($Response);
       setcookie('role', $this->session->get('role'), time() + 86400, '/');
+      $this->profileAdd();
       return redirect()->to('/');
     } else {
       $this->session->setFlashdata('errorSignin', $Response->Error);
@@ -68,6 +70,17 @@ class Signin extends Auth
         return redirect()->to('/');
       }
     }
+  }
+
+  public function profileAdd() {
+    $data = [
+      'username' => $this->session->get('user'),
+      'accountid' => $this->getCookies('id'),
+      'email' => $this->session->get('user').'@apps.ipb.ac.id',
+      'notify' => 1,
+    ];
+    
+    return $this->EmailsModel->insert($data);
   }
 
 

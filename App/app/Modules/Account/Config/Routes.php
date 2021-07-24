@@ -15,6 +15,11 @@ $routes->group('account', ['namespace' => 'App\Modules\Account\Controllers'], fu
 	/*** Route for Dashboard ***/
 	$subroutes->add('', 'Dashboard::index');
 	$subroutes->add('dashboard', 'Dashboard::index');
+
+	/*** Route for Notifications ***/
+	$subroutes->add('notifications', 'Notifications::index');
+	$subroutes->add('notifications/index', 'Notifications::index');
+	$subroutes->add('notifications/getNotify', 'Notifications::getNotify');
 	
 	/*** Route for Signin ***/
 	$subroutes->add('signin', 'Signin::index');

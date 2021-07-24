@@ -1,0 +1,204 @@
+/*
+Theme Name: Education Soul
+Description: Used to style blocks.
+*/
+
+/* Colors */
+.has-dark-blue-color {
+    color: #080f1e;
+}
+
+.has-dark-blue-background-color {
+    background-color: #080f1e;
+}
+
+.has-navy-blue-color {
+    color: #00387d;
+}
+
+.has-navy-blue-background-color {
+    background-color: #00387d;
+}
+
+.has-sky-blue-color {
+    color: #007acc;
+}
+
+.has-sky-blue-background-color {
+    background-color: #007acc;
+}
+
+.has-blue-color {
+    color: #1d6ea5;
+}
+
+.has-blue-background-color {
+    background-color: #1d6ea5;
+}
+
+.has-red-color {
+    color: #aa0000;
+}
+
+.has-red-background-color {
+    background-color: #aa0000;
+}
+
+.has-gray-color {
+    color: #727272;
+}
+
+.has-gray-background-color {
+    background-color: #727272;
+}
+
+.has-dark-gray-color {
+    color: #222222;
+}
+
+.has-dark-gray-background-color {
+    background-color: #222222;
+}
+
+.has-light-gray-color {
+    color: #cccccc;
+}
+
+.has-light-gray-background-color {
+    background-color: #cccccc;
+}
+
+.has-black-color {
+    color: #000000;
+}
+
+.has-black-background-color {
+    background-color: #000000;
+}
+
+.has-white-color {
+    color: #fff;
+}
+
+.has-white-background-color {
+    background-color: #fff;
+}
+
+.has-kids-red-color {
+    color: #e4572e;
+}
+
+.has-kids-red-background-color {
+    background-color: #e4572e;
+}
+
+.has-kids-blue-color {
+    color: #0097a7;
+}
+
+.has-kids-blue-background-color {
+    background-color: #0097a7;
+}
+
+.has-kids-yellow-color {
+    color: #f7b200;
+}
+
+.has-kids-yellow-background-color {
+    background-color: #f7b200;
+}
+
+.has-kids-green-color {
+    color: #54b77e;
+}
+
+.has-kids-green-background-color {
+    background-color: #54b77e;
+}
+
+/* Custom Typography Preset */
+
+.entry-content .has-small-font-size {
+  font-size: 13px;
+}
+
+.entry-content .has-normal-font-size {
+  font-size: 14px;
+}
+
+.entry-content .has-large-font-size {
+  font-size: 32px;
+}
+
+.entry-content .has-huge-font-size {
+  font-size: 42px;
+}
+
+
+/* Smaller than standard 1024 (devices and browsers) */
+@media only screen and (max-width:1023px) {
+    .entry-content .has-large-font-size {
+      font-size: 28px;
+    }
+
+    .entry-content .has-huge-font-size {
+      font-size: 32px;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width:767px) {
+    .entry-content .has-large-font-size {
+        font-size: 26px;
+    }
+
+    .entry-content .has-huge-font-size {
+        font-size: 38px;
+    }
+}
+
+
+/* Button */
+
+.wp-block-button .wp-block-button__link {
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 12px 30px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    vertical-align: baseline;
+}
+
+.entry-content .wp-block-button:not(.is-style-outline) .wp-block-button__link {
+    border: 0;
+}
+
+.entry-content .wp-block-button.is-style-outline .wp-block-button__link:hover,
+.entry-content .wp-block-button.is-style-outline .wp-block-button__link:focus {
+    border: 2px solid;
+}
+
+.wp-block-button__link {
+    background: #aa0000;
+    color: #fff;
+}
+
+.is-style-outline .wp-block-button__link:not(.has-text-color) {
+    color: #aa0000;
+}
+
+.wp-block-button__link:hover,
+.wp-block-button__link:focus,
+.is-style-outline .wp-block-button__link:hover,
+.is-style-outline .wp-block-button__link:focus {
+    background-color: #1d6ea5;
+    color: #fff;
+}
+
+/* Margin//Padding */
+.entry-content .blocks-gallery-grid {
+    padding-left: 0;
+}

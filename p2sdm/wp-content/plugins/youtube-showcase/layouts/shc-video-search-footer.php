@@ -1,1 +1,0 @@
-<?php global $video_search_shc_count; ?></div>

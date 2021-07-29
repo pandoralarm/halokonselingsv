@@ -401,7 +401,6 @@ class Chatroom extends Controller
 
       $file->move('./uploads/'.$sessionUniqueKey.'/', $newName);
       $filePath = './uploads/'.$sessionUniqueKey.'/'.$newName;
-
       $data = [
           'attachmentpath' => $newName,
       ];

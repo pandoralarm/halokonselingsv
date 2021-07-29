@@ -5,6 +5,7 @@ var blogs = new Vue({
     sidenav: false,
     chatroom: false,
     username: this.$cookies.get('username'),
+    articles: [],
     shownpost: ['id', 'id2', 'id3'],
     collapsed: ['id', 'id2', 'id3'],
     expanded: [],
@@ -21,6 +22,16 @@ var blogs = new Vue({
     },
   },
   methods: {
+    getarticles(){
+      axios.get(home.basepath+"/admin/contents/getArticles")
+        .catch(response => {
+
+        })
+        .then(response => {
+          console.log(response.data);
+          this.articles = response.data;
+        });
+    },
     changeWindow(target) {
       if (this.current_window == target){
         return store.commit('changeWindow', '');

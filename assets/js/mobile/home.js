@@ -14,6 +14,7 @@ var home = new Vue({
       message: '',
     },
     hasRequest : '',
+    savedcontent : '',
     
   },
   mounted() {

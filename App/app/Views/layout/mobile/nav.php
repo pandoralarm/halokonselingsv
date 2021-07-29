@@ -147,7 +147,7 @@
             <ul id="sub_dash-konseling" v-if="current_menu == 'konseling'">
               <li v-on:click="changeSubmenu('home')" class="menu"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> - Home</a></li>
               <li v-on:click="<?= $KonselingTarget ?>" class="menu"><a href="#"><i class="fa fa-comments" aria-hidden="true"></i> - Ruang Konseling</a></li>
-              <li v-on:click="changeSubmenu('blogs')" class="menu"><a href="#"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> - Pojok Edukasi</a></li>
+              <li v-on:click="changeSubmenu('blogs'); blogs.getarticles()" class="menu"><a href="#"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> - Pojok Edukasi</a></li>
               <li v-on:click="changeSubmenu('events')" class="menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Papan Events</a></li>
             </ul>
           </transition>

@@ -8,8 +8,13 @@ var blogform = new Vue({
     username: this.$cookies.get('username'),
     basepath: this.$cookies.get('basepath'),
     mindate: "",
+    filemodel: null,
     form: 'blogtext',
     headeroption: 'upload',
+    content: {
+      title: '',
+      attachment: '',
+    },
     error: {
       alert: false,
       strong: '',
@@ -40,7 +45,7 @@ var blogform = new Vue({
   mounted(){
   },
   methods: {
-    publish(){
+    published(){
       nav.loading(true);
       setTimeout(() => {
         this.changeWindow('blogform');
@@ -58,7 +63,22 @@ var blogform = new Vue({
       }, 50);
     },
     next() {
-      this.form = 'blogheader';
+      this.content.title = $('#contenttitle').val();
+
+      if (this.headeroption == 'yturl'){
+        if (this.validateYouTubeUrl($('#yturl').val())){
+            this.content.attachment = $('#yturl');
+            this.form = 'blogheader';
+        } else {
+          alert("URL Youtube Tidak Valid");
+          $('#yturl').val("");
+        }
+
+      } else if (this.headeroption == 'upload'){
+        this.content.attachment = $('#upload');
+        this.form = 'blogheader';
+      }
+      
     },
     prev() {
       this.checkheaderopt();
@@ -111,6 +131,63 @@ var blogform = new Vue({
           document.body.appendChild(link);
           link.click();
       }) 
+    },
+    validateYouTubeUrl(urlcheck)
+    {
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+      var match = urlcheck.match(regExp);
+      console.log("checking");
+      if (match && match[2].length == 11) {
+        
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
+    sendpublication() {
+      nav.loading(true);
+      var bodyFormData = new FormData();
+      console.log("uploadtest");
+      bodyFormData.append('title', this.content.title);
+
+      if (this.headeroption == 'upload'){
+        var mediaFile = $('#upload');
+        bodyFormData.append('headertype', "upload");
+        bodyFormData.append('attachment', this.content.attachment[0].files[0]);
+      } else if (this.headeroption == 'yturl'){
+        bodyFormData.append('headertype', "yturl");
+        bodyFormData.append('attachment', this.content.attachment[0].value);
+      }
+
+      bodyFormData.append('contentarea', $('#contentarea').val());
+
+      axios.post(this.basepath+"/admin/contents/publish", 
+                  bodyFormData,
+                  {headers: {'content-type': 'multipart/form-data'}})
+            .catch(error => {
+              if (!error.response) {
+                  // network error
+                  errorStatus = 'Error: Network Error';
+                  
+                  home.alertNow('Gagal!', errorStatus);
+                  nav.loading(false);
+                  console.log(errorStatus);
+              } else {
+                  errorStatus = error.response.data.message;
+                  console.log(errorStatus);
+              }
+              this.fileModel = null;
+            })
+            .then(response => {
+              console.log(response.data);
+              this.published();
+              this.headeroption = 'upload';
+            })
+            .finally(() => {  
+            });
+      
+
     },
   },
 })

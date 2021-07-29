@@ -35,7 +35,7 @@
                     <small class="help" style="left: 0;"><a href="#">Header Konten</a> </small>
                   </label>
 
-                  <input v-if="headeroption == 'upload'" class="w-100 small px-3 py-2" type="file" id="upload" name="upload">
+                  <input v-if="headeroption == 'upload'" class="w-100 small px-3 py-2" type="file" id="upload" name="upload" accept="image/*;"  capture="camera" >
                   <input v-if="headeroption == 'yturl'"  class="w-100 small textform px-3 py-2" type="text" id="yturl" name="yturl">
                   <label for="enddate">
                     <small class="help" style="left: 0;"><a href="#">Jenis Header Konten</a> </small>
@@ -79,7 +79,7 @@
                   
                 </div>
 
-                <div v-on:click="publish(); editblogs.tinyform();" class="requestform btn-hksv" style="line-height: 1.5; top: -12%;">Publish</div>
+                <div v-on:click="sendpublication(); editblogs.tinyform();" class="requestform btn-hksv" style="line-height: 1.5; top: -12%;">Publish</div>
                 <a id="_report" href="#" style="display: none;">
               </div>
             </template>

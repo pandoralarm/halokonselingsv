@@ -1,6 +1,6 @@
 <section  id="home">
   <transition name="state">
-    <div v-if="current_submenu == 'home'" class="content">
+    <div v-if="current_menu == 'konseling' && current_submenu == 'home'" class="content">
       <template>
 
       <?php if ($logged) {
@@ -66,9 +66,9 @@
           </div>
         </div>
 
-        <div v-on:click="changeSubmenu('beasiswa'); changeMenu('beasiswa');" class="konseling-menu blogs shadow-sm border">
+        <div v-on:click="changeMenu('beasiswa');" class="konseling-menu blogs shadow-sm border">
           <div class="text">
-            <span class="title">Permohonan Beasiswa</span>
+            <span class="title">Seputar Beasiswa</span>
             <p class="subtitle">Kamu bisa mencari informasi beasiswa
             terkini dan ajukan surat rekomendasi beasiswa!</p>
           </div>
@@ -83,49 +83,17 @@
     </div>
   </transition>
 
-
   <transition name="state">
-    <div v-if="current_submenu == 'beasiswa'" class="content">
+    <div v-if="current_menu == 'admin' && current_submenu == 'home'" class="content">
       <template>
-        <div class="konseling-menu beasiswa shadow-sm">
-          <div class="info">Belum Tersedia</div>
+        <div v-on:click="<?= $profiltarget ?>"  class="konseling-menu shadow-sm text-center">
+          <div class="text w-100">
+            <span class="title">Anda berada pada Quick Tool!.</span>
+            <p class="subtitle"> Pilih salah satu quicktool pada menu samping,
+              jika alat yang anda butuhkan tidak ada disini, silakan buka dasbor.
+            </p>
+          </div>         
         </div>
-      </template>
-    </div>
-  </transition>
-
-  <transition name="state">
-    <div v-if="current_submenu == 'admin'" class="content">
-      <template>
-
-        <div class="admin-tools-menu kelola-blogs shadow-sm">
-          <div class="text">Kelola Blogs</div>
-          <div class="btn-hksv">
-            Buka
-          </div>
-        </div>
-
-        <div class="admin-tools-menu kelola-events shadow-sm">
-          <div class="text">Kelola Events</div>
-          <div  class="btn-hksv">
-            Buka
-          </div>
-        </div>
-
-        <div class="admin-tools-menu laporan shadow-sm">
-          <div class="text">Laporan</div>
-          <div class="btn-hksv">
-            Buka
-          </div>
-        </div>
-
-        <div class="admin-tools-menu data-konselor shadow-sm">
-          <div class="text">Data Konselor</div>
-          <div class="btn-hksv">
-            Buka
-          </div>
-        </div>
-       
       </template>
     </div>
   </transition>

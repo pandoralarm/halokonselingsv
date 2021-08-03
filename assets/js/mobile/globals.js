@@ -38,7 +38,7 @@ const store = new Vuex.Store({
   mutations: {
     changeSubmenu (state, newSubmenu) {
       searchEnabled = ['editevents', 'editblogs', 'blogs', 'events', 'kelolaBlogs', 'kelolaEvents'];
-      optionsEnabled = ['blogDetail', 'editeventsfocus', 'editblogDetail'];
+      optionsEnabled = ['blogDetail', 'blogDetailYt', 'editeventsfocus', 'editblogDetail', 'editblogDetailYt'];
       helpEnabled = [ 'addKonselor', 'createLaporan', 'getLaporan', 'manageRoles', 'adminTools', 'requestForm'];
       blogs_submenu = ['blogs', 'blogDetail'];
       events_submenu = ['events'];

@@ -53,13 +53,14 @@ class Home extends Controller
         echo view('admintools/mobile/blogform');
         echo view('admintools/mobile/eventform');
         echo view('admintools/mobile/managestaff');
+        echo view('admintools/mobile/laporanform');
       }
       echo view('konseling/mobile/blogs');
       echo view('konseling/mobile/events');
       echo view('konseling/mobile/chatroom', $appData);
       echo view('konseling/mobile/pantauchat', $appData);
       echo view('konseling/mobile/requestform');
-      echo view('admintools/mobile/laporanform');
+      echo view('perwa/mobile/home', $appData);
       echo view('layout/mobile/footer');
     } else {
       echo view('layout/desktop/header', $appData);

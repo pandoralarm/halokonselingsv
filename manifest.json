@@ -1,0 +1,20 @@
+{
+    "short_name": "HaloKonselingSV",
+    "name": "HaloKonselingSV - Komisi Bimbingan dan Konseling Sekolah Vokasi IPB",
+    "icons": [
+      {
+        "src": "https://www.pngitem.com/pimgs/m/171-1714437_helping-hands-logo-png-transparent-png.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "https://www.pngitem.com/pimgs/m/171-1714437_helping-hands-logo-png-transparent-png.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "background_color": "#FFFFFF",
+    "theme_color": "#9D6EC1",
+    "display": "standalone",
+    "start_url": "/?utm_source=homescreen"
+  }

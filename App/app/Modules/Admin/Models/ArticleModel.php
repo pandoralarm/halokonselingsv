@@ -11,7 +11,7 @@ class ArticleModel extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['Title', 'Header', 'Content', 'KonselorNIP'];
+    protected $allowedFields = ['Title', 'Header', 'Content', 'KonselorNIP', 'Timestamp'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

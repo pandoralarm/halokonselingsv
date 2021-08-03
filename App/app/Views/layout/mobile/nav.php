@@ -77,11 +77,11 @@
     <!-- OPTIONS BAR -->     
     <transition name="slideup">
       <div v-if="navoptions && current_topright == 'options'" class="options" v-on:click.self="options();">
-        <div v-if="current_submenu == 'blogDetail'">
+        <div v-if="current_submenu == 'blogDetail' || current_submenu == 'blogDetailYt'">
           <div v-on:click="clipboard()" class="share-object">Share</div>
         </div>
-        <div v-if="current_submenu == 'editblogDetail'" v-on:click.self="options();">
-          <div v-on:click="edititem()" class="end-session">Edit Item</div>
+        <div v-if="current_submenu == 'editblogDetail' || current_submenu == 'editblogDetailYt' " v-on:click.self="options();">
+          <div v-on:click="editblogs.edititem()" class="end-session">Edit Item</div>
           <div v-on:click="deleteitem()" class="add-konselor">Delete Item</div>
         </div>
       </div>
@@ -89,7 +89,8 @@
 
     <transition name="slideup" >
       <div v-if="navsearch && current_topright == 'search'" class="text" v-on:click.self="search();">
-        <input type="text" v-model="blogquery" v-on:input="" class="blogs searchbar"></input>
+        <input v-if="current_submenu == 'blogs'" type="text" v-model="blogsearchquery" v-on:input="blogs.findarticles(blogsearchquery)" class="blogs searchbar"></input>
+        <input v-if="current_submenu == 'editblogs'" type="text" v-model="editblogsearchquery" v-on:input="editblogs.findarticles(editblogsearchquery)" class="blogs searchbar"></input>
       </div>
     </transition> 
 
@@ -99,13 +100,17 @@
     <transition name="fade">
       <div  v-if="confirmdeletion" class="dialog">
         <div class="confirm">
-          <div class="text-dialog">
-            Yakin ingin menghapus item ini?
+
+          <div v-if="current_submenu == 'editblogDetail' || current_submenu == 'editblogDetailYt'">
+            <div class="text-dialog">
+              Yakin ingin menghapus artikel ini?
+            </div>
+            <div class="prompt">
+              <div v-on:click="editblogs.deleteselected();" class="btn-hksv btn-confirm">Ya</div>
+              <div v-on:click="closeDialog();" class="btn-hksv btn-dismiss">Batal</div>
+            </div>
           </div>
-          <div class="prompt">
-            <div v-on:click="closeDialog();" class="btn-hksv btn-confirm">Ya</div>
-            <div v-on:click="closeDialog();" class="btn-hksv btn-dismiss">Batal</div>
-          </div>
+
         </div>
       </div>
     </transition>
@@ -147,7 +152,7 @@
             <ul id="sub_dash-konseling" v-if="current_menu == 'konseling'">
               <li v-on:click="changeSubmenu('home')" class="menu"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> - Home</a></li>
               <li v-on:click="<?= $KonselingTarget ?>" class="menu"><a href="#"><i class="fa fa-comments" aria-hidden="true"></i> - Ruang Konseling</a></li>
-              <li v-on:click="changeSubmenu('blogs'); blogs.getarticles()" class="menu"><a href="#"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> - Pojok Edukasi</a></li>
+              <li v-on:click="changeSubmenu('blogs'); blogs.collapse(); changeSubmenu('blogs'); blogs.getarticles()" class="menu"><a href="#"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> - Pojok Edukasi</a></li>
               <li v-on:click="changeSubmenu('events')" class="menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Papan Events</a></li>
             </ul>
           </transition>
@@ -157,7 +162,7 @@
           <div v-on:click="changeMenu('beasiswa');" class="submenu" >Beasiswa</div>
           <transition name="fade">
             <ul id="sub_dash-beasiswa" v-if="current_menu == 'beasiswa'">
-              <li v-on:click="changeSubmenu('beasiswa')" class="menu"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> - Home</a></li>
+              <li v-on:click="changeSubmenu('home')" class="menu"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> - Home</a></li>
               <li class=" menu"><a href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i> - Beasiswa Dibuka</a></li>
               <li class=" menu"><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i> - Pengajuan Saya</a></li>
             </ul>
@@ -166,15 +171,16 @@
 
         <?php if ($role == 'ADMIN' || $role == 'KONSELOR') { ?>
         <div class="admin-nav">
-          <div v-on:click="changeMenu('admin');" class="submenu">Admin Tools</div>
+          <div v-on:click="changeMenu('admin');" class="submenu">Quick Tools</div>
           <transition name="fade">
             <ul id="sub_admin" v-if="current_menu == 'admin'">
-              <li v-on:click="editblogs.collapse(); changeSubmenu('editblogs');" class=" menu"><a href="#"><i class="fa fa-archive" aria-hidden="true"></i> - Kelola Blogs</a></li>
-              <li v-on:click="changeSubmenu('editevents')" class=" menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Kelola Events</a></li>
               <?php if ($role == 'ADMIN') { ?>
+                <li v-on:click="sidenavs(); changeWindow('managestaff'); changeTitle('DATA KONSELOR', '')" class=" menu"><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> - Kunjungi Dasbor</a></li>
                 <li v-on:click="sidenavs(); changeWindow('laporanform'); changeTitle('LAPORAN KONSELING', '')" class=" menu"><a href="#"><i class="fa fa-table" aria-hidden="true"></i> - Laporan Konseling</a></li>
-                <li v-on:click="sidenavs(); changeWindow('managestaff'); changeTitle('DATA KONSELOR', '')" class=" menu"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> - Data Konselor</a></li>
               <?php } ?> 
+              <li v-on:click="changeSubmenu('editblogs'); editblogs.collapse(); changeSubmenu('editblogs'); editblogs.getarticles()" class=" menu"><a href="#"><i class="fa fa-archive" aria-hidden="true"></i> - Kelola Blogs</a></li>
+              <li v-on:click="changeSubmenu('editevents')" class=" menu"><a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i> - Kelola Events</a></li>
+
             </ul>
           </transition>
         </div>

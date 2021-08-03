@@ -9,11 +9,43 @@ var blogform = new Vue({
     basepath: this.$cookies.get('basepath'),
     mindate: "",
     filemodel: null,
-    form: 'blogtext',
+    form: 'blogheader',
     headeroption: 'upload',
     content: {
       title: '',
       attachment: '',
+      contentarea: '',
+    },
+    contentblank: {
+      title: '',
+      attachment: '',
+      contentarea: '',
+    },
+    expandededit: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      isHeaderEdited: false,
+      Content: "",
+      Timestamp: "",
+      Author: "", 
+    },
+    editblanks: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      isHeaderEdited: false,
+      Content: "",
+      Timestamp: "",
+      Author: "", 
+    },
+    blank: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      Content: "",
+      Timestamp: "",
+      Author: "", 
     },
     error: {
       alert: false,
@@ -49,6 +81,23 @@ var blogform = new Vue({
       nav.loading(true);
       setTimeout(() => {
         this.changeWindow('blogform');
+        this.form = 'blogheader';
+        this.content = Object.assign({}, this.contentblank);
+        editblogs.getarticles();
+        this.changeTitle('HALOKONSELINGSV', 'Kamu Tidak Sendiri Disini 🤗');
+        nav.loading(false);
+        home.alertNow('Berhasil!', 'Artikel berhasil dipublikasi!');
+      }, 5000);
+    },
+    editspublished(){
+      nav.loading(true);
+      setTimeout(() => {
+        this.changeWindow('editblogform');
+        this.form = 'blogheader';
+        this.content = Object.assign({}, this.contentblank);
+        this.expanded = Object.assign({}, this.contentblank);
+        this.expandededit = Object.assign({}, this.editblanks);
+        editblogs.getarticles();
         this.changeTitle('HALOKONSELINGSV', 'Kamu Tidak Sendiri Disini 🤗');
         nav.loading(false);
         home.alertNow('Berhasil!', 'Artikel berhasil dipublikasi!');
@@ -65,10 +114,51 @@ var blogform = new Vue({
     next() {
       this.content.title = $('#contenttitle').val();
 
+      if (nav.current_window == 'editblogform'){ 
+        if (!this.expandededit.isHeaderEdited) {
+          this.expandededit.attachment = editblogs.expanded.attachment;     
+        } else {
+          
+          if (this.headeroption == 'yturl'){
+            if (this.validateYouTubeUrl($('#yturl').val())){
+                this.expandededit.attachment = $('#yturl');
+                this.form = 'blogtext';
+            } else {
+              alert("URL Youtube Tidak Valid");
+              $('#yturl').val("");
+            }
+    
+          } else if (this.headeroption == 'upload'){
+            this.expandededit.attachment = $('#upload');
+            const fileSize = this.expandededit.attachment[0].files[0].size / 1024 / 1024; // in MiB
+            if (fileSize > 5) {
+              alert('Ukuran file melebihi 5 MB');
+               $('#upload').val(''); //for clearing with Jquery
+            } else {
+              // Proceed further
+            }
+            return this.form = 'blogtext';
+          }
+
+        }
+
+
+        this.form = 'blogtext';
+        
+        setTimeout(() => {
+          tinymce.init({selector:'#editcontentarea'});
+          setTimeout(() => {
+            tinyMCE.get('editcontentarea').setContent(editblogs.expanded.Content);
+          }, 150);
+        }, 150);
+        
+        return 0;
+      }
+
       if (this.headeroption == 'yturl'){
         if (this.validateYouTubeUrl($('#yturl').val())){
             this.content.attachment = $('#yturl');
-            this.form = 'blogheader';
+            this.form = 'blogtext';
         } else {
           alert("URL Youtube Tidak Valid");
           $('#yturl').val("");
@@ -76,13 +166,20 @@ var blogform = new Vue({
 
       } else if (this.headeroption == 'upload'){
         this.content.attachment = $('#upload');
-        this.form = 'blogheader';
+        const fileSize = this.content.attachment[0].files[0].size / 1024 / 1024; // in MiB
+        if (fileSize > 5) {
+          alert('Ukuran file melebihi 5 MB');
+           $('#upload').val(''); //for clearing with Jquery
+        } else {
+          // Proceed further
+        }
+        return this.form = 'blogtext';
       }
       
     },
     prev() {
       this.checkheaderopt();
-      this.form = 'blogtext';
+      this.form = 'blogheader';
     },
     sidenavs() {
       this.sidenav = !this.sidenav;
@@ -160,7 +257,7 @@ var blogform = new Vue({
         bodyFormData.append('attachment', this.content.attachment[0].value);
       }
 
-      bodyFormData.append('contentarea', $('#contentarea').val());
+      bodyFormData.append('contentarea', tinyMCE.get('contentarea').getContent());
 
       axios.post(this.basepath+"/admin/contents/publish", 
                   bodyFormData,
@@ -182,6 +279,56 @@ var blogform = new Vue({
             .then(response => {
               console.log(response.data);
               this.published();
+              this.headeroption = 'upload';
+            })
+            .finally(() => {  
+            });
+      
+
+    },
+    sendpublicationedit() {
+      nav.loading(true);
+      var bodyFormData = new FormData();
+      console.log("uploadtest");
+      bodyFormData.append('articleid', editblogs.expanded.ArticleID);
+      bodyFormData.append('title', editblogs.expanded.title);
+
+      if (this.expandededit.isHeaderEdited){
+        if (this.headeroption == 'upload'){
+          var mediaFile = $('#upload');
+          bodyFormData.append('headertype', "upload");
+          bodyFormData.append('attachment', this.expandededit.attachment[0].files[0]);
+        } else if (this.headeroption == 'yturl'){
+          bodyFormData.append('headertype', "yturl");
+          bodyFormData.append('attachment', this.expandededit.attachment[0].value);
+        }
+      } else {
+        bodyFormData.append('headertype', "reuse");
+        bodyFormData.append('attachment', editblogs.expanded.Header);
+      }
+
+      bodyFormData.append('contentarea', tinyMCE.get('editcontentarea').getContent());
+
+      axios.post(this.basepath+"/admin/contents/publishedits", 
+                  bodyFormData,
+                  {headers: {'content-type': 'multipart/form-data'}})
+            .catch(error => {
+              if (!error.response) {
+                  // network error
+                  errorStatus = 'Error: Network Error';
+                  
+                  home.alertNow('Gagal!', errorStatus);
+                  nav.loading(false);
+                  console.log(errorStatus);
+              } else {
+                  errorStatus = error.response.data.message;
+                  console.log(errorStatus);
+              }
+              this.fileModel = null;
+            })
+            .then(response => {
+              console.log(response.data);
+              this.editspublished();
               this.headeroption = 'upload';
             })
             .finally(() => {  

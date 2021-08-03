@@ -5,9 +5,23 @@ var editblogs = new Vue({
     sidenav: false,
     chatroom: false,
     username: this.$cookies.get('username'),
-    shownpost: ['id', 'id2', 'id3'],
-    collapsed: ['id', 'id2', 'id3'],
-    expanded: [],
+    articles: [],
+    expanded: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      Content: "",
+      Timestamp: "",
+      Author: "", 
+    },
+    blank: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      Content: "",
+      Timestamp: "",
+      Author: "", 
+    },
   },  
   computed: {
     current_menu: function () {
@@ -21,6 +35,9 @@ var editblogs = new Vue({
     },
   },
   methods: {
+    edititem() {
+      nav.changeWindow('editblogform'); nav.changeTitle('Pojok Edukasi', ''); blogform.checkheaderopt();
+    },
     changeWindow(target) {
       if (this.current_window == target){
         return store.commit('changeWindow', '');
@@ -34,7 +51,8 @@ var editblogs = new Vue({
         tinymce.init({
           selector: '#contentarea',
           branding: false,  
-          plugins: 'fullscreen',
+          plugins: 'fullscreen paste',
+          convert_urls : true, 
           toolbar: 'fullscreen | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ',
           setup: function(editor) {
             editor.on('focus', function() {
@@ -67,34 +85,82 @@ var editblogs = new Vue({
       store.commit('changeSubtitle', newSubtitle);
       return 0;
     },
+
+
+    getarticles(){
+      
+      nav.loading(true);
+      axios.get(home.basepath+"/admin/contents/getEditArticles")
+        .catch(response => {
+
+        })
+        .then(response => {
+          console.log(response.data);
+          this.articles = response.data;
+          nav.loading(false);
+        });
+    },
+    findarticles(query){
+      var bodyFormData = new FormData();
+      bodyFormData.append('query', query);
+
+      axios.post(home.basepath+"/admin/contents/findEditArticles", 
+                  bodyFormData,
+                  {headers: {'content-type': 'multipart/form-data'}})
+            .catch(error => {
+              
+            })
+            .then(response => {
+              console.log(response.data);
+              this.articles = response.data;
+            });
+    },
+    deleteselected(){
+      nav.loading(true);
+      var bodyFormData = new FormData();
+      bodyFormData.append('ArticleID', this.expanded.ArticleID);
+
+      axios.post(home.basepath+"/admin/contents/deleteArticle", 
+                  bodyFormData,
+                  {headers: {'content-type': 'multipart/form-data'}})
+            .catch(error => {
+              
+            })
+            .then(response => {
+              console.log(response.data);
+              nav.closeDialog();
+              this.changeSubmenu("editblogs");
+              this.getarticles();
+              nav.loading(false);
+            });
+    },
     collapse(){
-      blogid = this.expanded.pop()
-      this.collapsed.push(blogid);
+      this.expanded = this.blank;
+      $('.expandedcontent').html("");
       return this.changeSubmenu('editblogs');
     },
-    isCollapsed(blogid) {
-      return this.collapsed.includes(blogid);
-    },
-    expand(blogid) {
-      if (!this.expanded.length) {
-        // if the array of expandded blog is empty
-        // proceed to put the meant blogid into the expand
-        // else, empty the array first
-        this.collapsed = this.collapsed.filter(val => val !== blogid);
-        this.expanded.push(blogid);
+    expand(articleid) {
+      console.log(articleid);
+      selected = Object.assign({}, this.articles[articleid]);
+      console.log(selected);
+      var src = selected.Header; 
+      isYT = src.match(/youtube/g);
+      if (isYT) {
+        // Fill header with yt embed source
+        this.expanded = selected;
+        var splitURL = src.split("/");
+        this.expanded.Header = "https://www.youtube.com/embed/"+splitURL[4];
+        setTimeout(() => {
+          $('.expandedcontent').html(selected.Content);
+        }, 250);
+        return this.changeSubmenu('editblogDetailYt');
       } else {
-        unexpand = this.expanded.pop();
-        console.log(unexpand);
-        this.collapse(unexpand);
-        return this.expand(blogid);
+        this.expanded = selected;
+        setTimeout(() => {
+          $('.expandedcontent').html(selected.Content);
+        }, 250);
+        return this.changeSubmenu('editblogDetail');
       }
-      return this.changeSubmenu('editblogDetail');
-    },
-    isExpanded(blogid) {
-      return this.expanded.includes(blogid);
-    },
-    isShown(blogid) {
-      return this.shownpost.includes(blogid);
     },
   }
 })

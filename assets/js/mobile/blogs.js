@@ -6,9 +6,22 @@ var blogs = new Vue({
     chatroom: false,
     username: this.$cookies.get('username'),
     articles: [],
-    shownpost: ['id', 'id2', 'id3'],
-    collapsed: ['id', 'id2', 'id3'],
-    expanded: [],
+    expanded: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      Content: "",
+      Timestamp: "",
+      Author: "", 
+    },
+    blank: {
+      ArticleID: "",
+      Title: "",
+      Header: "",
+      Content: "",
+      Timestamp: "",
+      Author: "", 
+    },
   },  
   computed: {
     current_menu: function () {
@@ -22,16 +35,6 @@ var blogs = new Vue({
     },
   },
   methods: {
-    getarticles(){
-      axios.get(home.basepath+"/admin/contents/getArticles")
-        .catch(response => {
-
-        })
-        .then(response => {
-          console.log(response.data);
-          this.articles = response.data;
-        });
-    },
     changeWindow(target) {
       if (this.current_window == target){
         return store.commit('changeWindow', '');
@@ -55,34 +58,63 @@ var blogs = new Vue({
       store.commit('changeSubtitle', newSubtitle);
       return 0;
     },
-    collapse(blogid){
-      this.expanded = this.expanded.filter(val => val !== blogid);
-      this.collapsed.push(blogid);
+
+
+    getarticles(){
+      nav.loading(true);
+      axios.get(home.basepath+"/admin/contents/getArticles")
+        .catch(response => {
+
+        })
+        .then(response => {
+          console.log(response.data);
+          this.articles = response.data;
+          nav.loading(false);
+        });
+    },
+    findarticles(query){
+
+      var bodyFormData = new FormData();
+      bodyFormData.append('query', query);
+
+      axios.post(home.basepath+"/admin/contents/findArticles", 
+                  bodyFormData,
+                  {headers: {'content-type': 'multipart/form-data'}})
+            .catch(error => {
+              
+            })
+            .then(response => {
+              console.log(response.data);
+              this.articles = response.data;
+            });
+    },
+    collapse(){
+      this.expanded = this.blank;
+      $('.expandedcontent').html("");
       return this.changeSubmenu('blogs');
     },
-    isCollapsed(blogid) {
-      return this.collapsed.includes(blogid);
-    },
-    expand(blogid) {
-      if (!this.expanded.length) {
-        // if the array of expandded blog is empty
-        // proceed to put the meant blogid into the expand
-        // else, empty the array first
-        this.collapsed = this.collapsed.filter(val => val !== blogid);
-        this.expanded.push(blogid);
+    expand(articleid) {
+      console.log(articleid);
+      selected = Object.assign({}, this.articles[articleid]);
+      console.log(selected);
+      var src = selected.Header; 
+      isYT = src.match(/youtube/g);
+      if (isYT) {
+        // Fill header with yt embed source
+        this.expanded = selected;
+        var splitURL = src.split("/");
+        this.expanded.Header = "https://www.youtube.com/embed/"+splitURL[4];
+        setTimeout(() => {
+          $('.expandedcontent').html(selected.Content);
+        }, 250);
+        return this.changeSubmenu('blogDetailYt');
       } else {
-        unexpand = this.expanded.pop();
-        console.log(unexpand);
-        this.collapse(unexpand);
-        return this.expand(blogid);
+        this.expanded = selected;
+        setTimeout(() => {
+          $('.expandedcontent').html(selected.Content);
+        }, 250);
+        return this.changeSubmenu('blogDetail');
       }
-      return this.changeSubmenu('blogDetail');
-    },
-    isExpanded(blogid) {
-      return this.expanded.includes(blogid);
-    },
-    isShown(blogid) {
-      return this.shownpost.includes(blogid);
     },
   }
 })

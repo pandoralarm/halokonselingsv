@@ -44,9 +44,10 @@ class Signin extends Auth
     $UsernamePOST = $this->request->getPost('username');
     $PasswordPOST = $this->request->getPost('password');
     $remember = $this->request->getPost('remember');
+    $targetpage = $this->request->getPost('target');
 
     //Check for DUMMY ADMIN PURPOSES DELETE ON LAUNCH!!!!!!!
-    $this->dummyAdmin($UsernamePOST, $PasswordPOST);
+    $this->dummyAdmin($UsernamePOST, $PasswordPOST, $targetpage);
   
     if (isset($remember)) {
       setcookie('username', $UsernamePOST, time() + 86400, '/');
@@ -55,13 +56,18 @@ class Signin extends Auth
       setcookie('username', $UsernamePOST, time() - 1, '/');
       setcookie('rememberme', '', time() + 86400, '/');
     }
-
     $Response = $this->post($UsernamePOST, $PasswordPOST);
     if ($Response->Code == 200) {
       $this->setUserSession($Response);
       setcookie('role', $this->session->get('role'), time() + 86400, '/');
       $this->profileAdd();
-      return redirect()->to('/');
+
+      if ( $targetpage == 'dasbor') {
+        return redirect()->to(site_url("dasbor/signin"));
+      } else {
+        return redirect()->to('/');
+      }
+
     } else {
       $this->session->setFlashdata('errorSignin', $Response->Error);
       if ($this->isMob) {
@@ -191,7 +197,7 @@ class Signin extends Auth
     }
   }
 
-  private function dummyAdmin($Username, $Password)
+  private function dummyAdmin($Username, $Password, $targetpage)
   {
     if ($Username == 'admin' && $Password == 'admin') {
       $User = $this->DosenModel->find('NIP000000');
@@ -218,7 +224,14 @@ class Signin extends Auth
     $this->session->set($user_session);
     setcookie('role', $this->session->get('role'), time() + 86400, '/');
     setcookie('id', $this->session->get('nip'), time() + 86400, '/');
-    return redirect()->to('/account/signin');
+
+    if ( $targetpage == 'dasbor') {
+      header("Location: ".site_url("/dasbor/signin"));
+      die();
+    } else {
+      header("Location: ".site_url("/account/signin"));      die();
+    }
+
   }
 
 }

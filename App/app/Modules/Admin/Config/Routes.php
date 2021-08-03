@@ -10,9 +10,14 @@ $routes->group('admin', ['namespace' => 'App\Modules\Admin\Controllers'], functi
 	/*** Route for Contents ***/
 	$subroutes->add('contents', 'Contents::index');
 	$subroutes->add('contents/index', 'Contents::index');
+	$subroutes->add('contents/publishedits', 'Contents::publishedits');
 	$subroutes->add('contents/publish', 'Contents::publish');
 	$subroutes->add('contents/headerprocess/(:alphanum)', 'Contents::headerprocess/$1');
 	$subroutes->add('contents/getArticles', 'Contents::getArticles');
+	$subroutes->add('contents/getEditArticles', 'Contents::getEditArticles');
+	$subroutes->add('contents/findArticles', 'Contents::findArticles');
+	$subroutes->add('contents/findEditArticles', 'Contents::findEditArticles');
+	$subroutes->add('contents/deleteArticle', 'Contents::deleteArticle');
 	$subroutes->add('contents/getYtId', 'Contents::getYtId');
 	
 	/*** Route for Dashboard ***/

@@ -23,7 +23,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://alansbox.online/';
+	public $baseURL = 'https://alansbox.online/';
 	/*
 	|--------------------------------------------------------------------------
 	| Index File

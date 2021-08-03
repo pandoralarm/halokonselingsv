@@ -40,7 +40,7 @@ var chatroom = new Vue({
 
     /* WEBSOCKET INSTANTIATION */
     console.log("Starting connection to WebSocket Server")
-    this.conn = new WebSocket("ws://"+this.hostname+":8081/");
+    this.conn = new WebSocket("wss://"+this.hostname+"/wss2/NNN");
 
     /* WEBSOCKET STATES */
     this.conn.onopen = function(event) {

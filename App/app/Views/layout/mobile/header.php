@@ -21,7 +21,8 @@
   <!-- Chrome, Firefox, & Opera color theme -->
   <meta name="theme-color" content="#9D6EC1">
 
-
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet">
   <!-- Latest compiled and minified CSS -->
@@ -49,6 +50,22 @@
   
 </head>
   <body>
+  <script>
+  
+    console.log("bro");
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('https://alansbox.online/worker.js?v=4').then(function(registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+  </script>
+
   <script src="<?= base_url('assets/js/mobile/globals.js') ?>" ></script>
   
 

@@ -4,3 +4,4 @@ echo "OWNERSHIP OF HTML CHANGED TO www-data"
 
 sudo chmod -R 777 /var/www/html
 echo "PERMISSION UPDATED TO 777"
+

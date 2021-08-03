@@ -1,1 +1,0 @@
-<?php global $video_indicators_shc_count; ?></div>
